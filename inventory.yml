@@ -1,0 +1,10 @@
+clients:
+  hosts:
+    client0:
+      ansible_host: 127.0.1.1
+      ansible_connection: local
+servers:
+  hosts:
+    server0:
+      ansible_host: 127.0.1.1
+      ansible_connection: local

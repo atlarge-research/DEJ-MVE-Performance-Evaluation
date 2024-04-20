@@ -1,0 +1,31 @@
+- name: Install openJDK 19
+  hosts: servers
+  tasks:
+    - name: Set the package manager fact
+      ansible.builtin.set_fact: _pkg_mgr="apt"
+    - name: ensure openJDK 19 JDK install
+      ansible.builtin.apt:
+        name: openjdk-19-jdk
+        state: present
+    - name: ensure openJDK 19 JRE install
+      ansible.builtin.apt:
+        name: openjdk-19-jre
+        state: present
+    - name: create folder for server
+      ansible.builtin.file:
+        path: "server"
+        state: directory
+    - name: Download Vanilla server jar
+      ansible.builtin.get_url:
+        url: https://piston-data.mojang.com/v1/objects/8dd1a28015f51b1803213892b50b7b4fc76e594d/server.jar
+        dest: "{{playbook_dir}}/server"
+    - name: put the eula=true in to eula.txt
+      ansible.builtin.shell:
+        cmd: cd server && echo "eula=true" > eula.txt
+    -
+    - name: run the server
+      ansible.builtin.shell:
+        cmd: cd server && java -Xmx1024M -Xms1024M -jar server.jar nogui
+        # cmd: cd server && java -Xmx1024M -Xms1024M -jar server.jar
+
+        #connect to server by ::1 while running on wsl on my windows machine
