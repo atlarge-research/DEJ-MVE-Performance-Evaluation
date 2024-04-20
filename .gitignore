@@ -1,1 +1,3 @@
-/server
+/server/*
+!/server/server.jar
+!/server/eula.txt
