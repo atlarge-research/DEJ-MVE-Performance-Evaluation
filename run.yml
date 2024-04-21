@@ -1,5 +1,5 @@
 # LAUNCH PROGRAMS
-- hosts: server
+- hosts: localhost
   gather_facts: False
   tasks:
     - name: Check experiment_duration_s
@@ -16,14 +16,6 @@
       pause:
         seconds: 1
 
-- hosts: client
-  gather_facts: False
-  tasks:
-    - name: Wait for server to be ready
-      pause:
-        seconds: 30
-    - set_fact:
-        server_ib_ip: "{{ '10.149.0.' ~ (groups['server'][0][-2:] | int) }}"
 
 # STOP PROGRAMS
 - hosts: server
