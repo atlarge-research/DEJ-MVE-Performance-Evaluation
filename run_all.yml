@@ -1,4 +1,2 @@
 ---
-- import_playbook: before_each.yml
 - import_playbook: run.yml
-- import_playbook: after_each.yml

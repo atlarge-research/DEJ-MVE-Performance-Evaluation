@@ -1,8 +1,7 @@
-#- hosts: localhost
-  #this might not be relevant for me
-  # tasks:
-  # - name: Plot results
-  #   shell: |
-  #  source $(dirname $(dirname $(which conda)))/etc/profile.d/conda.sh
-        # conda activate scratch
-        #     python plot-network.py
+- hosts: localhost
+  tasks:
+    - name: Get current time
+      shell: "date +%s"
+      register: date
+    - set_fact:
+        start_time: "{{ date.stdout }}"

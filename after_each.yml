@@ -1,8 +1,0 @@
-# CLEAN UP
-- hosts: localhost
-  gather_facts: False
-  tasks:
-    - name: Cancel reservation
-      shell: |
-        module load prun
-        preserve -c {{ reservation_number }}

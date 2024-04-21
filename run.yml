@@ -2,6 +2,9 @@
 - hosts: server
   gather_facts: False
   tasks:
+    - name: Check experiment_duration_s
+      shell:
+        cmd: echo "{{ experiment_duration_s }}"
     - name: Run server
       shell: |
         module load java/jdk-1.8.0
