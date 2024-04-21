@@ -1,0 +1,5 @@
+# DOWNLOAD, COMPILE, AND SET UP DEPENDENCIES
+- hosts: server
+  gather_facts: False
+  tasks:
+    - import_tasks: setup_minecraft.yml

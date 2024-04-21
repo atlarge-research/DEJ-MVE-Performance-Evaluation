@@ -1,0 +1,31 @@
+---
+- hosts: localhost
+  pre_tasks:
+    - name: Check cache directory
+      file:
+        path: cache
+        state: directory
+    - name: Check if cache contains maven
+      stat:
+        path: "{{ playbook_dir }}/cache/apache-maven-3.9.5/bin/mvn"
+      register: stat_maven
+    - name: Download maven
+      shell: |
+          wget https://dlcdn.apache.org/maven/maven-3/3.9.5/binaries/apache-maven-3.9.5-bin.tar.gz
+          tar xvfz apache-maven-3.9.5-bin.tar.gz
+          mv apache-maven-3.9.5 {{ playbook_dir }}/cache/
+          # echo PATH="/home/$(whoami)/apache-maven-3.9.5/bin:\$PATH" >> ~/.bashrc
+          rm apache-maven-3.9.5-bin.tar.gz
+      when: not stat_maven.stat.exists
+    - name: Copy .m2 directory # this is a bit of a hack. Not needed if artifact repository has good bandwidth
+      ansible.posix.synchronize:
+        src: /var/scratch/jdonkerv/.m2/
+        dest: /home/{{ ansible_user_id }}/.m2/
+      ignore_errors: yes
+        #insert rather get normal minecraft server
+    - name: Checkout Opencraft repo
+      git:
+        repo: https://github.com/atlarge-research/opencraft.git
+        dest: cache/opencraft
+        version: 13f9ffa4d50df2268998b1b5ec1a2c236eac09dd
+      register: git_opencraft

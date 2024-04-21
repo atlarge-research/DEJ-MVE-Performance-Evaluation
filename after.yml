@@ -1,0 +1,8 @@
+#- hosts: localhost
+  #this might not be relevant for me
+  # tasks:
+  # - name: Plot results
+  #   shell: |
+  #  source $(dirname $(dirname $(which conda)))/etc/profile.d/conda.sh
+        # conda activate scratch
+        #     python plot-network.py
