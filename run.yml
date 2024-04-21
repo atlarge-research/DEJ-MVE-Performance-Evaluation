@@ -4,21 +4,14 @@
   tasks:
     - name: Run server
       shell: |
-        module load java/jdk-1.8.0
+        module load java/jdk-19
         cd server
-        java -Xmx10240M -Xms100240M -jar server.jar nogui
+        java -Xmx10240M -Xms10240M -jar server.jar nogui
       async: "{{ experiment_duration_s }}"
       poll: 1
     - name: Sleep 1
       pause:
         seconds: 1
-    - name: Get server PID
-      shell: |
-        pgrep -u "$(whoami)" -f "^java -jar .*/server.jar"
-      register: output
-    - name: Print server PID
-      shell: |
-        echo "{{output}}"
 
 # STOP PROGRAMS
 - hosts: server
