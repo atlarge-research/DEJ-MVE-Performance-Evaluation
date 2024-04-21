@@ -14,7 +14,7 @@
         seconds: 1
     - name: Get server PID
       shell: |
-        pgrep -u "$(whoami)" -f "^java -jar .*/opencraft.jar"
+        pgrep -u "$(whoami)" -f "^java -jar .server/server.jar"
       register: output
     - name: Print server PID
       shell: |
