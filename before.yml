@@ -39,6 +39,11 @@
       get_url: 
         url: https://www.google.com/url?q=https%3A%2F%2Fgithub.com%2Fjiaqi%2Fjmxterm%2Freleases%2Fdownload%2Fv1.0.2%2Fjmxterm-1.0.2-uber.jar&sa=D&sntz=1&usg=AOvVaw2m3E2DyM0RX3I09iemadRV
         dest: "{{playbook_dir}}/server/jmxterm.jar"
+    - name: Validate jmxterm download
+      shell: |
+          cd server
+          ls -a
+          pwd
     - name: Create dir for jmx output
       file:
         path: "{{playbook_dir}}/server/output"
