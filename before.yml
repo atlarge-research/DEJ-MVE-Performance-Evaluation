@@ -37,8 +37,8 @@
         dest: "{{playbook_dir}}/server/eula.txt"
     - name: Download JMXterm
       get_url: 
-        url: https://github.com/jiaqi/jmxterm/releases/download/v1.0.4/jmxterm-1.0.4.jar
-        dest: "{{playbook_dir}}/server/jmxterm-1.0.4.jar"
+        url: https://github.com/jiaqi/jmxterm/releases/download/v1.0.4/jmxterm-1.0.4-uber.jar
+        dest: "{{playbook_dir}}/server/jmxterm-1.0.4-uber.jar"
     - name: Validate jmxterm download
       shell: |
           cd server

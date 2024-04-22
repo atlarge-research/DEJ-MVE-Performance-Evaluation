@@ -13,7 +13,7 @@
           ls -a
           pwd
     - name: Start JMXterm
-      shell: cd server && java -jar jmxterm-1.0.4.jar -n -o /output
+      shell: cd server && java -jar jmxterm-1.0.4-uber.jar -n -o /output
 
     - name: Sleep during experiment
       pause:
