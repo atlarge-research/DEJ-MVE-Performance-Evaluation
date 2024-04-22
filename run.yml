@@ -8,11 +8,7 @@
         cd server
         java -Xmx10240M -Xms10240M -jar server.jar nogui
       async: "{{ experiment_duration_s }}"
-      poll: 1
-    - name: Sleep 1
-      pause:
-        seconds: 1
-
+      poll: 0
 # STOP PROGRAMS
 - hosts: server
   gather_facts: False
