@@ -16,8 +16,9 @@
       command:
         stdin: /stop
     - name: Wait for server to shut down
-        pause:
-          seconds: 20
+      pause:
+        seconds: 20
+
 
 
 
