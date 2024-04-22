@@ -47,4 +47,4 @@
     - name: Create file for jmx output
       file:
         path: "{{playbook_dir}}/server/output.txt"
-        state: file
+        state: touch
