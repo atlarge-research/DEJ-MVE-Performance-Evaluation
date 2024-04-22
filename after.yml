@@ -1,7 +1,0 @@
-- hosts: localhost
-  tasks:
-    - name: Get current time
-      shell: "date +%s"
-      register: date
-    - set_fact:
-        start_time: "{{ date.stdout }}"
