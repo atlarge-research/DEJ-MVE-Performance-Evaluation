@@ -13,7 +13,7 @@
           ls -a
           pwd
     - name: Start JMXterm
-      shell: cd server && java -jar jmxterm-1.0.4-uber.jar -n
+      shell: cd server && java -jar jmxterm-1.0.4-uber.jar --noninteract --output output.txt
 
     - name: Sleep during experiment
       pause:
@@ -22,7 +22,7 @@
 
 
 - name: Stop programs
-  hosts: server
+  hosts: localhost
   gather_facts: false
   tasks:
     - name: Kill java

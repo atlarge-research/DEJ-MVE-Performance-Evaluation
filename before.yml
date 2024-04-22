@@ -44,7 +44,7 @@
           cd server
           ls -a
           pwd
-    - name: Create dir for jmx output
+    - name: Create file for jmx output
       file:
-        path: "{{playbook_dir}}/server/output"
-        state: directory
+        path: "{{playbook_dir}}/server/output.txt"
+        state: file
