@@ -15,7 +15,9 @@
     - name: Start JMXterm
       shell: cd server && java -jar jmxterm-1.0.4-uber.jar --noninteract --output output.txt
     - name: try to submit command to jmxterm
-      shell: echo get -s -b java.lang:type=Runtime Name
+      shell: jvm
+    - name: look at running processes
+      shell: ps
     - name: Sleep during experiment
       pause:
         seconds: 70
