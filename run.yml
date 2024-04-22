@@ -9,10 +9,22 @@
         java -Xmx10240M -Xms10240M -jar server.jar nogui
       async: "{{ experiment_duration_s }}"
       poll: 0
-# STOP PROGRAMS
-#- hosts: server
-#  gather_facts: False
-#  tasks:
-#    - name: Kill java
-#      shell: "killall java"
-#      ignore_errors: True
+    - name: Sleep during experiment
+      pause:
+        seconds: 70
+    - name: Tell server to shut down
+      command:
+        stdin: /stop
+    - name: Wait for server to shut down
+        pause:
+          seconds: 20
+
+
+
+ STOP PROGRAMS
+- hosts: server
+  gather_facts: False
+  tasks:
+    - name: Kill java
+      shell: "killall java"
+      ignore_errors: True
