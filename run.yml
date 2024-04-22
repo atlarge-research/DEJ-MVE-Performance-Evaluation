@@ -14,7 +14,10 @@
           pwd
     - name: Start JMXterm
       shell: cd server && java -jar jmxterm-1.0.4-uber.jar --noninteract --output output.txt
-
+    - name: try to submit command to jmxterm
+      shell: echo get -s -b java.lang:type=Runtime Name | \
+        java -jar target/jmxterm-1.0.2-uber.jar \
+        -l localhost:9991 -v silent -n
     - name: Sleep during experiment
       pause:
         seconds: 70
