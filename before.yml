@@ -35,16 +35,7 @@
       copy:
         src: "{{playbook_dir}}/eula.txt"
         dest: "{{playbook_dir}}/server/eula.txt"
-    - name: Download JMXterm
-      get_url: 
-        url: https://github.com/jiaqi/jmxterm/releases/download/v1.0.4/jmxterm-1.0.4-uber.jar
-        dest: "{{playbook_dir}}/server/jmxterm-1.0.4-uber.jar"
-    - name: Validate jmxterm download
-      shell: |
-          cd server
-          ls -a
-          pwd
-    - name: Create file for jmx output
+    - name: Create folder for output
       file:
         path: "{{playbook_dir}}/server/output.txt"
-        state: touch
+        state: directory

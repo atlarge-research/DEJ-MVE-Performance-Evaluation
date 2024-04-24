@@ -7,17 +7,6 @@
       shell: module load java/jdk-19 && cd server && java -Xmx10240M -Xms10240M -jar server.jar nogui
       async: "{{ experiment_duration_s }}"
       poll: 0
-    - name: Validate JMXterm presence
-      shell: |
-          cd server
-          ls -a
-          pwd
-    - name: Start JMXterm
-      shell: cd server && java -jar jmxterm-1.0.4-uber.jar --noninteract --output output.txt
-    - name: try to submit command to jmxterm
-      shell: jvm
-    - name: look at running processes
-      shell: ps
     - name: Sleep during experiment
       pause:
         seconds: 70
