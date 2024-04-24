@@ -37,5 +37,5 @@
         dest: "{{playbook_dir}}/server/eula.txt"
     - name: Create folder for output
       file:
-        path: "{{playbook_dir}}/server/output.txt"
+        path: "{{playbook_dir}}/server/output"
         state: directory
