@@ -39,3 +39,7 @@
       file:
         path: "{{playbook_dir}}/server/output"
         state: directory
+    - name: download JMX prometheus
+      get_url:
+        url: https://repo.maven.apache.org/maven2/io/prometheus/jmx/jmx_prometheus_javaagent/0.20.0/jmx_prometheus_javaagent-0.20.0.jar
+        dest: "{{playbook_dir}}/server/jmx_prometheus.jar"
