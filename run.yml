@@ -18,7 +18,7 @@
     - name: run prometheus
       shell: |
         cd server
-        java -javaagent:./jmx_prometheus_javaagent-0.20.0.jar=12345:config.yaml -jar jmx_prometheus.jar.jar
+        java -javaagent:./jmx_prometheus_javaagent-0.20.0.jar=12345:config.yaml -jar jmx_prometheus.jar
 
 
 
