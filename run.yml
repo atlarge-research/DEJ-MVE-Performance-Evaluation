@@ -12,11 +12,13 @@
         -Xmx10240M -Xms10240M -jar server.jar nogui
       async: "{{ experiment_duration_s }}"
       poll: 0
-    - name: run promeutheus agent
-      shell: cd server && java -javaagent:./jmx_prometheus_javaagent-0.20.0.jar=12345:config.yaml -jar jmx_prometheus.jar".jar
-    - name: Sleep during experiment
+    - name: Sleep while server startsup
       pause:
-        seconds: 70
+        seconds: 5
+    - name: run prometheus
+      shell: |
+        cd server
+        java -javaagent:./jmx_prometheus_javaagent-0.20.0.jar=12345:config.yaml -jar jmx_prometheus.jar.jar
 
 
 
