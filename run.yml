@@ -9,16 +9,13 @@
         java java -Dcom.sun.management.jmxremote.port=9999 \
         -Dcom.sun.management.jmxremote.authenticate=false \
         -Dcom.sun.management.jmxremote.ssl=false \
+        -javaagent:./jmx_prometheus_javaagent-0.20.0.jar=12345:config.yaml \
         -Xmx10240M -Xms10240M -jar server.jar nogui
       async: "{{ experiment_duration_s }}"
       poll: 0
     - name: Sleep while server startsup
       pause:
-        seconds: 5
-    - name: run prometheus
-      shell: |
-        cd server
-        java -javaagent:./jmx_prometheus_javaagent-0.20.0.jar=12345:config.yaml -jar jmx_prometheus.jar
+        seconds: 40
 
 
 
