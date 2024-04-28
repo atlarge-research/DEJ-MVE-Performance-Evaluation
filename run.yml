@@ -21,11 +21,25 @@
         ./prometheus --config.file=prometheus_config.yml
       async: "{{experiment_duration_s}}"
       poll: 0
-    - name: Wait shortly for startup
+    - name: Wait 30 sec for startup
       pause:
-        seconds: 5
-    - name: Kill prometheus
-      shell: killall prometheus
+        seconds: 30
+    - name: Kill processes
+      shell: |
+        killall prometheus
+        killall java
+    - name: Run server and jmx exporter agent
+      shell: >
+        module load java/jdk-19 && cd server &&
+        java -Dcom.sun.management.jmxremote.port=9999
+        -javaagent:./jmx_prometheus_javaagent-0.20.0.jar=12345:jmxexp_config.yml
+        -Dcom.sun.management.jmxremote.authenticate=false
+        -Dcom.sun.management.jmxremote.ssl=false 
+        -Xmx10240M
+        -Xms10240M
+        -jar server.jar nogui
+      async: "{{ experiment_duration_s }}"
+      poll: 0
     - name: Start prometheus
       shell: |
         cd ./prometheus
