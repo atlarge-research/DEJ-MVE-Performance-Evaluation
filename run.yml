@@ -4,13 +4,9 @@
   gather_facts: false
   tasks:
     - name: Run server
-      shell: >
-        module load java/jdk-19 && cd server &&
-        java java -Dcom.sun.management.jmxremote.port=9999
-        -Dcom.sun.management.jmxremote.authenticate=false
-        -Dcom.sun.management.jmxremote.ssl=false
-        -javaagent:./jmx_prometheus_javaagent-0.20.0.jar=12345:config.yml
-        -Xmx10240M -Xms10240M -jar server.jar nogui
+      shell: |
+        module load java/jdk-19 && cd server
+        java java -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -javaagent:./jmx_prometheus_javaagent-0.20.0.jar=12345:config.yml -Xmx10240M -Xms10240M -jar server.jar nogui
       async: "{{ experiment_duration_s }}"
       poll: 0
     - name: Sleep while server startsup
