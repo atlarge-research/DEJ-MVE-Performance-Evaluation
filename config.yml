@@ -1,4 +1,2 @@
 rules:
 - pattern: ".*"
-includeObjectNames: ["net.minecraft.server:*"]
-whitelist: ["net.minecraft.server:*"]
