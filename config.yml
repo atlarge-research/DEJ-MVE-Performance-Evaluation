@@ -1,3 +1,3 @@
 rules:
 - pattern: ".*"
-whitelist: ["net.minecraft.server:*"]
+whitelist: ["net.minecraft.server:type=Server"]
