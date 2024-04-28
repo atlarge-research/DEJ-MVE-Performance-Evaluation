@@ -18,6 +18,7 @@
     - name: Start prometheus
       shell: |
         cd /server/prometheus
+        ls -a
         ./prometheus --config.file=prometheus_config.yml --web.listen-address=127.0.0.1:9090 --log.level=debug
       async: "{{experiment_duration_s}}"
       poll: 0
