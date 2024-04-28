@@ -46,20 +46,12 @@
     - name: "download prometheus"
       get_url:
         url: https://github.com/prometheus/prometheus/releases/download/v2.51.2/prometheus-2.51.2.linux-amd64.tar.gz
-        dest: "{{playbook_dir}}/server/prometheus-2.51.2.linux-amd64.tar.gz"
-    - name: create prometheus dir
-      file:
-        path: "{{playbook_dir}}/server/prometheus"
-        state: directory
+        dest: "{{playbook_dir}}/prometheus-archive.tar.gz"
     - name: "unpack prometheus"
       unarchive:
-        src: "{{playbook_dir}}/server/prometheus-2.51.2.linux-amd64.tar.gz"
-        dest: "{{playbook_dir}}/server/prometheus"
-    - name: "place internal directory into the made folder"
-      shell: |
-        cd /server/prometheus/
-        mv prometheus-2.51.2.linux-amd64 "{{playbook_dir}}"/server/prometheus
+        src: "{{playbook_dir}}/prometheus-arhcive.tar.gz"
+        dest: "{{playbook_dir}}"
     - name: "place prometheus_config.yml"
       copy:
         src: "{{playbook_dir}}/prometheus_config.yml"
-        dest: "{{playbook_dir}}/server/prometheus/prometheus_config.yml"
+        dest: "{{playbook_dir}}/prometheus/prometheus_config.yml"
