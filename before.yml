@@ -55,11 +55,9 @@
       file: 
         path: "{{playbook_dir}}/prometheus-archive.tar.gz"
         state: absent
-    - name: "move prometheus folder"
-      copy:
-        src: "{{playbook_dir}}/prometheus-2.51.2.linux-amd64"
-        dest: "{{playbook_dir}}/prometheus"
-        remote_src: True
+    - name: "Clean up and place directory in right place"
+      shell: |
+        mv prometheus-2.51.2.linux-amd64 prometheus
     - name: "place prometheus_config.yml"
       copy:
         src: "{{playbook_dir}}/prometheus_config.yml"
