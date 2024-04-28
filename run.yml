@@ -3,12 +3,6 @@
   hosts: localhost
   gather_facts: false
   tasks:
-    - name: Check dir contents
-      shell: |
-        cd server
-        ls -a
-        pwd
-
     - name: Run server
       shell: >
         module load java/jdk-19 && cd server &&
@@ -20,15 +14,14 @@
         -jar server.jar nogui
       async: "{{ experiment_duration_s }}"
       poll: 0
-    - name: Sleep while server startsup
-      pause:
-        seconds: 15
     - name: Start JMX exporter http server
       shell: |
+        cd server
         java -jar jmx_prometheus_httpserver-0.20.0.jar 12345 prom_config.yml
+      async: "{{experiment_duration_s}}"
     - name: Sleep during experiment
       pause:
-        seconds: 165
+        seconds: 180
 
 
 
