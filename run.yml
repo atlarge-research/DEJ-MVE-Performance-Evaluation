@@ -18,7 +18,7 @@
     - name: Start prometheus
       shell: |
         cd /server/prometheus
-        ./prometheus --config.file=prometheus_config.yml
+        ./prometheus --config.file=prometheus_config.yml --web.enable-admin-api
       async: "{{experiment_durations_s}}"
       poll: 0
     - name: Sleep during experiment
