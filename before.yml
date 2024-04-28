@@ -38,7 +38,7 @@
     - name: place config.yml
       copy:
         src: "{{playbook_dir}}/config.yml"
-        dest: "{{playbook_dir}}/server/config.yml"
+        dest: "{{playbook_dir}}/server/prom_config.yml"
     - name: Create folder for output
       file:
         path: "{{playbook_dir}}/server/output"
