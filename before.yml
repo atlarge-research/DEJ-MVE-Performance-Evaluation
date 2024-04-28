@@ -55,6 +55,10 @@
       unarchive:
         src: "{{playbook_dir}}/server/prometheus-2.51.2.linux-amd64.tar.gz"
         dest: "{{playbook_dir}}/server/prometheus"
+    - name: "place internal directory into the made folder"
+      shell: |
+        cd /server/prometheus/
+        mv prometheus-2.51.2.linux-amd64 "{{playbook_dir}}"/server/prometheus
     - name: "place prometheus_config.yml"
       copy:
         src: "{{playbook_dir}}/prometheus_config.yml"
