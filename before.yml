@@ -49,8 +49,20 @@
         dest: "{{playbook_dir}}/prometheus-archive.tar.gz"
     - name: "unpack prometheus"
       unarchive:
-        src: "{{playbook_dir}}/prometheus-arhcive.tar.gz"
+        src: "{{playbook_dir}}/prometheus-archive.tar.gz"
         dest: "{{playbook_dir}}"
+    - name: "remove archive"
+      file: 
+        path: "{{playbook_dir}}/prometheus-archive.tar.gz"
+        state: absent
+    - name: "rename prometheus folder"
+      copy:
+        src: "{{playbook_dir}}/prometheus-2.51.2.linux-amd64"
+        dest: "{{playbook_dir}}/prometheus"
+        remote_src: True
+      file:
+        path: "{{playbook_dir}}/prometheus-2.51.2.linux-amd64"
+        state: absent
     - name: "place prometheus_config.yml"
       copy:
         src: "{{playbook_dir}}/prometheus_config.yml"
