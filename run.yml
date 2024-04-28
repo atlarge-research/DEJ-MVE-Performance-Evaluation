@@ -3,11 +3,10 @@
   hosts: localhost
   gather_facts: false
   tasks:
-    - name: Run server
+    - name: Run server and jmx exporter agent
       shell: >
         module load java/jdk-19 && cd server &&
         java -Dcom.sun.management.jmxremote.port=9999
-        -verbose
         -javaagent:./jmx_prometheus_javaagent-0.20.0.jar=12345:prom_config.yml
         -Dcom.sun.management.jmxremote.authenticate=false
         -Dcom.sun.management.jmxremote.ssl=false 
