@@ -35,7 +35,7 @@
       copy:
         src: "{{playbook_dir}}/eula.txt"
         dest: "{{playbook_dir}}/server/eula.txt"
-    - name: place config.yml
+    - name: place prom_config.yml
       copy:
         src: "{{playbook_dir}}/config.yml"
         dest: "{{playbook_dir}}/server/prom_config.yml"
@@ -43,7 +43,7 @@
       file:
         path: "{{playbook_dir}}/server/output"
         state: directory
-    - name: download JMX prometheus
+    - name: download JMX exporter
       get_url:
-        url: https://repo.maven.apache.org/maven2/io/prometheus/jmx/jmx_prometheus_javaagent/0.20.0/jmx_prometheus_javaagent-0.20.0.jar
-        dest: "{{playbook_dir}}/server/jmx_prometheus_javaagent-0.20.0.jar"
+        url: https://repo1.maven.org/maven2/io/prometheus/jmx/jmx_prometheus_httpserver/0.20.0/jmx_prometheus_httpserver-0.20.0.jar
+        dest: "{{playbook_dir}}/server/jmx_prometheus_httpserver-0.20.0.jar"

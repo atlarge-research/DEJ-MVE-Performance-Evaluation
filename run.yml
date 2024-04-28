@@ -15,7 +15,6 @@
         java -Dcom.sun.management.jmxremote.port=9999
         -Dcom.sun.management.jmxremote.authenticate=false
         -Dcom.sun.management.jmxremote.ssl=false 
-        -javaagent:"{{playbook_dir}}"/server/jmx_prometheus_javaagent-0.20.0.jar=12345:prom_config.yml
         -Xmx10240M
         -Xms10240M
         -jar server.jar nogui
