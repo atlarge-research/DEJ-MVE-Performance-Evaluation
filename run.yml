@@ -19,6 +19,11 @@
       shell: |
         cd ./prometheus
         ./prometheus --config.file=prometheus_config.yml
+      async: "{{experiment_duration_s}}"
+      poll: 0
+    - name: Wait shortly for startup
+      pause:
+        seconds: 5
     - name: Kill prometheus
       shell: killall prometheus
     - name: Start prometheus
