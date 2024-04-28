@@ -1,4 +1,4 @@
-experiment_duration_s: 90
+experiment_duration_s: 180
 iterations: 1
 
 config:

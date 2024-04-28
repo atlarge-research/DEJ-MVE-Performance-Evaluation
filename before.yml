@@ -38,12 +38,20 @@
     - name: place prom_config.yml
       copy:
         src: "{{playbook_dir}}/config.yml"
-        dest: "{{playbook_dir}}/server/prom_config.yml"
-    - name: Create folder for output
-      file:
-        path: "{{playbook_dir}}/server/output"
-        state: directory
+        dest: "{{playbook_dir}}/server/jmxexp_config.yml"
     - name: download JMX exporter
       get_url:
         url: https://repo.maven.apache.org/maven2/io/prometheus/jmx/jmx_prometheus_javaagent/0.20.0/jmx_prometheus_javaagent-0.20.0.jar
         dest: "{{playbook_dir}}/server/jmx_prometheus_javaagent-0.20.0.jar"
+    - name: "download prometheus"
+      get_url:
+        url: https://github.com/prometheus/prometheus/releases/download/v2.51.2/prometheus-2.51.2.linux-amd64.tar.gz
+        dest: "{{playbook_dir}}/server/prometheus-2.51.2.linux-amd64.tar.gz"
+    - name: "unpack prometheus"
+      unarchive:
+        src: "{{playbook_dir}}/server/prometheus-2.51.2.linux-amd64.tar.gz"
+        dest: "{{playbook_dir}}/server/prometheus"
+    - name: "place prometheus_config.yml"
+      copy:
+        src: "{{playbook_dir}}/prometheus_config.yml"
+        dest: "{{playbook_dir}}/server/prometheus/prometheus_config.yml"
