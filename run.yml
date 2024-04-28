@@ -22,7 +22,13 @@
       poll: 0
     - name: Sleep while server startsup
       pause:
-        seconds: 180
+        seconds: 15
+    - name: Start JMX exporter http server
+      shell: |
+        java -jar jmx_prometheus_httpserver-0.20.0.jar 12345 prom_config.yml
+    - name: Sleep during experiment
+      pause:
+        seconds: 165
 
 
 
