@@ -1,2 +1,3 @@
 rules:
 - pattern: ".*"
+includeObjectNames: ["net.minecraft.server:*"]
