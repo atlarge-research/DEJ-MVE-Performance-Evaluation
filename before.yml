@@ -43,7 +43,7 @@
       file:
         path: "{{playbook_dir}}/server/output"
         state: directory
-    - name: download JMX exporter
+    - name: download JMX exporter jar
       get_url:
         url: https://repo1.maven.org/maven2/io/prometheus/jmx/jmx_prometheus_httpserver/0.20.0/jmx_prometheus_httpserver-0.20.0.jar
         dest: "{{playbook_dir}}/server/jmx_prometheus_httpserver-0.20.0.jar"
