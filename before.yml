@@ -55,7 +55,7 @@
       file: 
         path: "{{playbook_dir}}/prometheus-archive.tar.gz"
         state: absent
-    - name: "Clean up and place directory in right place"
+    - name: "rename directory"
       shell: |
         mv prometheus-2.51.2.linux-amd64 prometheus
     - name: "place prometheus_config.yml"
