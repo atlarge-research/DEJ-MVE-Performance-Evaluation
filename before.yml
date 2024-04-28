@@ -58,7 +58,7 @@
     - name: "move prometheus folder"
       copy:
         src: "{{playbook_dir}}/prometheus-2.51.2.linux-amd64"
-        dest: "{{playbook_dir}}"
+        dest: "{{playbook_dir}}/prometheus"
         remote_src: True
     - name: "place prometheus_config.yml"
       copy:
