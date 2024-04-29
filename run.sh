@@ -1,12 +1,6 @@
-#!/usr/bin/env bash
-
 set -xeuo pipefail
 IFS=$'\n\t'
 
-# if ! (git status && [[ -z "$(git status --porcelain)" ]]); then
-#     echo "experiment not running due to uncommitted git changes"
-#     exit 1
-# fi
 
 if ! which conda; then
     read -r -p "Conda not found. About to install conda in /var/scratch/$(whoami)/miniconda3. Do you want to continue? [yn] " yn
