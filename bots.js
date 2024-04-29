@@ -26,8 +26,7 @@ class bot{
 }
 
 
-let i = 0
-let bots = []
+
 
 function addFiftyBots(i){
     for(let j = i;j < (i + 50); j++){
@@ -36,8 +35,16 @@ function addFiftyBots(i){
     return (i+50)   
 }
 
-i = addFiftyBots(i)
+async function runFile(){
+    let i = 0
+    let bots = []
+    i = addFiftyBots(i)
 
-await sleep(10000)
+    await sleep(10000)
 
-i = addFiftyBots(i)
+    i = addFiftyBots(i)
+
+}
+
+runFile()
+
