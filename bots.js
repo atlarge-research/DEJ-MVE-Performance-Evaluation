@@ -17,4 +17,10 @@ class bot{
 
 }
 
-let aBot = new bot("TestBot")
+let bots = []
+
+for(let i = 0; i < 10; i++){
+    bots.push(new bot("TestBot" + i))
+}
+
+
