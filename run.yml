@@ -26,12 +26,25 @@
         seconds: 60
     - name: Run bot script
       shell: |
-        node bots.js
+        node bots.js 0
       async: "{{experiment_duration_s}}"
       poll: 0
-    - name: check on bot script
+    - name: Wait 20 seconds before next wave
+      pause:
+        seconds: 20
+    - name: Run bot script
       shell: |
-        ps
+        node bots.js 0
+      async: "{{experiment_duration_s}}"
+      poll: 0
+    - name: Wait 20 seconds before next wave
+      pause:
+        seconds: 20
+    - name: Run bot script
+      shell: |
+        node bots.js 0
+      async: "{{experiment_duration_s}}"
+      poll: 0
     - name: Sleep during experiment
       pause:
         seconds: "{{experiment_duration_s}}"
