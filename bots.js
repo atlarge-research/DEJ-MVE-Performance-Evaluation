@@ -1,3 +1,7 @@
 const mineflayer = require('mineflayer')
 
-const bots = [mineflayer.createBot(),mineflayer.createBot(),mineflayer.createBot(),mineflayer.createBot(),mineflayer.createBot()]
+const bot = mineflayer.createBot({
+    username: 'Player'
+  })
+
+bot.on('kicked', console.log)

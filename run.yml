@@ -29,6 +29,9 @@
         node bots.js
       async: "{{experiment_duration_s}}"
       poll: 0
+    - name: check on bot script
+      shell: |
+        ps
     - name: Sleep during experiment
       pause:
         seconds: "{{experiment_duration_s}}"
