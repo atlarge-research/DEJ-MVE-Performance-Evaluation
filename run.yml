@@ -21,9 +21,9 @@
         ./prometheus --config.file=prometheus_config.yml
       async: "{{experiment_duration_s}}"
       poll: 0
-    - name: Allow server 30 seconds to start up
+    - name: Allow server 60 seconds to start up
       pause:
-        seconds: 30
+        seconds: 60
     - name: Run bot script
       shell: |
         node bots.js
