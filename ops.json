@@ -1,8 +1,7 @@
 [
-    {
-      "uuid": "d0f47e66-7ef5-471a-89ea-8f285cc5d508",
-      "name": "dilano55",
-      "level": 4,
-      "bypassesPlayerLimit": false
-    }
-  ]
+  {
+      "uuid":"d0f47e66-7ef5-471a-89ea-8f285cc5d508",
+      "name":"dilano55",
+      "level":4
+  }
+]

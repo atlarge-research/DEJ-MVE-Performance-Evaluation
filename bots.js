@@ -27,13 +27,13 @@ class bot{
 
 
 let i = 0
+let bots = []
 
 function addFiftyBots(i){
-    let bots = []
-    for(i; i < i + 50; i++){
-        bots.push(new bot("TestBot" + i))
+    for(let j = i;j < (i + 50); j++){
+        bots.push(new bot("TestBot" + j))
     }
-    return i    
+    return j    
 }
 
 i = addFiftyBots(i)
