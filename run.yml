@@ -44,3 +44,5 @@
     - name: Kill java
       command: "killall java"
       ignore_errors: true
+    - name: Kill prometheus
+      command: "killall prometheus"
