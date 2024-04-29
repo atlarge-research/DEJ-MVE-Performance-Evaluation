@@ -33,7 +33,11 @@ function addFiftyBots(i){
     for(let j = i;j < (i + 50); j++){
         bots.push(new bot("TestBot" + j))
     }
-    return j    
+    return (i+50)   
 }
+
+i = addFiftyBots(i)
+
+await sleep(10000)
 
 i = addFiftyBots(i)
