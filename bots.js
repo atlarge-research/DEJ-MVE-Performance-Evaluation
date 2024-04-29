@@ -28,7 +28,7 @@ class bot{
 
 
 
-function addFiftyBots(i){
+function addFiftyBots(i,bots){
     for(let j = i;j < (i + 50); j++){
         bots.push(new bot("TestBot" + j))
     }
@@ -38,11 +38,11 @@ function addFiftyBots(i){
 async function runFile(){
     let i = 0
     let bots = []
-    i = addFiftyBots(i)
+    i = addFiftyBots(i,bots)
 
     await sleep(10000)
 
-    i = addFiftyBots(i)
+    i = addFiftyBots(i,bots)
 
 }
 
