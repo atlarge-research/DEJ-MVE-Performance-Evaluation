@@ -1,6 +1,9 @@
 const mineflayer = require('mineflayer')
 const directions = ["forward","back","left", "right"]
 
+const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
+
+
 class bot{
     constructor(botName){
         this.username = botName
@@ -22,10 +25,17 @@ class bot{
     }
 }
 
-let bots = []
 
-for(let i = 0; i < 50; i++){
-    bots.push(new bot("TestBot" + i))
+let i = 0
+
+function addFiftyBots(i){
+    let bots = []
+    for(i; i < i + 50; i++){
+        bots.push(new bot("TestBot" + i))
+    }
+    return i    
 }
 
-
+i = addFiftyBots(i)
+sleep(5000)
+i = addFiftyBots(i)
