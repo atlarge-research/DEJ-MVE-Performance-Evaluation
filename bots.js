@@ -7,15 +7,15 @@ class bot{
         this.joinServer()
     }
     startBotActions(){
-        bot.once("login",() =>{
-            bot.setControlState('forward',true)
+        this.bot.once("login",() =>{
+            this.bot.setControlState('forward',true)
         })
     }
     joinServer(){
         this.bot = mineflayer.createBot({
             "username":this.username
         });
-        bot.startBotActions()
+        this.startBotActions()
     }
 }
 
