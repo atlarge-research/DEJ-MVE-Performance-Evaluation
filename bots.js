@@ -1,3 +1,3 @@
 const mineflayer = require('mineflayer')
 
-const bot = mineflayer.createBot()
+const bots = [mineflayer.createBot(),mineflayer.createBot(),mineflayer.createBot(),mineflayer.createBot(),mineflayer.createBot()]
