@@ -67,3 +67,6 @@
       copy:
         src: "{{playbook_dir}}/prometheus_config.yml"
         dest: "{{playbook_dir}}/prometheus/prometheus_config.yml"
+    - name: "try to install mineflayer"
+      shell: |
+        npm install mineflayer
