@@ -6,22 +6,17 @@ class bot{
         this.username = botName
         this.joinServer()
     }
-
+    startBotActions(){
+        bot.once("login",() =>{
+            bot.setControlState('forward',true)
+        })
+    }
     joinServer(){
         this.bot = mineflayer.createBot({
             "username":this.username
         });
         bot.startBotActions()
     }
-
-    startBotActions(){
-        bot.once("login",() =>{
-            bot.setControlState('forward',true)
-        })
-    }
-
-
-
 }
 
 let bots = []
