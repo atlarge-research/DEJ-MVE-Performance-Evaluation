@@ -1,11 +1,9 @@
 name: scratch
 channels:
-  - anaconda
   - conda-forge
-  - defaults
 dependencies:
   - ansible=6.6.0=py310hff52083_0
   - ansible-core=2.14.0=pyhd8ed1ab_0
   - pip=22.2.2=py310h06a4308_0
   - yaml=0.2.5=h7f98852_2
-  - nodejs-20.9.0=hb753e55_1
+  - nodejs=20.1.0=hf52ce11_0
