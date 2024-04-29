@@ -43,7 +43,7 @@ set -x
 set -u
 
 if ! conda compare environment.yml; then
-    conda env create -q --file environment.yml --force
+    conda env create -q --file environment.yml --yes
 fi
 conda init bash
 
