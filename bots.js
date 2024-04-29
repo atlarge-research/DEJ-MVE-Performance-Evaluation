@@ -37,5 +37,3 @@ function addFiftyBots(i){
 }
 
 i = addFiftyBots(i)
-sleep(5000)
-i = addFiftyBots(i)
