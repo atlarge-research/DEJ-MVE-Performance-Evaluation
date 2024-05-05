@@ -4,8 +4,8 @@ const directions = ["forward","back","left", "right"]
 class bot{
     constructor(botName){
         this.username = botName
-        this.joinServer()
         this.direction = directions[(Math.random() * directions.length) | 0]
+        this.joinServer()
     }
     startBotActions(){
         this.bot.once("login",() =>{
@@ -22,11 +22,11 @@ class bot{
     }
 }
 const bots = []
-const random = (Math.random() * 1000)
+const random = (Math.random() * 100000)
 
 
 
 for(let i = 0; i < 50; i++){
-    num = i + random
+    num = Math.floor(i + random)
     bots.push(new bot("TestBot" + random))
 }
