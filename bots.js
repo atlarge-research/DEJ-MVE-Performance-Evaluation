@@ -28,5 +28,5 @@ const random = Math.floor((Math.random() * 100000))
 
 for(let i = 1; i <= 50; i++){
     num =   i + random
-    bots.push(new bot("TestBot" + random))
+    bots.push(new bot("TestBot" + num))
 }
