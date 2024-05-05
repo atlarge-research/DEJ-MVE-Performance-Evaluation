@@ -26,7 +26,7 @@ const random = (Math.random() * 100000)
 
 
 
-for(let i = 0; i < 50; i++){
+for(let i = 1; i <= 50; i++){
     num = Math.floor(i + random)
     bots.push(new bot("TestBot" + random))
 }
