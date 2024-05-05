@@ -22,7 +22,11 @@ class bot{
     }
 }
 const bots = []
+const random = (Math.random() * 1000)
+
+
 
 for(let i = 0; i < 50; i++){
-    bots.push(new bot("TestBot" + (i + (Math.random() * 1000))))
+    num = i + random
+    bots.push(new bot("TestBot" + random))
 }
