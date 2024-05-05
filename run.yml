@@ -31,7 +31,7 @@
       poll: 0
     - name: Sleep during experiment
       pause:
-        seconds: "{{experiment_duration_s}}"
+        seconds:"{{experiment_duration_s}}"
 
 
 - name: Stop programs
