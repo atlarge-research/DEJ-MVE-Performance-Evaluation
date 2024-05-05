@@ -25,9 +25,9 @@ class bot{
 const startnum = process.argv[2]
 const bots = []
 
-function addFiftyBots(i,bots){
-    for(let j = i;j < (i + 50); j++){
-        bots.push(new bot("TestBot" + j))
+function addFiftyBots(bots){
+    for(let i = 0; i < 50; i++){
+        bots.push(new bot("TestBot" + (i + (Math.random() * 1000))))
     } 
 }
-addFiftyBots(startnum,bots)
+addFiftyBots(bots)
