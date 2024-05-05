@@ -1,10 +1,10 @@
 # LAUNCH PROGRAMS
 - name: Run experiment
-  hosts: localhost
+  hosts: server
   gather_facts: false
   tasks:
     - name: Run server and jmx exporter agent
-      shell: >
+      shell: >  
         module load java/jdk-19 && cd server &&
         java -Dcom.sun.management.jmxremote.port=9999
         -javaagent:./jmx_prometheus_javaagent-0.20.0.jar=12345:jmxexp_config.yml
@@ -24,6 +24,15 @@
     - name: Allow server 60 seconds to start up
       pause:
         seconds: 60
+    - name: Sleep during experiment
+      pause:
+        seconds:"{{experiment_duration_s}}"
+
+
+- name: Run client play
+  hosts:  client
+  tasks:
+  # Wait for server to be started before running script
     - name: Run bot script
       shell: |
         node bots.js
@@ -34,8 +43,14 @@
         seconds:"{{experiment_duration_s}}"
 
 
+
+
+
+
+
+
 - name: Stop programs
-  hosts: localhost
+  hosts: all
   gather_facts: false
   tasks:
     - name: Kill java

@@ -39,11 +39,6 @@
       copy:
         src: "{{playbook_dir}}/server.properties"
         dest: "{{playbook_dir}}/server/server.properties"
-    - name: "[TESTING] place ops.json"
-      copy:
-        src: "{{playbook_dir}}/ops.json"
-        dest: "{{playbook_dir}}/server/ops.json"
-      
     - name: place jmx exporter config
       copy:
         src: "{{playbook_dir}}/config.yml"
