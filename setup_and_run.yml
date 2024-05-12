@@ -1,0 +1,3 @@
+---
+- import_playbook: setup_nodes.yml
+- import_playbook: run.yml
