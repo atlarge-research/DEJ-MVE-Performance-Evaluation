@@ -31,7 +31,7 @@
     groups:
       - worker
       - server
-- name: Add yardstick hostnames to playbook
+- name: Add mineflayer hostnames to playbook
   add_host:
     name: "{{ item }}"
     groups:

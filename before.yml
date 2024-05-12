@@ -69,3 +69,5 @@
     - name: "install mineflayer"
       shell: |
         npm install mineflayer
+    - import_tasks: setup_nodes.yml
+

@@ -58,3 +58,7 @@
       ignore_errors: true
     - name: Kill prometheus
       command: "killall prometheus"
+    - name: Cancel reservation
+      shell: |
+        module load prun
+        preserve -c {{ reservation_number }}
