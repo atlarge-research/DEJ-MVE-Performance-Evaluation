@@ -47,8 +47,8 @@ if ! conda compare environment.yml; then
 fi
 conda init bash
 
-ansible-playbook -e @experiment.yml -i 'localhost' before.yml
+ansible-playbook -e @experiment.yml -i 'localhost' before.yml -vvv
 configs=$(python confex.py experiment.yml)
 for c in $configs; do
-    ansible-playbook -e @"$c" -e "_config_path=$c" -e @experiment.yml -i 'localhost' setup_and_run.yml
+    ansible-playbook -e @"$c" -e "_config_path=$c" -e @experiment.yml -i 'localhost' setup_and_run.yml -vvv
 done
