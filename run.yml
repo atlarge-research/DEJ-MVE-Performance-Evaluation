@@ -9,7 +9,7 @@
         ls -a
     - name: Run server and jmx exporter agent
       shell: >  
-        module load java/jdk-19 && cd server &&
+        module load java/jdk-19 && cd "{{playbook_dir}}/server" &&
         java -Dcom.sun.management.jmxremote.port=9999
         -javaagent:./jmx_prometheus_javaagent-0.20.0.jar=12345:jmxexp_config.yml
         -Dcom.sun.management.jmxremote.authenticate=false
@@ -21,7 +21,7 @@
       poll: 0
     - name: Start prometheus
       shell: |
-        cd ./prometheus
+        cd "{{playbook_dir}}/prometheus"
         ./prometheus --config.file=prometheus_config.yml
       async: "{{experiment_duration_s}}"
       poll: 0
