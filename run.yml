@@ -30,7 +30,7 @@
 
 
 - name: Run client play
-  hosts:  client
+  hosts: client
   tasks:
   # Wait for server to be started before running script
     - name: Run bot script
