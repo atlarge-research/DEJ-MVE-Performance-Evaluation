@@ -32,12 +32,12 @@
          server_ib_ip: "{{ '10.149.0.' ~ (groups['server'][0][-2:] | int) }}" 
       delegate_to: "client"
       delegate_facts: true
-      
+
 - name: Run client play
   hosts: client
+  gather_facts: true
   tasks:
   # Wait for server to be started before running script
-    
     - name: Run bot script
       shell: |
         node bots.js {{server_ib_ip}}
