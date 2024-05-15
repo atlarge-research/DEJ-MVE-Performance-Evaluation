@@ -25,10 +25,10 @@
         ./prometheus --config.file=prometheus_config.yml
       async: "{{experiment_duration_s}}"
       poll: 0
-    - name: Allow server 30 seconds to start up
+    - name: Allow server 60 seconds to start up
       pause:
-        seconds: 30
-        vars:
+        seconds: 60
+    - set_fact:
          server_ib_ip: "{{ '10.149.0.' ~ (groups['server'][0][-2:] | int) }}" 
       delegate_to: "client"
       delegate_facts: true
@@ -38,10 +38,7 @@
   gather_facts: true
   tasks:
   # Wait for server to be started before running script
-    - name: Allow server 60 seconds to start up
-      pause:
-        seconds: 60
-        vars:
+    - set_fact:
          server_ib_ip: "{{ '10.149.0.' ~ (groups['server'][0][-2:] | int) }}" 
     - name: Run bot script
       shell: |
