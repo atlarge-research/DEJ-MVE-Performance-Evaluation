@@ -1,0 +1,9 @@
+    #cleanup from the experiment, for now its just cancelling the reservation
+    - name: Clean up from experiment
+      hosts: localhost
+      gather_facts: false
+      tasks:
+        - name: Cancel reservation
+          shell: |
+            module load prun
+            preserve -c {{ reservation_number}}
