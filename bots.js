@@ -24,6 +24,5 @@ class bot{
 }
 const bots = []
 for(let i = 1; i <= 100; i++){
-    num =   i + randomNum
     bots.push(new bot("Bot" + i))
 }
