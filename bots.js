@@ -25,7 +25,7 @@ class bot{
     }
 }
 const bots = []
-const random = Math.floor((Math.random() * 100000))
+const random = Math.floor((Math.random() * 1000))
 const randomFactor = Math.floor((Math.random() * 200))
 
 const randomNum = random * randomFactor
@@ -33,5 +33,5 @@ const randomNum = random * randomFactor
 
 for(let i = 1; i <= 100; i++){
     num =   i + randomNum
-    bots.push(new bot("Bot" + num + "InternalIndex:" + i))
+    bots.push(new bot("Bot" + num + "id:" + i))
 }
