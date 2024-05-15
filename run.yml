@@ -28,7 +28,7 @@
     - name: Allow server 60 seconds to start up
       pause:
         seconds: 60
-    - set_fact:
+        vars:
          server_ib_ip: "{{ '10.149.0.' ~ (groups['server'][0][-2:] | int) }}" 
       delegate_to: "client"
       delegate_facts: true
