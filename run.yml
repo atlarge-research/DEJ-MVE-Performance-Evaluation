@@ -38,7 +38,7 @@
          server_ib_ip: "{{ '10.149.0.' ~ (groups['server'][0][-2:] | int) }}" 
     - name: Run bot script
       shell: |
-        node bots.js {{server_ib_ip}}
+        cd "{{playbook_dir}}" && node bots.js {{server_ib_ip}}
       async: "{{experiment_duration_s}}"
       poll: 0
     - name: Sleep during experiment
