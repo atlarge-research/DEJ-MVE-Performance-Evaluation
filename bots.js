@@ -4,7 +4,8 @@ const directions = ["forward","back","left", "right"]
 class bot{
     constructor(botName){
         this.username = botName
-        this.host = "localhost"  //needs to be replaced with the server ib_ip
+        this.host = process.argv[2] //needs to be replaced with the server ib_ip
+        console.log(process.argv[2])
         this.direction = directions[(Math.random() * directions.length) | 0]
         this.joinServer()
     }
@@ -32,5 +33,5 @@ const randomNum = random * randomFactor
 
 for(let i = 1; i <= 100; i++){
     num =   i + randomNum
-    bots.push(new bot("Bot" + num))
+    bots.push(new bot("Bot" + num + "InternalIndex:" + i))
 }
