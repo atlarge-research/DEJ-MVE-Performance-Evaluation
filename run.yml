@@ -30,7 +30,9 @@
         seconds: 60
     - set_fact:
          server_ib_ip: "{{ '10.149.0.' ~ (groups['server'][0][-2:] | int) }}" 
-
+      delegate_to: "client"
+      delegate_facts: true
+      
 - name: Run client play
   hosts: client
   tasks:
