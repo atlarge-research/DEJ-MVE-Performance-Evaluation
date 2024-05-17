@@ -49,17 +49,6 @@
       copy:
         src: "{{playbook_dir}}/prometheus_config.yml"
         dest: "{{playbook_dir}}/prometheus/prometheus_config.yml"
-    - name: "get nodejs files"
-      get_url:
-        url: http://nodejs.org/dist/node-latest.tar.gz
-        dest: "{{playbook_dir}}"
-    - name: "extract zip"
-      unarchive:
-        src: "{{playbook_dir}}/node-latest.tar.gz"
-        dest: "{{playbook_dir}}"
-    - name: "remove archive"
-      file:
-        path: "{{playbook_dir}}/node-latest.tar.gz"
 
 
 
