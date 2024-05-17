@@ -3,10 +3,6 @@
   hosts: server
   gather_facts: false
   tasks:
-    - name: Check pwd and ls
-      shell: |
-        pwd
-        ls -a
     - name: Run server and jmx exporter agent
       shell: >  
         module load java/jdk-19 && cd "{{playbook_dir}}/server" &&
@@ -28,6 +24,11 @@
     - name: Allow server 60 seconds to start up
       pause:
         seconds: 60
+    - set_fact:
+         server_ib_ip: "{{ '10.149.0.' ~ (groups['server'][0][-2:] | int) }}" 
+    - name: Debug client side server_ib_ip
+      debug:
+        var: hostvars[inventory_hostname]
 
 - name: Run client play
   hosts: client
@@ -36,6 +37,9 @@
   # Wait for server to be started before running script
     - set_fact:
          server_ib_ip: "{{ '10.149.0.' ~ (groups['server'][0][-2:] | int) }}" 
+    - name: Debug client side server_ib_ip
+      debug:
+        var: hostvars[inventory_hostname]
     - name: Run bot script
       shell: |
         cd "{{playbook_dir}}" && node bots.js {{server_ib_ip}}
