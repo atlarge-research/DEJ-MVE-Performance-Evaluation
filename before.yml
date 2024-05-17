@@ -24,7 +24,7 @@
       ignore_errors: yes
     - name: Download minecraft
       get_url:
-        url: https://piston-data.mojang.com/v1/objects/8dd1a28015f51b1803213892b50b7b4fc76e594d/server.jar
+        url: https://piston-data.mojang.com/v1/objects/3cf24a8694aca6267883b17d934efacc5e44440d/server.jar
         dest: "{{playbook_dir}}/server.jar"
     - name: download JMX exporter
       get_url:
