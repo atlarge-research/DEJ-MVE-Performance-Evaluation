@@ -1,6 +1,4 @@
 ---
-- hosts: localhost
-  tasks:
   - name: Reserve node
     shell: |
       module load prun
