@@ -5,7 +5,7 @@
   tasks:
     - name: Run server and jmx exporter agent
       shell: >  
-        module load java/jdk-19 && cd "{{minecraft_tmp_dir}}" &&
+        module load java/jdk-19 && cd "{{minecraft_tmp_dir.path}}" &&
         java -Dcom.sun.management.jmxremote.port=9999
         -javaagent:./jmx_prometheus_javaagent-0.20.0.jar=12345:jmxexp_config.yml
         -Dcom.sun.management.jmxremote.authenticate=false
