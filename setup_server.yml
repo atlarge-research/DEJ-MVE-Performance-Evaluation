@@ -33,7 +33,7 @@
 - name: "place prometheus_config.yml"
   copy:
     src: "{{playbook_dir}}/prometheus_config.yml"
-    dest: "{{prometheus_dir.path}}" 
+    dest: "{{prometheus_tmp_dir.path}}/prometheus/prometheus_config.yml"
 - name: place jmx exporter config
   copy:
     src: "{{playbook_dir}}/config.yml"
