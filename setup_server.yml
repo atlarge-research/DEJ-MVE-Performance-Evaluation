@@ -1,8 +1,8 @@
 ---
 - name: Create tmp dir for minecraft
   tempfile:
-  path: /local
-  state: directory
+    path: /local
+    state: directory
   register: minecraft_tmp_dir
 - name: Copy server jar
   copy:
