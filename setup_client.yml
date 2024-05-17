@@ -1,3 +1,9 @@
 ---
+- name: activate the conda environment
+  shell: conda activate scratch
+  register: result
+- name: print stdout
+  debug:
+    var:{{result}}
 - name: Install mineflayer
   shell: npm install mineflayer
