@@ -1,13 +1,16 @@
 - hosts: localhost
+- name: "Setup nodes"
   tasks:
   - import_tasks: setup_nodes.yml
 
 
 - hosts: client
+- name: "Setup client"
   gather_facts: false
   tasks:
   - import_tasks: setup_client.yml
 - hosts: server
+- name: "Setup server"
   gather_facts: false
   tasks:
   - import_tasks: setup_server.yml
