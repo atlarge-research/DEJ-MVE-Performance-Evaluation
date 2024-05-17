@@ -1,3 +1,8 @@
 ---
+- name: copy package.json over
+  copy:
+  src: "{{playbook_dir}}/package.json"
+  dest: "/"
+  remote_src: true
 - name: Install mineflayer
-  shell: cd "{{playbook_dir}}" npm i mineflayer@4.3.0
+  shell: npm i mineflayer@4.3.0
