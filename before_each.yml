@@ -12,7 +12,6 @@
       shell: echo ok
     - import_tasks: setup_client.yml
 - hosts: server
-- name: "Setup server"
   gather_facts: false
   tasks:
     - name: placeholder
