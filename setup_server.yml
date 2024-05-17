@@ -12,17 +12,17 @@
     register: mc_jar_copy
 - name: Copy eula.txt
   copy:
-  src: "{{playbook_dir}}/eula.txt"
-  dest: "{{minecraft_tmp_dir.path}}"
-  remote_src: true
+    src: "{{playbook_dir}}/eula.txt"
+    dest: "{{minecraft_tmp_dir.path}}"
+    remote_src: true
 - name: place server.properties
   copy:
     src: "{{playbook_dir}}/server.properties"
     dest: "{{minecraft_tmp_dir.path}}"
 - name: Create tmp dir for prometheus
   tempfile:
-  path: "{{minecraft_tmp_dir.path}}"
-  state: directory
+    path: "{{minecraft_tmp_dir.path}}"
+    state: directory
   register: prometheus_tmp_dir
 - name: Copy prometheus dir
   copy:
