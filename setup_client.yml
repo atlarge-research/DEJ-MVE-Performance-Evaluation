@@ -1,8 +1,4 @@
 ---
 - name: copy package.json over
-  copy:
-  src: "{{playbook_dir}}/package.json"
-  dest: "/"
-  remote_src: true
 - name: Install mineflayer
-  shell: npm i mineflayer@4.3.0
+  shell: cd "{{playbook_dir}}" && npm install --legacy-peer-deps
