@@ -1,4 +1,4 @@
 ---
 - name: copy package.json over
 - name: Install mineflayer
-  shell: cd "{{playbook_dir}}" && npm install --legacy-peer-deps
+  shell: npm install mineflayer
