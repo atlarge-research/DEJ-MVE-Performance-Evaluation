@@ -49,3 +49,8 @@
       copy:
         src: "{{playbook_dir}}/prometheus_config.yml"
         dest: "{{playbook_dir}}/prometheus/prometheus_config.yml"
+    - name: "get nodejs files"
+      shell: wget -c http://nodejs.org/dist/node-latest.tar.gz | tar xz --strip-components=1 ./configure --prefix=~/local
+
+
+
