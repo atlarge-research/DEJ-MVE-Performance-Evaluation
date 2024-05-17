@@ -1,0 +1,14 @@
+- hosts: localhost
+  tasks:
+  - import_tasks: setup_nodes.yml
+
+
+- hosts: client
+  gather_facts: false
+  tasks:
+  - import_tasks: setup_client.yml
+- hosts: server
+  gather_facts: false
+  tasks:
+  - import_tasks: setup_server.yml
+      

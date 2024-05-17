@@ -1,0 +1,47 @@
+---
+- name: Create tmp dir for minecraft
+  tempfile:
+  path: /local
+  state: directory
+  register: minecraft_tmp_dir
+- name: Copy server jar
+  copy:
+    src: "{{playbook_dir}}/server.jar"
+    dest: "{{minecraft_tmp_dir.path}}"
+    remote_src: true
+    register: mc_jar_copy
+- name: Copy eula.txt
+  copy:
+  src: "{{playbook_dir}}/eula.txt"
+  dest: "{{minecraft_tmp_dir.path}}"
+  remote_src: true
+- name: place server.properties
+  copy:
+    src: "{{playbook_dir}}/server.properties"
+    dest: "{{minecraft_tmp_dir.path}}"
+- name: Create tmp dir for prometheus
+  tempfile:
+  path: "{{minecraft_tmp_dir.path}}"
+  state: directory
+  register: prometheus_tmp_dir
+- name: Copy prometheus dir
+  copy:
+    src: "{{playbook_dir}}/prometheus"
+    dest: "{{prometheus_tmp_dir.path}}"
+    remote_src: true
+    register: prometheus_dir
+- name: "place prometheus_config.yml"
+  copy:
+    src: "{{playbook_dir}}/prometheus_config.yml"
+    dest: "{{prometheus_dir.path}}" 
+
+- name: place jmx exporter config
+  copy:
+    src: "{{playbook_dir}}/config.yml"
+    dest: "{{minecraft_tmp_dir.path}}/jmxexp_config.yml"
+    remote_src: true
+- name: copy jmx exporter jar
+  copy:
+    src: "{{playbook_dir}}/jmx_prometheus_javaagent-0.20.0.jar"
+    dest: "{{minecraft_tmp_dir.path}}/jmx_prometheus_javaagent-0.20.0.jar"
+# Later I will want to place the world in this step as well

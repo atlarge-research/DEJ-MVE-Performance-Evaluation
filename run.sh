@@ -50,5 +50,5 @@ conda init bash
 ansible-playbook -e @experiment.yml -i 'localhost' before.yml
 configs=$(python confex.py experiment.yml)
 for c in $configs; do
-    ansible-playbook -e @"$c" -e "_config_path=$c" -e @experiment.yml -i 'localhost' setup_and_run.yml
+    ansible-playbook -e @"$c" -e "_config_path=$c" -e @experiment.yml -i 'localhost' run_all.yml
 done
