@@ -24,17 +24,11 @@
     - name: Allow server 60 seconds to start up
       pause:
         seconds: 60
-    - set_fact:
-         server_ib_ip: "{{ '10.149.0.' ~ (groups['server'][0][-2:] | int) }}" 
-    - name: Debug client side server_ib_ip
-      debug:
-        var: hostvars[inventory_hostname]
 
 - name: Run client play
   hosts: client
   gather_facts: false
   tasks:
-  # Wait for server to be started before running script
     - set_fact:
          server_ib_ip: "{{ '10.149.0.' ~ (groups['server'][0][-2:] | int) }}" 
     - name: Debug client side server_ib_ip

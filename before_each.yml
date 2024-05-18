@@ -1,20 +1,14 @@
 - hosts: localhost
   tasks:
-    - name: placeholder
-      shell: echo ok
     - import_tasks: setup_nodes.yml
 
 
 - hosts: client
   gather_facts: false
   tasks:
-    - name: placeholder
-      shell: echo ok
     - import_tasks: setup_client.yml
 - hosts: server
   gather_facts: false
   tasks:
-    - name: placeholder
-      shell: echo ok
     - import_tasks: setup_server.yml
       

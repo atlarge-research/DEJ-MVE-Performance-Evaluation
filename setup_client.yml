@@ -1,4 +1,3 @@
 ---
-- name: copy package.json over
 - name: Install mineflayer
   shell: npm install mineflayer
