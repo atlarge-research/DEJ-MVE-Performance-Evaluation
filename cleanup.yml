@@ -3,7 +3,7 @@
   gather_facts: false
   tasks:
     - name: Set end time
-      shell: "date +%s"
+      shell: date -u +"%Y-%m-%dT%H:%M:%S.%N" | awk '{printf("%sZ\n", substr($0, 1, 23))}'
       register: date
     - set_fact:
         end_time: "{{ date.stdout }}"
