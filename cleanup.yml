@@ -2,6 +2,9 @@
   hosts: server
   gather_facts: false
   tasks:
+    - name: Server side debug print
+      debug:
+        var: hostvars[inventory_hostname]
     # - name: Retrieve tick times
       # uri:
       # url: http://localhost:9090/api/v1/query_range?query=up&start=2024-05-19T20:10:30.781Z&end=2015-07-01T20:11:00.781Z&step=15s 
