@@ -1,9 +1,24 @@
-    #cleanup from the experiment, for now its just cancelling the reservation
-    - name: Clean up from experiment
-      hosts: localhost
-      gather_facts: false
-      tasks:
-        - name: Cancel reservation
-          shell: |
-            module load prun
-            preserve -c {{ reservation_number}}
+- name: clean up server side
+  hosts: server
+  gather_facts: false
+  tasks:
+    # - name: Retrieve tick times
+      # uri:
+      # url: http://localhost:9090/api/v1/query_range?query=up&start=2024-05-19T20:10:30.781Z&end=2015-07-01T20:11:00.781Z&step=15s 
+
+    - name: Kill java
+      command: "killall java"
+      ignore_errors: true
+    - name: Kill prometheus
+      command: "killall prometheus"   
+   
+   
+#cleanup from the experiment, for now its just cancelling the reservation
+- name: Clean up from experiment
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Cancel reservation
+      shell: |
+        module load prun
+        preserve -c {{ reservation_number}}

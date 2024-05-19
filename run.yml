@@ -24,6 +24,11 @@
     - name: Server side debug print
       debug:
         var: hostvars[inventory_hostname]
+    - name: Get current time
+      shell: "date +%s"
+      register: date
+    - set_fact:
+        start_time: "{{ date.stdout }}"
     - name: Allow server 60 seconds to start up
       pause:
         seconds: 60
@@ -45,14 +50,10 @@
     - name: Sleep during experiment
       pause:
         seconds:"{{experiment_duration_s}}"
+    - name: Set end time
+      shell: "date +%s"
+      register: date
+    - set_fact:
+        end_time: "{{ date.stdout }}"
 
 
-- name: Stop server programs
-  hosts: server
-  gather_facts: false
-  tasks:
-    - name: Kill java
-      command: "killall java"
-      ignore_errors: true
-    - name: Kill prometheus
-      command: "killall prometheus"
