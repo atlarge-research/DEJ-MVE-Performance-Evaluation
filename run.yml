@@ -24,8 +24,8 @@
     - name: Server side debug print
       debug:
         var: hostvars[inventory_hostname]
-    - name: Get current time
-      shell: "date +%s"
+    - name: Set start time fact
+      shell: date -u +"%Y-%m-%dT%H:%M:%S.%N" | awk '{printf("%sZ\n", substr($0, 1, 23))}'
       register: date
     - set_fact:
         start_time: "{{ date.stdout }}"
