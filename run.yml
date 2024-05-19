@@ -50,10 +50,3 @@
     - name: Sleep during experiment
       pause:
         seconds:"{{experiment_duration_s}}"
-    - name: Set end time
-      shell: "date +%s"
-      register: date
-    - set_fact:
-        end_time: "{{ date.stdout }}"
-
-
