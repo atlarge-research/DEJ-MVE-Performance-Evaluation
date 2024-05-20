@@ -9,7 +9,7 @@
         end_time: "{{ date.stdout }}"
     - name: Retrieve tick times
       uri:
-        url: "http://localhost:9090/api/v1/query_range?query=up&start={{start_time}}&end={{end_time}}&step=5s"
+        url: "http://localhost:9090/api/v1/query_range?query=up&start={{start_time}}.999Z&end={{end_time}}.000Z&step=5s"
       register: query
       ignore_errors: true
     - name: Server side debug print
