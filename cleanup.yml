@@ -10,7 +10,6 @@
     - name: Retrieve tick times
       uri:
         url: "http://localhost:9090/api/v1/query_range?query=net_minecraft_server_Server_averageTickTime&start={{start_time}}.999Z&end={{end_time}}.000Z&step=5s"
-        dest: "{{playbook_dir}}"
       register: query
       ignore_errors: true
     - name: Server side debug print
