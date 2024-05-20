@@ -3,14 +3,15 @@
   gather_facts: false
   tasks:
     - name: Set end time
-      shell: date -u +"%Y-%m-%dT%H:%M:%S.%N" | awk '{printf("%sZ\n", substr($0, 1, 23))}'
+      shell: date -u +%Y-%m-%dT%H:%M:%S
       register: date
     - set_fact:
         end_time: "{{ date.stdout }}"
     - name: Retrieve tick times
       uri:
-        url: http://localhost:9090/api/v1/query_range?query=up&start="{{start_time}}"&end="{{end_time}}"&step=15s
+        url: http://localhost:9090/api/v1/query_range?query=up&start="{{start_time}}"&end="{{end_time}}"&step=5s
       register: query
+      ignore_errors: true
     - name: Server side debug print
       debug:
         var: hostvars[inventory_hostname]
@@ -19,9 +20,7 @@
       ignore_errors: true
     - name: Kill prometheus
       command: "killall prometheus"   
-   
-   
-#cleanup from the experiment, for now its just cancelling the reservation
+
 - name: Clean up from experiment
   hosts: localhost
   gather_facts: false
