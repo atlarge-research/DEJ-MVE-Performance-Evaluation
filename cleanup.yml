@@ -3,7 +3,7 @@
   gather_facts: false
   tasks:
     - name: Set end time
-      shell: date -u +%Y-%m-%dT%H:%M:%S
+      shell: date +%Y-%m-%dT%H:%M:%S
       register: date
     - set_fact:
         end_time: "{{ date.stdout }}"
