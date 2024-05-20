@@ -15,6 +15,9 @@
     - name: Server side debug print
       debug:
         var: hostvars[inventory_hostname]
+    - name: pause to allow inspection
+      pause:
+        seconds: 100
     - name: Kill java
       command: "killall java"
       ignore_errors: true
