@@ -34,7 +34,7 @@
         seconds: 60
 
 - name: Run client play
-  hosts: client
+  hosts: localhost
   gather_facts: false
   tasks:
     - set_fact:

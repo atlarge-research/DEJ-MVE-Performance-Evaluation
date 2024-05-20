@@ -3,7 +3,7 @@
     - import_tasks: setup_nodes.yml
 
 
-- hosts: client
+- hosts: localhost
   gather_facts: false
   tasks:
     - import_tasks: setup_client.yml
