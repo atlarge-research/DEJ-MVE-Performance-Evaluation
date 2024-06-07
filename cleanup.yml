@@ -9,7 +9,7 @@
         end_time: "{{ date.stdout }}"
     - name: extract statistics from prometheus
       shell: "python extractStatistics.py {{start_time}} {{end_time}}"
-      register: python output
+      register: python_output
     - name: Server side debug print
       debug:
         var: hostvars[inventory_hostname]

@@ -9,5 +9,10 @@ tick_time_query = "http://localhost:9090/api/v1/query_range?query=net_minecraft_
 
 tick_time_response = requests.get(tick_time_query)
 
+with open("metrics.json",'w') as file:
+    file.write(tick_time_response.text)
+
+
 
 print(tick_time_response)
+print(type(tick_time_respone))
