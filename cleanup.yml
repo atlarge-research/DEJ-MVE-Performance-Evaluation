@@ -15,7 +15,7 @@
         dest: "{{playbook_dir}}/metrics.json"
         src: "{{minecraft_tmp_dir.path}}/metrics.json"
       register: metrics_json_path
-    - name: "place prometheus_config.yml"
+    - name: "move metrics"
       copy:
         src: "{{metrics_json_path.dest}}"
         dest: "{{playbook_dir}}/results/"
