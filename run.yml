@@ -21,9 +21,6 @@
         ./prometheus --config.file=prometheus_config.yml
       async: "{{experiment_duration_s}}"
       poll: 0
-    - name: Server side debug print
-      debug:
-        var: hostvars[inventory_hostname]
     - name: Set start time fact
       shell: date -u +%Y-%m-%dT%H:%M:%S
       register: date
@@ -39,9 +36,6 @@
   tasks:
     - set_fact:
          server_ib_ip: "{{ '10.149.0.' ~ (groups['server'][0][-2:] | int) }}" 
-    - name: Client side debug print
-      debug:
-        var: hostvars[inventory_hostname]
     - name: Run bot script
       shell: |
         cd "{{playbook_dir}}" && node bots.js {{server_ib_ip}}
