@@ -14,6 +14,9 @@
       fetch:
         dest: "{{playbook_dir}}/metrics.json"
         src: "{{minecraft_tmp_dir.path}}/metrics.json"
+      register: metrics.json_path
+    - name: move metrics
+      shell: "mv {{metrics.json_path.dest.path}} {{playbook_dir}}/metrics.json && rm -rf /metrics.json/"
     - name: Server side debug print
       debug:
         var: hostvars[inventory_hostname]
