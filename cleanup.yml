@@ -15,8 +15,14 @@
         dest: "{{playbook_dir}}/metrics.json"
         src: "{{minecraft_tmp_dir.path}}/metrics.json"
       register: metrics_json_path
-    - name: move metrics
-      shell: "mv {{metrics_json_path.dest}} {{playbook_dir}}/results/ && cd {{minecraft_tmp_dir.path}} && rm -rf /metrics.json"
+    - name: "place prometheus_config.yml"
+      copy:
+        src: "{{metrics_json_path.dest}}"
+        dest: "{{playbook_dir}}/results/"
+    - name: remove fetch folder
+      file: 
+        path: "{{playbook_dir}}/metrics.json/"
+        state: absent
     - name: Server side debug print
       debug:
         var: hostvars[inventory_hostname]
