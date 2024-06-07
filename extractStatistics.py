@@ -14,5 +14,5 @@ with open("metrics.json",'w') as file:
 
 
 
-print(tick_time_response)
+print(tick_time_response.text)
 print(type(tick_time_response))
