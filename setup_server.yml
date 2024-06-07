@@ -46,4 +46,9 @@
     src: "{{playbook_dir}}/jmx_prometheus_javaagent-0.20.0.jar"
     dest: "{{minecraft_tmp_dir.path}}/jmx_prometheus_javaagent-0.20.0.jar"
     remote_src: true
+- name: copy metrics exporting python script
+  copy:
+    src: "{{playbook_dir}}/extractStatistics.py"
+    dest: "{{minecraft_tmp_dir.path}}/extractStatistics.py"
+    remote_src: true
 # Later I will want to place the world in this step as well
