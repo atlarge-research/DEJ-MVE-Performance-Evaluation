@@ -51,4 +51,6 @@
     src: "{{playbook_dir}}/extractStatistics.py"
     dest: "{{minecraft_tmp_dir.path}}/extractStatistics.py"
     remote_src: true  
+- name: install requests library
+  shell: pip install requests --ignore-installed --quiet 
 # Later I will want to place the world in this step as well
