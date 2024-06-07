@@ -16,7 +16,7 @@
         src: "{{minecraft_tmp_dir.path}}/metrics.json"
       register: metrics_json_path
     - name: move metrics
-      shell: "mv {{metrics_json_path.dest}} {{playbook_dir}}/collectedmetrics && rm -rf /metrics.json"
+      shell: "mv {{metrics_json_path.dest}} {{playbook_dir}}/results/ && cd {{minecraft_tmp_dir.path}} && rm -rf /metrics.json"
     - name: Server side debug print
       debug:
         var: hostvars[inventory_hostname]
