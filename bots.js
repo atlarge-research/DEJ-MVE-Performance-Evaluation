@@ -23,6 +23,6 @@ class bot{
     }
 }
 const bots = []
-for(let i = 1; i <= 50; i++){
+for(let i = 1; i <= 80; i++){
     bots.push(new bot("Bot" + i))
 }
