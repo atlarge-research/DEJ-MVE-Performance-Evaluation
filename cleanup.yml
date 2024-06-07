@@ -12,7 +12,7 @@
       register: python_output
     - name: fetch extracted statistics
       fetch:
-        dest: "{{playbook_dir}}"
+        dest: "{{playbook_dir}}/metrics.json"
         src: "{{minecraft_tmp_dir.path}}/metrics.json"
     - name: Server side debug print
       debug:
