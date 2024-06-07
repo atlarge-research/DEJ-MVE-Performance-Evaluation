@@ -8,7 +8,7 @@
     - set_fact:
         end_time: "{{ date.stdout }}"
     - name: extract statistics from prometheus
-      shell: "cd {{minecraft_tmp_dir.path}} && pip install requests --ignore-installed && python extractStatistics.py {{start_time}} {{end_time}}"
+      shell: "cd {{minecraft_tmp_dir.path}} && pip install requests --ignore-installed --quiet && python extractStatistics.py {{start_time}} {{end_time}}"
       register: python_output
     - name: Server side debug print
       debug:
