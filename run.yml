@@ -34,11 +34,13 @@
         seconds: 60
 
 - name: Run client play
-  hosts: localhost
+  hosts: client
   gather_facts: false
   tasks:
     - set_fact:
          server_ib_ip: "{{ '10.149.0.' ~ (groups['server'][0][-2:] | int) }}" 
+    - name: try to activate conda env
+      command: "{{playbook_dir}}/python_env.sh"
     - name: Run bot script
       shell: |
         cd "{{playbook_dir}}" && node bots.js {{server_ib_ip}}
