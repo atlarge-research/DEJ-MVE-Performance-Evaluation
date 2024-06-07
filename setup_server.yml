@@ -50,5 +50,5 @@
   copy:
     src: "{{playbook_dir}}/extractStatistics.py"
     dest: "{{minecraft_tmp_dir.path}}/extractStatistics.py"
-    remote_src: true
+    remote_src: true  
 # Later I will want to place the world in this step as well
