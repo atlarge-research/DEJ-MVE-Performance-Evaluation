@@ -13,8 +13,7 @@
     - name: fetch extracted statistics
       fetch:
         dest: "{{playbook_dir}}"
-        src: metrics.json
-        fail_on_missing: false
+        src: "{{minecraft_tmp_dir.path}}/metrics.json"
     - name: Server side debug print
       debug:
         var: hostvars[inventory_hostname]
