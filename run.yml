@@ -26,6 +26,9 @@
       register: date
     - set_fact:
         start_time: "{{ date.stdout }}"
+    - name: Server side debug print
+      debug:
+        var: hostvars[inventory_hostname]
     - name: Allow server 60 seconds to start up
       pause:
         seconds: 60
@@ -36,9 +39,6 @@
   tasks:
     - set_fact:
          server_ib_ip: "{{ '10.149.0.' ~ (groups['server'][0][-2:] | int) }}" 
-    - name: Server side debug print
-      debug:
-        var: hostvars[inventory_hostname]
     - name: Run bot script
       shell: |
         cd "{{playbook_dir}}" && node bots.js {{server_ib_ip}}
