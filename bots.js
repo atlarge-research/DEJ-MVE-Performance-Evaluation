@@ -10,8 +10,8 @@ class bot{
     }
     startBotActions(){
         this.bot.once("login",() =>{
-            // this.bot.setControlState(this.direction,true)
-            this.bot.setControlState('jump',true)
+            this.bot.setControlState(this.direction,true)
+            // this.bot.setControlState('jump',true)
         })
     }
     joinServer(){
