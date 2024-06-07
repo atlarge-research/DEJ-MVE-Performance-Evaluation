@@ -9,7 +9,7 @@
         end_time: "{{ date.stdout }}"
     - name: extract statistics from prometheus
       shell: "cd {{minecraft_tmp_dir.path}} && python extractStatistics.py {{start_time}} {{end_time}}"
-      register: python_output
+      register: python_output 
     - name: fetch extracted statistics
       fetch:
         dest: "{{playbook_dir}}/metrics.json"
@@ -22,6 +22,19 @@
     - name: remove fetch folder
       file: 
         path: "{{playbook_dir}}/metrics.json/"
+        state: absent
+    - name: fetch server log(s)
+      fetch:
+        dest: "{{playbook_dir}}/logs"
+        src: "{{minecraft_tmp_dir.path}}/logs"
+      register: logs_path
+    - name: move logs
+      copy:
+        src: "{{logs_path.dest}}"
+        dest: "{{playbook_dir}}/results/"
+    - name: remove fetch folder
+      file:
+        path: "{{playbook_dir}}/logs"
         state: absent
     - name: Server side debug print
       debug:
