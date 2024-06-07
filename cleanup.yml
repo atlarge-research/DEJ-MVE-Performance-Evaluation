@@ -26,7 +26,7 @@
     - name: fetch server log(s)
       fetch:
         dest: "{{playbook_dir}}/logs"
-        src: "{{minecraft_tmp_dir.path}}/logs"
+        src: "{{minecraft_tmp_dir.path}}/logs/latest.log"
       register: logs_path
     - name: move logs
       copy:
