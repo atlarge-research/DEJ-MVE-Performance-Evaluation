@@ -3,7 +3,7 @@ const directions = ["forward","back","left", "right"]
 
 class bot{
     constructor(botName){
-        this.username = botName
+        this.username = botName + process.argv[3]
         this.host = process.argv[2]
         this.direction = directions[(Math.random() * directions.length) | 0]
         this.joinServer()
