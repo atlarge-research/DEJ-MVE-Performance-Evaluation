@@ -2,7 +2,7 @@
   - name: Reserve node
     shell: |
       module load prun
-      preserve -np 2 900
+      preserve -np 3 900
     register: results
   - set_fact:
       reservation_number: "{{ results.stdout | regex_search(regexp, '\\1') | first }}"
@@ -36,5 +36,5 @@
       name: "{{ item }}"
       groups:
         - worker
-        - client
+        - clients
     loop: "{{ output.stdout.split()[1:] }}"
