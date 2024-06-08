@@ -39,8 +39,15 @@
   tasks:
     - set_fact:
          server_ib_ip: "{{ '10.149.0.' ~ (groups['server'][0][-2:] | int) }}" 
-    - name: try to activate conda env
-      shell: conda activate /var/scratch/ddt390/miniconda3 #TODO remove hardcode
+    - name: init conda env
+      shell: eval "$(conda shell.bash hook)" && conda activate /var/scratch/ddt390/miniconda3 #TODO remove hardcode
+      register: conda_response
+    - name: ip statement
+      debug:
+        var: server_ib_ip 
+    - name: conda response
+      debug:
+      var: conda_response
     - name: Run bot script
       shell: |
         cd "{{playbook_dir}}" && node bots.js {{server_ib_ip}}
