@@ -13,7 +13,7 @@ def do_query(metric_name):
    return requests.get(query) 
 
 
-query_responses = [do_query(metric_name=name) for name in metric_names]
+query_responses = [do_query(metric_name=name).text for name in metric_names]
 
 
 with open("metrics.json",'w') as file:
