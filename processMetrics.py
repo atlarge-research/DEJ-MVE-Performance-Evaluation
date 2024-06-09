@@ -19,4 +19,4 @@ with open("metric_names.json") as metric_names_file:
             plt.xlabel("Time in Seconds")
             plt.ylabel("{0}".format(current_metric_type['y_label']))
             plt.title("{0}".format(current_metric_type['graph_title']))
-            plt.savefig("results/plot{0}.png".format(current_metric_type['metric_name']), bbox_inches='tight')
+            plt.savefig("results/plot{0}.png".format(current_metric_type['graph_title']), bbox_inches='tight')
