@@ -37,8 +37,6 @@
       file:
         path: "{{playbook_dir}}/logs"
         state: absent
-    - name: run metrics processing script
-      shell: "python processMetrics.py {{metrics_final_path.dest}}"
     - name: Server side debug print
       debug:
         var: hostvars[inventory_hostname]
@@ -55,6 +53,8 @@
   hosts: localhost
   gather_facts: false
   tasks:
+    - name: run metrics processing script
+      shell: "python processMetrics.py {{playbook_dir}}/metrics.json"
     - name: Cancel reservation
       shell: |
         module load prun
