@@ -5,7 +5,16 @@ import json
 start_time = sys.argv[1]
 end_time = sys.argv[2]
 
-metric_names = ["net_minecraft_server_Server_averageTickTime"]
+
+metric_names = ["net_minecraft_server_Server_averageTickTime",
+"jvm_gc_collection_seconds_count",
+"jvm_gc_collection_seconds_sum",
+"java_lang_Memory_HeapMemoryUsage_used",
+"jvm_threads_current",
+"rate(jvm_gc_collection_seconds_count[1m])",
+"rate(jvm_gc_collection_seconds_sum[1m])/rate(jvm_gc_collection_seconds_count[1m])",
+"rate(jvm_gc_collection_seconds_sum[1m])",
+]
 
 def do_query(metric_name):
 
