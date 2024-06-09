@@ -19,6 +19,7 @@
       copy:
         src: "{{metrics_json_path.dest}}"
         dest: "{{playbook_dir}}/results/"
+      register: metrics_final_path
     - name: remove fetch folder
       file: 
         path: "{{playbook_dir}}/metrics.json/"
@@ -36,6 +37,8 @@
       file:
         path: "{{playbook_dir}}/logs"
         state: absent
+    - name: run metrics processing script
+      shell: "python processMetrics.py {{metrics_final_path.dest}}"
     - name: Server side debug print
       debug:
         var: hostvars[inventory_hostname]
