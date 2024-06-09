@@ -49,6 +49,7 @@
       copy:
         src: "{{playbook_dir}}/prometheus_config.yml"
         dest: "{{playbook_dir}}/prometheus/prometheus_config.yml"
-
+    - name: "Download matplotlib"
+      shell: pip install matplotlib --ignore-installed --quiet
 
 

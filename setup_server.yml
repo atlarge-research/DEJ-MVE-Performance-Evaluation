@@ -52,5 +52,5 @@
     dest: "{{minecraft_tmp_dir.path}}/extractStatistics.py"
     remote_src: true  
 - name: install python libraries
-  shell: pip install requests --ignore-installed --quiet && pip install matplotlib --ignore-installed --quiet
+  shell: pip install requests --ignore-installed --quiet
 # Later I will want to place the world in this step as well
