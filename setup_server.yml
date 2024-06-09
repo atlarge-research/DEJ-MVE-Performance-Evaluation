@@ -51,6 +51,11 @@
     src: "{{playbook_dir}}/extractStatistics.py"
     dest: "{{minecraft_tmp_dir.path}}/extractStatistics.py"
     remote_src: true  
+- name: copy metric_names json file
+  copy:
+    src: "{{playbook_dir}}/metric_names.json"
+    dest: "{{minecraft_tmp_dir.path}}/metric_names.json"
+    remote_src: true
 - name: install python libraries
   shell: pip install requests --ignore-installed --quiet
-# Later I will want to place the world in this step as well
+# Later I will want to place the world in this play as well
