@@ -1,14 +1,3 @@
 experiment_duration_s: 600
 server_runtime_s: 700
 iterations: 1
-
-config:
-  type: one_by_one
-  params:
-    - name: policy
-      values: ["zero"]
-config2:
-  type: one_by_one
-  params:
-    - name: policy
-      values: ["zero"]
