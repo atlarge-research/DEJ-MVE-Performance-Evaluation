@@ -48,8 +48,8 @@
     remote_src: true
 - name: copy metrics exporting python script
   copy:
-    src: "{{playbook_dir}}/extractStatistics.py"
-    dest: "{{minecraft_tmp_dir.path}}/extractStatistics.py"
+    src: "{{playbook_dir}}/extract_metrics.py"
+    dest: "{{minecraft_tmp_dir.path}}/extract_metrics.py"
     remote_src: true  
 - name: copy metric_names json file
   copy:
