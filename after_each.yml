@@ -1,13 +1,13 @@
-- name: clean up server side
+- name: Clean up server side
   hosts: server
   gather_facts: false
   tasks:
-    - name: Set end time
+    - name: Register end time
       shell: date -u +%Y-%m-%dT%H:%M:%S
       register: date
     - set_fact:
         end_time: "{{ date.stdout }}"
-    - name: extract and save metrics from prometheus
+    - name: Extract and save metrics from prometheus
       import_tasks: extract_metrics.yml
     - name: Kill java
       command: "killall java"
@@ -19,7 +19,7 @@
   hosts: localhost
   gather_facts: false
   tasks:
-    - name: run metrics processing script
+    - name: Process metrics
       shell: "python process_metrics.py {{playbook_dir}}/results/metrics.json"
     - name: Cancel reservation
       shell: |

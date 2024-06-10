@@ -2,11 +2,11 @@
   tasks:
     - import_tasks: setup_nodes.yml
 
-
 - hosts: clients
   gather_facts: false
   tasks:
     - import_tasks: setup_client.yml
+    
 - hosts: server
   gather_facts: false
   tasks:

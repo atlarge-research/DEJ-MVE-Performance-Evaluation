@@ -5,30 +5,27 @@
       get_url:
         url: https://piston-data.mojang.com/v1/objects/15c777e2cfe0556eef19aab534b186c0c6f277e1/server.jar
         dest: "{{playbook_dir}}/server.jar"
-    - name: download JMX exporter
+    - name: Download JMX exporter
       get_url:
         url: https://repo.maven.apache.org/maven2/io/prometheus/jmx/jmx_prometheus_javaagent/0.20.0/jmx_prometheus_javaagent-0.20.0.jar
         dest: "{{playbook_dir}}/jmx_prometheus_javaagent-0.20.0.jar"
-    - name: "download prometheus"
+    - name: "Download Prometheus"
       get_url:
         url: https://github.com/prometheus/prometheus/releases/download/v2.51.2/prometheus-2.51.2.linux-amd64.tar.gz
         dest: "{{playbook_dir}}/prometheus-archive.tar.gz"
-    - name: "unpack prometheus"
+    - name: "Unpack Prometheus"
       unarchive:
         src: "{{playbook_dir}}/prometheus-archive.tar.gz"
         dest: "{{playbook_dir}}"
-    - name: "remove archive"
+    - name: "Remove archive"
       file: 
         path: "{{playbook_dir}}/prometheus-archive.tar.gz"
         state: absent
-    - name: "rename directory"
+    - name: "Rename directory"
       shell: |
         mv -n prometheus-2.51.2.linux-amd64 prometheus
-    - name: "place prometheus_config.yml"
+    - name: "Place prometheus_config.yml"
       copy:
         src: "{{playbook_dir}}/prometheus_config.yml"
         dest: "{{playbook_dir}}/prometheus/prometheus_config.yml"
-    - name: "install matplotlib"
-      shell: pip install matplotlib --ignore-installed --quiet
-
 
