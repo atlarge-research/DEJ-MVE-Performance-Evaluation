@@ -1,0 +1,30 @@
+---
+- name: extract metrics from prometheus
+  shell: "cd {{minecraft_tmp_dir.path}} && python extract_metrics.py {{start_time}} {{end_time}}"
+- name: fetch extracted statistics
+  fetch:
+    dest: "{{playbook_dir}}/metrics.json"
+    src: "{{minecraft_tmp_dir.path}}/metrics.json"
+  register: metrics_json_path
+- name: "move metrics"
+  copy:
+    src: "{{metrics_json_path.dest}}"
+    dest: "{{playbook_dir}}/results/"
+  register: metrics_final_path
+- name: remove fetch folder
+  file: 
+    path: "{{playbook_dir}}/metrics.json/"
+    state: absent
+- name: fetch server log(s)
+  fetch:
+    dest: "{{playbook_dir}}/logs"
+    src: "{{minecraft_tmp_dir.path}}/logs/latest.log"
+  register: logs_path
+- name: move logs
+  copy:
+    src: "{{logs_path.dest}}"
+    dest: "{{playbook_dir}}/results/"
+- name: remove fetch folder
+  file:
+    path: "{{playbook_dir}}/logs"
+    state: absent

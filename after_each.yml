@@ -1,0 +1,27 @@
+- name: clean up server side
+  hosts: server
+  gather_facts: false
+  tasks:
+    - name: Set end time
+      shell: date -u +%Y-%m-%dT%H:%M:%S
+      register: date
+    - set_fact:
+        end_time: "{{ date.stdout }}"
+    - name: extract and save metrics from prometheus
+      import_tasks: extract_metrics.yml
+    - name: Kill java
+      command: "killall java"
+      ignore_errors: true
+    - name: Kill prometheus
+      command: "killall prometheus"   
+
+- name: Clean up from experiment
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: run metrics processing script
+      shell: "python process_metrics.py {{playbook_dir}}/results/metrics.json"
+    - name: Cancel reservation
+      shell: |
+        module load prun
+        preserve -c {{ reservation_number}}
