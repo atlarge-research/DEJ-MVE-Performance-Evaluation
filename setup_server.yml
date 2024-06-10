@@ -38,7 +38,7 @@
     remote_src: true
 - name: Place jmx exporter config
   copy:
-    src: "{{playbook_dir}}/config.yml"
+    src: "{{playbook_dir}}/jmxexp_config.yml"
     dest: "{{minecraft_tmp_dir.path}}/jmxexp_config.yml"
     remote_src: true
 - name: Copy jmx exporter jar to minecraft temp dir
