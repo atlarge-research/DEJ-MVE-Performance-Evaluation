@@ -1,4 +1,5 @@
 experiment_duration_s: 600
+server_runtime_s: 700
 iterations: 1
 
 config:

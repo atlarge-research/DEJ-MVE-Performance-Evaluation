@@ -13,13 +13,13 @@
         -Xmx10240M
         -Xms10240M
         -jar server.jar nogui
-      async: "{{ experiment_duration_s }}"
+      async: "{{server_runtime_s}}"
       poll: 0
     - name: Start Prometheus
       shell: |
         cd "{{prometheus_tmp_dir.path}}/prometheus"
         ./prometheus --config.file=prometheus_config.yml
-      async: "{{experiment_duration_s}}"
+      async: "{{server_runtime_s}}"
       poll: 0
     - name: Register start time
       shell: date -u +%Y-%m-%dT%H:%M:%S
