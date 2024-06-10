@@ -7,7 +7,7 @@ end_time = sys.argv[2]
 
 
 def do_query(metric_name):
-   query = "http://localhost:9090/api/v1/query_range?query={0}&start={1}.999Z&end={2}.000Z&step=5s".format(metric_name,start_time,end_time)
+   query = "http://localhost:9090/api/v1/query_range?query={0}&start={1}.999Z&end={2}.000Z&step=1s".format(metric_name,start_time,end_time)
    return requests.get(query) 
 
 
