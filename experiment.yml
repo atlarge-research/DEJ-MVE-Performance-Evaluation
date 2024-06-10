@@ -7,3 +7,8 @@ config:
   params:
     - name: policy
       values: ["zero"]
+config2:
+  type: one_by_one
+  params:
+    - name: policy
+      values: ["zero"]
