@@ -11,7 +11,6 @@ def do_query(metric_name):
    return requests.get(query) 
 
 
-
 with open("metric_names.json") as metric_names_file:
    metric_types = json.load(metric_names_file)
    query_responses = [do_query(metric_name=metric['metric_name']).text for metric in metric_types]
