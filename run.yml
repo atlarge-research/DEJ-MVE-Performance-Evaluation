@@ -48,4 +48,4 @@
         var: server_ib_ip 
     - name: Sleep during experiment
       pause:
-        seconds:"{{experiment_duration_s}}"
+        seconds: "{{experiment_duration_s}}"
