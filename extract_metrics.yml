@@ -1,6 +1,12 @@
 ---
 - name: Extract metrics from prometheus
   shell: "cd {{playbook_dir}} python extract_metrics.py {{start_time}} {{end_time}}"
+- name: Print dir contents
+  shell: ls && pwd
+  register: dir_content
+- name: debug print
+  debug:
+  var: dir_content
 - name: "Move metrics"
   copy:
     src: "{{playbook_dir}}/metrics.json"
