@@ -1,7 +1,9 @@
 import sys
 import json
+import math
 import matplotlib.pyplot as plt
-import matplotlib.ticker as plt_ticker
+import matplotlib.ticker as ticker
+
 statistics_interval = 1
 metrics_path = sys.argv[1]
 
@@ -14,15 +16,22 @@ with open("metric_names.json") as metric_names_file:
             metric_data = data[i]
             metric_data = json.loads(metric_data)
             metric_data = metric_data['data']['result'][0]['values']
-            tick_times = [float(x[1]) for x in metric_data]            
-            time_points = [x * statistics_interval for x in range(0,len(tick_times))]
+            print(metric_data)
+            metric_values = [float(x[1]) for x in metric_data]
 
-            formatter = plt_ticker.ScalarFormatter()
-            formatter.set_scientific(True)
-            formatter.set_powerlimits((-3, 3))
-            plt.gca().yaxis.set_major_formatter(formatter)
+            for i in range(len(metric_values)):
+                if math.isnan(metric_values[i]):
+                    metric_values[i] = 0
+            print(type(metric_values[0]))
 
-            plt.plot(time_points,tick_times)
+            time_points = [x * statistics_interval for x in range(0,len(metric_values))]
+            print(metric_values)
+        
+            # formatter = ticker.ScalarFormatter(useOffset=False)
+            # formatter.set_scientific(False)
+            # plt.gca().yaxis.set_major_formatter(formatter)
+
+            plt.plot(time_points,metric_values)
             plt.xlabel("Time in Seconds")
             plt.ylabel("{0}".format(current_metric_type['y_label']))
             plt.title("{0}".format(current_metric_type['graph_title']))
