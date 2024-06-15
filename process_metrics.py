@@ -16,16 +16,13 @@ with open("metric_names.json") as metric_names_file:
             metric_data = data[i]
             metric_data = json.loads(metric_data)
             metric_data = metric_data['data']['result'][0]['values']
-            print(metric_data)
             metric_values = [float(x[1]) for x in metric_data]
 
             for i in range(len(metric_values)):
                 if math.isnan(metric_values[i]):
                     metric_values[i] = 0
-            print(type(metric_values[0]))
 
             time_points = [x * statistics_interval for x in range(0,len(metric_values))]
-            print(metric_values)
         
             # formatter = ticker.ScalarFormatter(useOffset=False)
             # formatter.set_scientific(False)

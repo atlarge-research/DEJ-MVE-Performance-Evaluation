@@ -1,13 +1,18 @@
 [
 
     {
-        "metric_name": "rate(node_cpu_seconds_total[1m])",
-        "graph_title": "Average amount of CPU time per second over the last minute",
+        "metric_name": "rate(node_cpu_seconds_total{mode='system'}[19s])",
+        "graph_title": "Average amount of CPU system time per second in last 10 seconds",
         "y_label": "Fraction of time(Seconds/Seconds)"
     },
     {
         "metric_name": "avg(rate(node_cpu_seconds_total{mode='idle'}[10s]))",
         "graph_title": "Average rate of CPU idle time in last 10 seconds",
+        "y_label": "Fraction of time(Seconds/Seconds)"
+    },
+    {
+        "metric_name": "rate(node_cpu_seconds_total{mode='user'}[19s])",
+        "graph_title": "Average amount of CPU user time per second in last 10 seconds",
         "y_label": "Fraction of time(Seconds/Seconds)"
     }
 ]
