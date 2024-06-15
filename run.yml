@@ -16,7 +16,7 @@
       async: "{{server_runtime_s}}"
       poll: 0
     - name: Start Node exporter
-      shell: "cd {{playbook_dir}} && cd node_exporter-*.*-amd64 && ./node_exporter"
+      shell: "cd {{playbook_dir}} && cd node_exporter_dir && ./node_exporter"
       async: "{{server_runtime_s}}"
       poll: 0
     - name: Start Prometheus
