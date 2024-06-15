@@ -19,8 +19,6 @@
       shell: "cd {{playbook_dir}} && cd node_exporter-*.*-amd64 && ./node_exporter"
       async: "{{server_runtime_s}}"
       poll: 0
-    - name: Node debug Print
-      debug: "{{node_command}}"
     - name: Start Prometheus
       shell: |
         cd "{{prometheus_tmp_dir.path}}/prometheus"

@@ -5,6 +5,7 @@
   copy:
     src: "{{playbook_dir}}/metrics.json"
     dest: "{{playbook_dir}}/results/"
+    remote_src: true
   register: metrics_final_path
 - name: Remove fetch folder
   file: 
