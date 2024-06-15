@@ -58,7 +58,7 @@
     remote_src: true
 - name: Copy node exporter to minecraft temp dir
   copy:
-    src: "{{playbook_dir}}/node_exporter-*.*-amd64"
+    src: "{{playbook_dir}}/node_exporter_dir"
     dest: "{{minecraft_tmp_dir.path}}/node_exporter_dir"
 - name: Install python libraries
   shell: pip install requests --ignore-installed --quiet
