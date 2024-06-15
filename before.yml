@@ -21,10 +21,6 @@
       file: 
         path: "{{playbook_dir}}/node-exporter.tar.gz"
         state: absent
-    - name: "Copy Node Exporter file"
-      copy:
-        src: "{{playbook_dir}}/node_exporter-1.8.1.linux-amd64/node_exporter"  
-        dest: "{{playbook_dir}}"
     - name: "Download Prometheus"
       get_url:
         url: https://github.com/prometheus/prometheus/releases/download/v2.51.2/prometheus-2.51.2.linux-amd64.tar.gz
