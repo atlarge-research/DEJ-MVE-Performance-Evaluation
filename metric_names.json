@@ -15,17 +15,22 @@
         "y_label": "Count"
     },
     {
-        "metric_name": "rate(jvm_gc_collection_seconds_count[10s])",
+        "metric_name": "rate(jvm_gc_collection_seconds_count{gc='G1 Young Generation'}[10s])",
         "graph_title": "GC Collection Rate (10s)",
         "y_label": "Collections/Second"
     },
     {
-        "metric_name": "rate(jvm_gc_collection_seconds_sum[10s])/rate(jvm_gc_collection_seconds_count[10s])",
+        "metric_name": "rate(jvm_gc_collection_seconds_count{gc='G1 Young Generation'}[10s])",
+        "graph_title": "GC Collection Rate (10s)",
+        "y_label": "Collections/Second"
+    },
+    {
+        "metric_name": "rate(jvm_gc_collection_seconds_sum{gc='G1 Young Generation'}[10s])/rate(jvm_gc_collection_seconds_count{gc='G1 Young Generation'}[10s])",
         "graph_title": "Average GC Time per Collection (10s)",
         "y_label": "Seconds"
     },
     {
-        "metric_name": "rate(jvm_gc_collection_seconds_sum[10s])",
+        "metric_name": "rate(jvm_gc_collection_seconds_sum{gc='G1 Young Generation'}[10s])",
         "graph_title": "GC Collection Time Rate (10s)",
         "y_label": "Fraction of time(Seconds/Seconds)"
     },
@@ -43,5 +48,25 @@
         "metric_name": "avg(rate(node_cpu_seconds_total{mode='user'}[10s]))",
         "graph_title": "Average amount of CPU user time per second in last 10 seconds",
         "y_label": "Fraction of time(Seconds/Seconds)"
-    }
+    },
+    {
+        "metric_name": "rate(jvm_gc_collection_seconds_count{gc='G1 Old Generation'}[10s])",
+        "graph_title": "GC Collection Rate (10s)",
+        "y_label": "Collections/Second"
+    },
+    {
+        "metric_name": "rate(jvm_gc_collection_seconds_count{gc='G1 Old Generation'}[10s])",
+        "graph_title": "GC Collection Rate (10s)",
+        "y_label": "Collections/Second"
+    },
+    {
+        "metric_name": "rate(jvm_gc_collection_seconds_sum{gc='G1 Old Generation'}[10s])/rate(jvm_gc_collection_seconds_count{gc='G1 Old Generation'}[10s])",
+        "graph_title": "Average GC Time per Collection (10s)",
+        "y_label": "Seconds"
+    },
+    {
+        "metric_name": "rate(jvm_gc_collection_seconds_sum{gc='G1 Old Generation'}[10s])",
+        "graph_title": "GC Collection Time Rate (10s)",
+        "y_label": "Fraction of time(Seconds/Seconds)"
+    },
 ]
