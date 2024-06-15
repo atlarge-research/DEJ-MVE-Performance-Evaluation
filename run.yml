@@ -17,7 +17,7 @@
       poll: 0
     - name: Start Node exporter
       shell: "cd {{playbook_dir}} && ./node_exporter"
-      register: {{node_command}}
+      register: node_command
       async: "{{server_runtime_s}}"
       poll: 0
     - name: Node debug Print
