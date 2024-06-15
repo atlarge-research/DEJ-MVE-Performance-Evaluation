@@ -5,16 +5,6 @@
         "y_label": "MS"
     },
     {
-        "metric_name": "jvm_gc_collection_seconds_count",
-        "graph_title": "GC Collection Count",
-        "y_label": "Count"
-    },
-    {
-        "metric_name": "jvm_gc_collection_seconds_sum",
-        "graph_title": "GC Collection Time Sum",
-        "y_label": "Seconds"
-    },
-    {
         "metric_name": "java_lang_Memory_HeapMemoryUsage_used",
         "graph_title": "Heap Memory Usage",
         "y_label": "Bytes"
@@ -25,9 +15,9 @@
         "y_label": "Count"
     },
     {
-        "metric_name": "rate(jvm_gc_collection_seconds_count[1m])",
-        "graph_title": "GC Collection Rate (1m)",
-        "y_label": "Count/Minute"
+        "metric_name": "rate(jvm_gc_collection_seconds_count[10s])",
+        "graph_title": "GC Collection Rate (10s)",
+        "y_label": "Collections/Second"
     },
     {
         "metric_name": "rate(jvm_gc_collection_seconds_sum[1m])/rate(jvm_gc_collection_seconds_count[1m])",
@@ -35,13 +25,18 @@
         "y_label": "Seconds"
     },
     {
-        "metric_name": "rate(jvm_gc_collection_seconds_sum[1m])",
-        "graph_title": "GC Collection Time Rate (1m)",
-        "y_label": "Seconds/Minute"
+        "metric_name": "rate(jvm_gc_collection_seconds_sum[10s])",
+        "graph_title": "GC Collection Time Rate (10s)",
+        "y_label": "Fraction of time(Seconds/Seconds)"
     },
     {
         "metric_name": "rate(node_cpu_seconds_total[1m])",
         "graph_title": "Average amount of CPU time per second over the last minute",
-        "y_label": "Seconds/Minute"
+        "y_label": "Fraction of time(Seconds/Seconds)"
+    },
+    {
+        "metric_name": "avg(rate(node_cpu_seconds_total{mode='idle'}[10s]))",
+        "graph_title": "Average rate of CPU idle time in last 10 seconds",
+        "y_label": "Fraction of time(Seconds/Seconds)"
     }
 ]

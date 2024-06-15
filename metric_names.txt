@@ -1,8 +1,0 @@
-jvm_gc_collection_seconds_count
-jvm_gc_collection_seconds_sum
-java_lang_Memory_HeapMemoryUsage_used
-jvm_threads_current
-rate(jvm_gc_collection_seconds_count[1m]) 
-rate(jvm_gc_collection_seconds_sum[1m])/rate(jvm_gc_collection_seconds_count[1m])
-rate(jvm_gc_collection_seconds_sum[1m])
-
