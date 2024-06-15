@@ -38,5 +38,10 @@
         "metric_name": "rate(jvm_gc_collection_seconds_sum[1m])",
         "graph_title": "GC Collection Time Rate (1m)",
         "y_label": "Seconds/Minute"
+    },
+    {
+        "metric_name": "rate(node_cpu_seconds_total[1m])",
+        "graph_title": "Average amount of CPU time per second over the last minute",
+        "y_label": "Seconds/Minute"
     }
 ]
