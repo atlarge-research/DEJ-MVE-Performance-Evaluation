@@ -14,6 +14,7 @@
       ignore_errors: true
     - name: Kill prometheus
       command: "killall prometheus"   
+      ignore_errors: true
 
 - name: Clean up from experiment
   hosts: localhost
