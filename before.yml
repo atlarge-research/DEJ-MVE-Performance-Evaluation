@@ -9,6 +9,22 @@
       get_url:
         url: https://repo.maven.apache.org/maven2/io/prometheus/jmx/jmx_prometheus_javaagent/0.20.0/jmx_prometheus_javaagent-0.20.0.jar
         dest: "{{playbook_dir}}/jmx_prometheus_javaagent-0.20.0.jar"
+    - name: "Download Node exporter Tar Ball"
+      get_url:
+        url: https://github.com/prometheus/node_exporter/releases/download/v1.8.1/node_exporter-1.8.1.linux-amd64.tar.gz
+        dest: "{{playbook_dir}}/node-exporter.tar.gz"
+    - name: "Unpack node exporter tar ball"
+      unarchive:
+        src: "{{playbook_dir}}/node-exporter.tar.gz"
+        dest: "{{playbook_dir}}"
+    - name: "Remove archive"
+      file: 
+        path: "{{playbook_dir}}/node-exporter.tar.gz"
+        state: absent
+    - name: "Copy Node Exporter file"
+      copy:
+        src: "{{playbook_dir}}/node_exporter-1.8.1.linux-amd64/node_exporter"  
+        dest: "{{playbook_dir}}"
     - name: "Download Prometheus"
       get_url:
         url: https://github.com/prometheus/prometheus/releases/download/v2.51.2/prometheus-2.51.2.linux-amd64.tar.gz
@@ -28,4 +44,5 @@
       copy:
         src: "{{playbook_dir}}/prometheus_config.yml"
         dest: "{{playbook_dir}}/prometheus/prometheus_config.yml"
+    
 

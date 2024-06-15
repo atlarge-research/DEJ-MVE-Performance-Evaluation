@@ -46,16 +46,6 @@
     src: "{{playbook_dir}}/jmx_prometheus_javaagent-0.20.0.jar"
     dest: "{{minecraft_tmp_dir.path}}/jmx_prometheus_javaagent-0.20.0.jar"
     remote_src: true
-- name: Copy metrics exporting python script to minecraft temp dir
-  copy:
-    src: "{{playbook_dir}}/extract_metrics.py"
-    dest: "{{minecraft_tmp_dir.path}}/extract_metrics.py"
-    remote_src: true  
-- name: Copy metric_names json file to minecraft temp dir
-  copy:
-    src: "{{playbook_dir}}/metric_names.json"
-    dest: "{{minecraft_tmp_dir.path}}/metric_names.json"
-    remote_src: true
 - name: Install python libraries
   shell: pip install requests --ignore-installed --quiet
 # Later I will want to place the world in this play as well

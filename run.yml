@@ -15,6 +15,10 @@
         -jar server.jar nogui
       async: "{{server_runtime_s}}"
       poll: 0
+    - name: Start Node exporter
+      shell: "cd {{playbook_dir}} && ./node_exporter"
+      async: "{{server_runtime_s}}"
+      poll: 0
     - name: Start Prometheus
       shell: |
         cd "{{prometheus_tmp_dir.path}}/prometheus"
