@@ -60,10 +60,6 @@
   copy:
     src: "{{playbook_dir}}/node_exporter_dir"
     dest: "{{minecraft_tmp_dir.path}}/node_exporter_dir"
-- name: Remove the original node exporter dir
-  file: 
-    path: "{{playbook_dir}}/node_exporter_dir"
-    state: absent
 - name: Install python libraries
   shell: pip install requests --ignore-installed --quiet
 # Later I will want to place the world in this play as well

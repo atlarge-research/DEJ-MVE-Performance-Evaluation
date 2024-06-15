@@ -17,6 +17,8 @@
       unarchive:
         src: "{{playbook_dir}}/node-exporter.tar.gz"
         dest: "{{playbook_dir}}"
+    - name: remove old exporter dir if it exists
+      shell: rm -rf node_exporter_dir
     - name: rename dir
       shell: mv node_exporter-1.8.1.linux-amd64 node_exporter_dir
     - name: "Remove archive"
