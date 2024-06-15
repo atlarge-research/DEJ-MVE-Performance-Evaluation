@@ -1,5 +1,34 @@
 [
-
+    {
+        "metric_name": "net_minecraft_server_Server_averageTickTime",
+        "graph_title": "Average Tick Time",
+        "y_label": "MS"
+    },
+    {
+        "metric_name": "java_lang_Memory_HeapMemoryUsage_used",
+        "graph_title": "Heap Memory Usage",
+        "y_label": "Bytes"
+    },
+    {
+        "metric_name": "jvm_threads_current",
+        "graph_title": "Current Threads",
+        "y_label": "Count"
+    },
+    {
+        "metric_name": "rate(jvm_gc_collection_seconds_count[10s])",
+        "graph_title": "GC Collection Rate (10s)",
+        "y_label": "Collections/Second"
+    },
+    {
+        "metric_name": "rate(jvm_gc_collection_seconds_sum[10s])/rate(jvm_gc_collection_seconds_count[10s])",
+        "graph_title": "Average GC Time per Collection (10s)",
+        "y_label": "Seconds"
+    },
+    {
+        "metric_name": "rate(jvm_gc_collection_seconds_sum[10s])",
+        "graph_title": "GC Collection Time Rate (10s)",
+        "y_label": "Fraction of time(Seconds/Seconds)"
+    },
     {
         "metric_name": "avg(rate(node_cpu_seconds_total{mode='system'}[10s]))",
         "graph_title": "Average amount of CPU system time per second in last 10 seconds",
