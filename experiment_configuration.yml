@@ -3,8 +3,10 @@ server_runtime_s: 200 #Calculate in the server start up (60s) plus possible dela
 iterations: 1
 node_count: 3 #Minimum 2: 1 Server node, 1(or more) Bot simulation node(s)
 players_per_node: 10 #Each bot simulation node get this amount of players. Total players = (node_count - 1) * players_per_node
-World: "hillside_manor" #hillside_manor - Medium heavy imperial_city - Light or Firework world - Garbage collector targeted
+World: "hillside_manor" #hillside_manor - Medium. imperial_city - Heavy. standard world - Light. Firework world - Garbage collector targeted.
 
-#https://www.planetminecraft.com/project/hillside-manor/
-#https://www.planetminecraft.com/project/monumental-imperial-city/
-#https://
+
+#Light = Stardard minecraft world generated with standard settings. Can be found in this github repo
+#Medium = https://www.planetminecraft.com/project/hillside-manor/
+#Heavy = https://www.planetminecraft.com/project/monumental-imperial-city/
+#GC = Custom made world including a heavy environmental workload fireworks and creatures spawning and dying. Can be found in this repo.
