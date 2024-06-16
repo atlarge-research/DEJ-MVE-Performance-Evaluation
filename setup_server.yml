@@ -66,4 +66,4 @@
   when: world == "Light"
   copy:
     src: "{{playbook_dir}}/configuration_files/worlds/standard_world"
-    dest: "minecraft_tmp_dir.path/world"
+    dest: "{{minecraft_tmp_dir.path}}/world"
