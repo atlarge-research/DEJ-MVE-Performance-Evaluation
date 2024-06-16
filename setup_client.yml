@@ -1,3 +1,19 @@
 ---
 - name: Install Mineflayer
   shell: npm install mineflayer
+- name: Set behavior script
+  set_fact:
+    bot_behavior_script: explore.js
+  when: bot_behavior== "Explore"
+- name: Set behavior script
+  set_fact:
+    bot_behavior_script: jump.js
+  when: bot_behavior== "Jump"
+- name: Set behavior script
+  set_fact:
+    bot_behavior_script: dig.js
+  when: bot_behavior== "dig"
+- name: Set behavior script
+  set_fact:
+    bot_behavior_script: mix.js
+  when: bot_behavior== "Mix"

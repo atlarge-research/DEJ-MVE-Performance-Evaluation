@@ -13,6 +13,8 @@ class bot{
     startBotActions(){
         this.bot.once("login",() =>{
             this.bot.setControlState(this.direction,true)
+            this.bot.creative.startFlying()
+            this.bot.setControlState('jump')
         })
     }
     joinServer(){

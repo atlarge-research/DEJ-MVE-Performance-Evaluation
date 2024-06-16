@@ -1,9 +1,6 @@
 ---
 - name: Extract metrics from prometheus
   shell: "cd {{minecraft_tmp_dir.path}} && python extract_metrics.py {{start_time}} {{end_time}}"
-- name: Pause to allow inspection
-  pause:
-    seconds: 100
 - name: Fetch extracted statistics
   fetch:
     dest: "{{playbook_dir}}/metrics.json"
