@@ -1,8 +1,6 @@
 ---
   - name: Reserve node
-    shell: |
-      module load prun
-      "preserve -np {{node_count}} 900"
+    shell: "module load prun && preserve -np {{node_count}} 900"
     register: results
   - set_fact:
       reservation_number: "{{ results.stdout | regex_search(regexp, '\\1') | first }}"
