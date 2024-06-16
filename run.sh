@@ -67,6 +67,6 @@ echo $iterations
 
 set -x
 
-for num  in {0,$iterations}; do
+for num  in {1,$iterations}; do
     ansible-playbook  -e @experiment_configuration.yml -i 'localhost' run_all.yml
 done

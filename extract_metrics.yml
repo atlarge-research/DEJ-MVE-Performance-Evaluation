@@ -4,7 +4,7 @@
 - name: Fetch extracted statistics
   fetch:
     dest: "{{playbook_dir}}/metrics.json"
-    src: "{{minecraft_tmp_dir.path}}/python_scripts/metrics.json"
+    src: "{{minecraft_tmp_dir.path}}/metrics.json"
   register: metrics_json_path
 - name: "Move metrics"
   copy:

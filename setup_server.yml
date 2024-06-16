@@ -60,10 +60,15 @@
   copy:
     src: "{{playbook_dir}}/node_exporter_dir"
     dest: "{{minecraft_tmp_dir.path}}/node_exporter_dir"
+    remote_src: true
 - name: Install python libraries
   shell: pip install requests --ignore-installed --quiet
 - name: Place light workload world
   when: world == "Light"
   copy:
     src: "{{playbook_dir}}/configuration_files/worlds/standard_world"
-    dest: "{{minecraft_tmp_dir.path}}/world"
+    dest: "{{minecraft_tmp_dir.path}}"
+    register: {{world_path}}
+    remote_src: true
+- name: Rename world folder
+  shell: "mv {{world_path.path}} world"
