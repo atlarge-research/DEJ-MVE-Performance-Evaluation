@@ -63,7 +63,7 @@
 - name: Install python libraries
   shell: pip install requests --ignore-installed --quiet
 - name: Place light workload world
-  when: "{{ world == 'Light' }}"
+  when: world == "Light"
   copy:
     src: "{{playbook_dir}}/configuration_files/worlds/standard_world"
     dest: "minecraft_tmp_dir.path/world"
