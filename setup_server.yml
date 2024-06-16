@@ -63,10 +63,22 @@
     remote_src: true
 - name: Install python libraries
   shell: pip install requests --ignore-installed --quiet
-- name: Place light workload world
+- name: Set world_name for Light workload
   set_fact:
     world_name: standard_world
   when: world == "Light"
+- name: Set world_name for Medium workload
+  set_fact:
+    world_name: hillside_manor
+  when: world == "Medium"
+- name: Set world_name for Heavy workload
+  set_fact:
+    world_name: imperial_city
+  when: world == "Heavy"
+- name: Set world_name for GC workload
+  set_fact:
+    world_name: gc_workload_world
+  when: world == "GC"
 - name: Place chosen workload world
   copy:
     src: "{{playbook_dir}}/configuration_files/worlds/{{world_name}}/world"
