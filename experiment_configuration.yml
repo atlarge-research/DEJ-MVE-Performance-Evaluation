@@ -1,4 +1,5 @@
 experiment_duration_s: 60
-server_runtime_s: 200
+server_runtime_s: 200 #Calculate in the server start up (60s) plus possible delays.
 iterations: 2
-node_count: 3 #Minimum 2: 1 Server node, 1 Bot simulation node
+node_count: 3 #Minimum 2: 1 Server node, 1(or more) Bot simulation node(s)
+players_per_node: 10 #Each bot simulation node get this amount of players. Total players = (node_count - 1) * players_per_node

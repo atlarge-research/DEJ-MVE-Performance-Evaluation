@@ -1,5 +1,7 @@
 const mineflayer = require('mineflayer')
 const directions = ["forward","back","left", "right"]
+const bot_count = process.argv[4]
+
 
 class bot{
     constructor(botName){
@@ -22,6 +24,6 @@ class bot{
     }
 }
 const bots = []
-for(let i = 1; i <= 10; i++){
+for(let i = 1; i <= bot_count; i++){
     bots.push(new bot("Bot" + i))
 }

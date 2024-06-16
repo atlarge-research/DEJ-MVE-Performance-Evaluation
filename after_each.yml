@@ -21,7 +21,7 @@
   gather_facts: false
   tasks:
     - name: Process metrics
-      shell: "python process_metrics.py {{playbook_dir}}/results/metrics.json"
+      shell: "cd python_script && python process_metrics.py {{playbook_dir}}/results/metrics.json"
     - name: Cancel reservation
       shell: |
         module load prun
