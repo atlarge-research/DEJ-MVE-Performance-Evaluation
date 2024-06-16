@@ -64,11 +64,11 @@
 - name: Install python libraries
   shell: pip install requests --ignore-installed --quiet
 - name: Place light workload world
+  set_fact:
+    world_name: standard_world
   when: world == "Light"
+- name: Place chosen workload world
   copy:
-    src: "{{playbook_dir}}/configuration_files/worlds/standard_world"
+    src: "{{playbook_dir}}/configuration_files/worlds/{{world_name}}/world"
     dest: "{{minecraft_tmp_dir.path}}"
     remote_src: true
-  register: {{world_path}}
-- name: Rename world folder
-  shell: "mv {{world_path.path}} world"
