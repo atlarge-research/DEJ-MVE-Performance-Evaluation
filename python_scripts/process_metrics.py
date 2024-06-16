@@ -7,6 +7,7 @@ import matplotlib.ticker as ticker
 statistics_interval = 1
 metrics_path = sys.argv[1]
 metric_names_path = sys.argv[2]
+results_dir_path = sys.argv[3]
 
 with open(metric_names_path) as metric_names_file:
     metric_types = json.load(metric_names_file)
@@ -27,5 +28,5 @@ with open(metric_names_path) as metric_names_file:
             plt.ylabel("{0}".format(current_metric_type['y_label']))
             plt.title("{0}".format(current_metric_type['graph_title']))
             plt.autoscale()
-            plt.savefig("results/plot{0}.png".format(current_metric_type['graph_title'].replace(" ", "").replace("'","")), bbox_inches='tight')
+            plt.savefig("{0}/plot{1}.png".format(results_dir_path,current_metric_type['graph_title'].replace(" ", "").replace("'","")), bbox_inches='tight')
             plt.clf()
