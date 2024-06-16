@@ -62,4 +62,8 @@
     dest: "{{minecraft_tmp_dir.path}}/node_exporter_dir"
 - name: Install python libraries
   shell: pip install requests --ignore-installed --quiet
-# Later I will want to place the world in this play as well
+- name: Place light workload world
+  when: "{{world}} == 'Light'" 
+  copy:
+    src: "{{playbook_dir}}/configuration_files/worlds/standard_world"
+    dest: "minecraft_tmp_dir.path/world"

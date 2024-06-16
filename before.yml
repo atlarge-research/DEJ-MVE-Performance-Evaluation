@@ -44,5 +44,6 @@
       copy:
         src: "{{playbook_dir}}/configuration_files/prometheus_config.yml"
         dest: "{{playbook_dir}}/prometheus/prometheus_config.yml"
+      
     
 
