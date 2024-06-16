@@ -42,7 +42,7 @@
         mv -n prometheus-2.51.2.linux-amd64 prometheus
     - name: "Place prometheus_config.yml"
       copy:
-        src: "{{playbook_dir}}/prometheus_config.yml"
+        src: "{{playbook_dir}}/configuration_files/prometheus_config.yml"
         dest: "{{playbook_dir}}/prometheus/prometheus_config.yml"
     
 

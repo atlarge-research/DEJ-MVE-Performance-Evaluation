@@ -2,7 +2,7 @@
   - name: Reserve node
     shell: |
       module load prun
-      preserve -np 3 900
+      "preserve -np {{node_count}} 900"
     register: results
   - set_fact:
       reservation_number: "{{ results.stdout | regex_search(regexp, '\\1') | first }}"

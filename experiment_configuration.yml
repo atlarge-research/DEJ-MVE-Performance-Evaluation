@@ -1,0 +1,4 @@
+experiment_duration_s: 60
+server_runtime_s: 200
+iterations: 2
+node_count: 3 #Minimum 2: 1 Server node, 1 Bot simulation node

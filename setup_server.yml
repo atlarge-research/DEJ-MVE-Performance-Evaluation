@@ -12,12 +12,12 @@
   register: mc_jar_copy
 - name: Copy eula.txt
   copy:
-    src: "{{playbook_dir}}/eula.txt"
+    src: "{{playbook_dir}}/configuration_files/eula.txt"
     dest: "{{minecraft_tmp_dir.path}}"
     remote_src: true
 - name: Copy server.properties temp dir
   copy:
-    src: "{{playbook_dir}}/server.properties"
+    src: "{{playbook_dir}}/configuration_files/server.properties"
     dest: "{{minecraft_tmp_dir.path}}"
     remote_src: true
 - name: Create temp dir for Prometheus
@@ -33,12 +33,12 @@
   register: prometheus_dir
 - name: Place prometheus_config.yml
   copy:
-    src: "{{playbook_dir}}/prometheus_config.yml"
+    src: "{{playbook_dir}}/configuration_files/prometheus_config.yml"
     dest: "{{prometheus_tmp_dir.path}}/prometheus/prometheus_config.yml"
     remote_src: true
 - name: Place jmx exporter config
   copy:
-    src: "{{playbook_dir}}/jmxexp_config.yml"
+    src: "{{playbook_dir}}/configuration_files/jmxexp_config.yml"
     dest: "{{minecraft_tmp_dir.path}}/jmxexp_config.yml"
     remote_src: true
 - name: Copy jmx exporter jar to minecraft temp dir
@@ -48,12 +48,12 @@
     remote_src: true
 - name: Copy metrics exporting python script to minecraft temp dir
   copy:
-    src: "{{playbook_dir}}/extract_metrics.py"
+    src: "{{playbook_dir}}/python_scripts/extract_metrics.py"
     dest: "{{minecraft_tmp_dir.path}}/extract_metrics.py"
     remote_src: true  
 - name: Copy metric_names json file to minecraft temp dir
   copy:
-    src: "{{playbook_dir}}/metric_names.json"
+    src: "{{playbook_dir}}/configuration_files/metric_names.json"
     dest: "{{minecraft_tmp_dir.path}}/metric_names.json"
     remote_src: true
 - name: Copy node exporter to minecraft temp dir

@@ -43,17 +43,17 @@ if ! conda compare environment.yml; then
 fi
 conda init bash
 
-ansible-playbook -e @experiment.yml -i 'localhost' before.yml
+ansible-playbook -e @experiment_configuration.yml -i 'localhost' before.yml
 
 set +x
 iterations=$(python3 -u -c '
 import yaml
 try:
-    with open("experiment.yml", "r") as file:
+    with open("experiment_configuration.yml", "r") as file:
         yaml_data = yaml.safe_load(file)
         print(yaml_data["iterations"])
 except FileNotFoundError:
-    print("File experiment.yml not found.")
+    print("File experiment_configuration.yml not found.")
     exit(1)
 except KeyError:
     print("Key iterations not found in the YAML file.")
@@ -68,5 +68,5 @@ echo $iterations
 set -x
 
 for num  in {0,$iterations}; do
-    ansible-playbook  -e @experiment.yml -i 'localhost' run_all.yml
+    ansible-playbook  -e @experiment_configuration.yml -i 'localhost' run_all.yml
 done
