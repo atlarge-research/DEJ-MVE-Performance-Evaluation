@@ -1,6 +1,5 @@
 /server/*
 /.idea
 /.vscode
-/metrics.json
-/make_json.py
-/metric_names.txt
+python_scripts/metrics.json
+configuration_files/metric_names.txt
