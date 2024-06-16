@@ -1,7 +1,3 @@
-set -xeuo pipefail
-IFS=$'\n\t'
-
-
 if ! which conda; then
     read -r -p "Conda not found. About to install conda in /var/scratch/$(whoami)/miniconda3. Do you want to continue? [yn] " yn
     case $yn in
@@ -47,8 +43,8 @@ if ! conda compare environment.yml; then
 fi
 conda init bash
 
-ansible-playbook -e @experiment.yml -i 'localhost' before.yml 
-configs=$(python confex.py experiment.yml)
-for c in $configs; do
-    ansible-playbook -e @"$c" -e "_config_path=$c" -e @experiment.yml -i 'localhost' run_all.yml
+ansible-playbook -e @experiment.yml -i 'localhost' before.yml
+iterations=$(python -u -c 'import yaml; file = open("experiment.yml"); yaml_data=yaml.safe_load(file); print(yaml_data["iterations"])')
+for num  in {0,$iterations}; do
+    ansible-playbook  -e @experiment.yml -i 'localhost' run_all.yml
 done
