@@ -6,8 +6,9 @@ import matplotlib.ticker as ticker
 
 statistics_interval = 1
 metrics_path = sys.argv[1]
+metric_names_path = sys.argv[2]
 
-with open("metric_names.json") as metric_names_file:
+with open(metric_names_path) as metric_names_file:
     metric_types = json.load(metric_names_file)
     with open(metrics_path) as file:
         data = json.load(file)
