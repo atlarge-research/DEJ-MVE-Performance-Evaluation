@@ -44,7 +44,25 @@ fi
 conda init bash
 
 ansible-playbook -e @experiment.yml -i 'localhost' before.yml
-iterations=$(python -u -c 'import yaml; file = open("experiment.yml"); yaml_data=yaml.safe_load(file); print(yaml_data["iterations"])')
+iterations=$(python3 -u -c '
+import yaml
+try:
+    with open("experiment.yml", "r") as file:
+        yaml_data = yaml.safe_load(file)
+        print(yaml_data["iterations"])
+except FileNotFoundError:
+    print("File experiment.yml not found.")
+    exit(1)
+except KeyError:
+    print("Key iterations not found in the YAML file.")
+    exit(1)
+except Exception as e:
+    print(f"An error occurred: {e}")
+    exit(1)
+')
+
+echo $iterations
+
 for num  in {0,$iterations}; do
     ansible-playbook  -e @experiment.yml -i 'localhost' run_all.yml
 done
