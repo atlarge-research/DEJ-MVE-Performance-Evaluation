@@ -68,7 +68,7 @@
   copy:
     src: "{{playbook_dir}}/configuration_files/worlds/standard_world"
     dest: "{{minecraft_tmp_dir.path}}"
-    register: {{world_path}}
     remote_src: true
+  register: {{world_path}}
 - name: Rename world folder
   shell: "mv {{world_path.path}} world"
