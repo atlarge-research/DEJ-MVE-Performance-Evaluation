@@ -44,6 +44,8 @@ fi
 conda init bash
 
 ansible-playbook -e @experiment.yml -i 'localhost' before.yml
+
+set +x
 iterations=$(python3 -u -c '
 import yaml
 try:
@@ -62,6 +64,8 @@ except Exception as e:
 ')
 
 echo $iterations
+
+set -x
 
 for num  in {0,$iterations}; do
     ansible-playbook  -e @experiment.yml -i 'localhost' run_all.yml
