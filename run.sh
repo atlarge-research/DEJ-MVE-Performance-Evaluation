@@ -55,8 +55,13 @@ curr_time = (datetime.datetime.now().strftime("%m/%d-%H:%M:%S"))
 try:
     with open("experiment_configuration.yml", "r") as file:
         yaml_data = yaml.safe_load(file)
-        yaml_data["timestamp"] = curr_time
-        print(yaml_data["iterations"])
+
+    yaml_data["timestamp"] = curr_time
+
+    with open("experiment_configuration.yml", "w") as file:
+        yaml.safe_dump(yaml_data, file)
+        
+    print(yaml_data["iterations"])
 except FileNotFoundError:
     print("File experiment_configuration.yml not found.")
     exit(1)
