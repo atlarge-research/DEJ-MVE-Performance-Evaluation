@@ -44,6 +44,7 @@ with open(metric_names_path) as metric_names_file:
                 plt.plot(time_points, percentiles[1], linestyle='--', color='red', label='90th percentile')
                 plt.plot(time_points, percentiles[2], linestyle='--', color='blue', label='99th percentile')
                 plt.legend(loc='upper right')
+                plt.grid(True, linestyle='--', alpha=0.5)
                 plt.xlabel("Time in Seconds")
                 plt.ylabel("{0}".format(current_metric_type['y_label']))
                 plt.title("Procentiles for : {0}".format(current_metric_type['graph_title']))
