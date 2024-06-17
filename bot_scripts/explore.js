@@ -15,7 +15,7 @@ class Bot {
     async startBotActions() {
         this.bot.once("spawn", async () => {            
             var goal_location = this.bot.entity.position.clone() 
-            goal_location.y = 100
+            goal_location.y += 60
             await this.bot.creative.flyTo(goal_location)
             this.bot.setControlState(this.direction,true)
         })
