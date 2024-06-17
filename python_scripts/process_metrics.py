@@ -11,7 +11,7 @@ metrics_path = sys.argv[1]
 metric_names_path = sys.argv[2]
 results_dir_path = sys.argv[3]
 
-curr_time = (datetime.datetime.now().strftime("%m/%d-%H:%M:%S")).replace(" ","")
+curr_time = (datetime.datetime.now().strftime("%m/%d-%H:%M:%S"))
 
 
 with open(metric_names_path) as metric_names_file:
