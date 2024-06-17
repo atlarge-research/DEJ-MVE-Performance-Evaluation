@@ -48,20 +48,10 @@ ansible-playbook -e @experiment_configuration.yml -i 'localhost' before.yml
 set +x
 iterations=$(python3 -u -c '
 import yaml
-import datetime
-
-curr_time = (datetime.datetime.now().strftime("%H:%M))
-
 try:
     with open("experiment_configuration.yml", "r") as file:
         yaml_data = yaml.safe_load(file)
-
-    yaml_data["timestamp"] = curr_time
-
-    with open("experiment_configuration.yml", "w") as file:
-        yaml.safe_dump(yaml_data, file)
-
-    print(yaml_data["iterations"])
+        print(yaml_data["iterations"])
 except FileNotFoundError:
     print("File experiment_configuration.yml not found.")
     exit(1)
@@ -78,5 +68,5 @@ echo $iterations
 set -x
 
 for num  in $(seq 1 $iterations); do
-    ansible-playbook  -e @experiment_configuration.yml -i 'localhost' run_all.yml
+    ansible-playbook  -e @experiment_configuration.yml -i 'localhost' run_all.yml --extra-vars "timestamp=$(date +'%H:%M')"
 done
