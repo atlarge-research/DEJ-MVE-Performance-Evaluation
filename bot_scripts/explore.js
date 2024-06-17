@@ -13,7 +13,7 @@ class bot{
     }
     async startBotActions(){
         this.bot.once("spawn", async() =>{
-            this.loadPlugin(pathfinder)
+            this.bot.loadPlugin(pathfinder)
             const botMovements = new Movements(bot)
             this.bot.pathfinder.setMovements(botMovements)
             var goal_location = this.bot.entity.position
