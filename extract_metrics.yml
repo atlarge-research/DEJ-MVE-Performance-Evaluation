@@ -9,7 +9,7 @@
 - name: "Move metrics"
   copy:
     src: "{{metrics_json_path.dest}}"
-    dest: "{{playbook_dir}}/results/{{end_time}}"
+    dest: "{{playbook_dir}}/results/{{end_time}}/metrics.json"
   register: metrics_final_path
 - name: Remove fetch folder
   file: 
