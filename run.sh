@@ -48,9 +48,14 @@ ansible-playbook -e @experiment_configuration.yml -i 'localhost' before.yml
 set +x
 iterations=$(python3 -u -c '
 import yaml
+import datetime
+
+curr_time = (datetime.datetime.now().strftime("%m/%d-%H:%M:%S"))
+
 try:
     with open("experiment_configuration.yml", "r") as file:
         yaml_data = yaml.safe_load(file)
+        yaml_data["timestamp"] = curr_time
         print(yaml_data["iterations"])
 except FileNotFoundError:
     print("File experiment_configuration.yml not found.")
