@@ -4,7 +4,7 @@ iterations: 1
 node_count: 3 #Minimum 2: 1 Server node, 1(or more) Bot simulation node(s)
 players_per_node: 10 #Each bot simulation node get this amount of players. Total players = (node_count - 1) * players_per_node
 bot_behavior_script: explore.js #explore.js, jump.js <- Case sensitive. GC world only makes sense with jump. with explore players will walk away from the workload, which then not be simulated.
-world: "gc_workload_world" #  standard_world, hillside_manor, imperial_city, gc_workload_world. <- Case sensitive. In order of increasing complexity (excluding gc_workload_world)
+world_name: "gc_workload_world" #  standard_world, hillside_manor, imperial_city, gc_workload_world. <- Case sensitive. In order of increasing complexity (excluding gc_workload_world)
 min_memory_M: 2048 
 max_memory_M: 2048
 JVM_config_parameters: ""
