@@ -10,8 +10,8 @@
         -javaagent:./jmx_prometheus_javaagent-0.20.0.jar=12345:jmxexp_config.yml
         -Dcom.sun.management.jmxremote.authenticate=false
         -Dcom.sun.management.jmxremote.ssl=false 
-        -Xmx10240M
-        -Xms10240M
+        -Xmx4096M
+        -Xms4096M
         -jar server.jar nogui
       async: "{{server_runtime_s}}"
       poll: 0
