@@ -10,10 +10,14 @@
         -javaagent:./jmx_prometheus_javaagent-0.20.0.jar=12345:jmxexp_config.yml
         -Dcom.sun.management.jmxremote.authenticate=false
         -Dcom.sun.management.jmxremote.ssl=false 
-        "{{JVM_config_parameters}}"
+        '{{JVM_config_parameters}}'
         -jar server.jar nogui
       async: "{{server_runtime_s}}"
+      register: java_debug
       poll: 0
+    - name: Java_debug print
+      debug:
+        var: java_debug
     - name: Start Node exporter
       shell: "cd {{playbook_dir}} && cd node_exporter_dir && ./node_exporter"
       async: "{{server_runtime_s}}"

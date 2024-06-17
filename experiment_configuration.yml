@@ -5,7 +5,7 @@ node_count: 3 #Minimum 2: 1 Server node, 1(or more) Bot simulation node(s)
 players_per_node: 10 #Each bot simulation node get this amount of players. Total players = (node_count - 1) * players_per_node
 bot_behavior_script: explore.js #explore.js, jump.js <- Case sensitive. GC world only makes sense with jump. with explore players will walk away from the workload, which then not be simulated.
 world_name: "gc_workload_world" #  standard_world, hillside_manor, imperial_city, gc_workload_world. <- Case sensitive. In order of increasing complexity (excluding gc_workload_world)
-JVM_config_parameters: "-Xms2048M -Xmx2048M"
+JVM_config_parameters: '-Xms2048M -Xmx2048M'
 
 
 #Light = Stardard minecraft world generated with standard settings. Can be found in this github repo
