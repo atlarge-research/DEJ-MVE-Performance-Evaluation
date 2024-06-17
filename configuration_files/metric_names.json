@@ -36,7 +36,7 @@
     },
     {
         "metric_name": "rate(node_cpu_seconds_total{mode='idle'}[10s])",
-        "graph_title": "Amount of CPU system time per second in last 10 seconds",
+        "graph_title": "Amount of CPU idle time per second in last 10 seconds",
         "y_label": "Fraction of time(Seconds/Seconds)"
     },
     {
@@ -46,7 +46,7 @@
     },
     {
         "metric_name": "rate(node_cpu_seconds_total{mode='user'}[10s])",
-        "graph_title": "Amount of CPU system time per second in last 10 seconds",
+        "graph_title": "Amount of CPU user time per second in last 10 seconds",
         "y_label": "Fraction of time(Seconds/Seconds)"
     },
     {
