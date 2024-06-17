@@ -6,6 +6,10 @@
     dest: "{{playbook_dir}}/metrics.json"
     src: "{{minecraft_tmp_dir.path}}/metrics.json"
   register: metrics_json_path
+- name: create dir for current run
+  file:
+    path: "{{playbook_dir}}/results/{{end_time}}"
+    state: "directory"
 - name: "Move metrics"
   copy:
     src: "{{metrics_json_path.dest}}"
@@ -20,10 +24,6 @@
     dest: "{{playbook_dir}}/logs"
     src: "{{minecraft_tmp_dir.path}}/logs/latest.log"
   register: logs_path
-- name: create dir for current run
-  file:
-    path: "{{playbook_dir}}/results/{{end_time}}"
-    state: "directory"
 - name: Move logs
   copy:
     src: "{{logs_path.dest}}"
