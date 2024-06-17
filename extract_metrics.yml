@@ -8,12 +8,12 @@
   register: metrics_json_path
 - name: create dir for current run
   file:
-    path: "{{playbook_dir}}/results/{{end_time}}"
+    path: "{{playbook_dir}}/results/{{timestamp}}"
     state: "directory"
 - name: "Move metrics"
   copy:
     src: "{{metrics_json_path.dest}}"
-    dest: "{{playbook_dir}}/results/{{end_time}}/metrics.json"
+    dest: "{{playbook_dir}}/results/{{timestamp}}/metrics.json"
   register: metrics_final_path
 - name: Remove fetch folder
   file: 
@@ -27,11 +27,11 @@
 - name: Move logs
   copy:
     src: "{{logs_path.dest}}"
-    dest: "{{playbook_dir}}/results/{{end_time}}/"
+    dest: "{{playbook_dir}}/results/{{timestamp}}/"
 - name: move config file
   copy:
     src: "{{playbook_dir}}/experiment_configuration.yml"
-    dest: "{{playbook_dir}}/results/{{end_time}}/" 
+    dest: "{{playbook_dir}}/results/{{timestamp}}/" 
 - name: Remove fetch folder
   file:
     path: "{{playbook_dir}}/logs"

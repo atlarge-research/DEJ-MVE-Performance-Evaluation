@@ -46,6 +46,11 @@
         dest: "{{playbook_dir}}/prometheus/prometheus_config.yml"
     - name: Install python libraries
       shell: pip install matplotlib numpy --ignore-installed --quiet
+    - name: Set result folder timestamp
+      shell: date -u +%Y-%m-%dT%H:%M:%S
+      register: date
+    - set_fact:
+        timestamp: "{{ date.stdout }}"
       
     
 
