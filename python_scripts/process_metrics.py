@@ -13,6 +13,9 @@ results_dir_path = sys.argv[3]
 timestamp = sys.argv[4]
 
 
+def calculate_percentiles(data, percentiles):
+    return np.percentile(data, percentiles, axis=0)
+
 with open(metric_names_path) as metric_names_file:
     metric_types = json.load(metric_names_file)
     with open(metrics_path) as file:
