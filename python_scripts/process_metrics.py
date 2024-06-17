@@ -38,11 +38,11 @@ with open(metric_names_path) as metric_names_file:
             plt.title("{0}".format(current_metric_type['graph_title']))
             plt.autoscale()
             plt.grid(True, linestyle='--', alpha=0.5)
-            plt.savefig("{0}/{1}/plot{2}.png".format(results_dir_path,timestamp,current_metric_type['graph_title'].replace(" ", "").replace("'","")), bbox_inches='tight')
+            plt.savefig("{0}/{1}/plot{2}.png".format(results_dir_path,timestamp,current_metric_type['graph_title'].replace(" ", "")), bbox_inches='tight')
             plt.clf()
             if len(metric_data['data']['result']) > 1:
                 all_values = np.array(all_values)
-                percentiles = calculate_percentiles(all_metric_values, [50, 90, 99])
+                percentiles = calculate_percentiles(all_values, [50, 90, 99])
                 plt.plot(time_points, percentiles[0], linestyle='--', color='black', label='50th percentile')
                 plt.plot(time_points, percentiles[1], linestyle='--', color='red', label='90th percentile')
                 plt.plot(time_points, percentiles[2], linestyle='--', color='blue', label='99th percentile')
