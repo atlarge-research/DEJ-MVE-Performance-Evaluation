@@ -50,7 +50,7 @@ iterations=$(python3 -u -c '
 import yaml
 import datetime
 
-curr_time = (datetime.datetime.now().strftime("%m/%d-%H:%M:%S"))
+curr_time = (datetime.datetime.now().strftime("%H:%M))
 
 try:
     with open("experiment_configuration.yml", "r") as file:
@@ -60,7 +60,7 @@ try:
 
     with open("experiment_configuration.yml", "w") as file:
         yaml.safe_dump(yaml_data, file)
-        
+
     print(yaml_data["iterations"])
 except FileNotFoundError:
     print("File experiment_configuration.yml not found.")
