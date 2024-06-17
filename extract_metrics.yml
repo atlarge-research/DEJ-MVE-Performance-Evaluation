@@ -9,7 +9,7 @@
 - name: "Move metrics"
   copy:
     src: "{{metrics_json_path.dest}}"
-    dest: "{{playbook_dir}}/results/"
+    dest: "{{playbook_dir}}/results/{{end_time}}"
   register: metrics_final_path
 - name: Remove fetch folder
   file: 
@@ -23,7 +23,11 @@
 - name: Move logs
   copy:
     src: "{{logs_path.dest}}"
-    dest: "{{playbook_dir}}/results/"
+    dest: "{{playbook_dir}}/results/{{end_time}}/"
+- name: move config file
+  copy:
+    src: "{{playbook_dir}}/experiment_configuration.yml"
+    dest: "{{playbook_dir}}/results/{{end_time}}/" 
 - name: Remove fetch folder
   file:
     path: "{{playbook_dir}}/logs"

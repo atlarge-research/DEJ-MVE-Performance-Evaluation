@@ -10,8 +10,7 @@ statistics_interval = 1
 metrics_path = sys.argv[1]
 metric_names_path = sys.argv[2]
 results_dir_path = sys.argv[3]
-
-curr_time = (datetime.datetime.now().strftime("%m/%d-%H:%M:%S"))
+timestamp = sys.argv[4]
 
 
 with open(metric_names_path) as metric_names_file:
@@ -36,7 +35,7 @@ with open(metric_names_path) as metric_names_file:
             plt.title("{0}".format(current_metric_type['graph_title']))
             plt.autoscale()
             plt.grid(True, linestyle='--', alpha=0.5)
-            plt.savefig("{0}/{1}/plot{2}.png".format(results_dir_path,curr_time,current_metric_type['graph_title'].replace(" ", "").replace("'","")), bbox_inches='tight')
+            plt.savefig("{0}/{1}/plot{2}.png".format(results_dir_path,timestamp,current_metric_type['graph_title'].replace(" ", "").replace("'","")), bbox_inches='tight')
             plt.clf()
             if len(metric_data['data']['result']) > 1:
                 all_values = np.array(all_values)
@@ -48,5 +47,5 @@ with open(metric_names_path) as metric_names_file:
                 plt.xlabel("Time in Seconds")
                 plt.ylabel("{0}".format(current_metric_type['y_label']))
                 plt.title("Procentiles for : {0}".format(current_metric_type['graph_title']))
-                plt.savefig("{0}/{1}/procentiles_plot{2}.png".format(results_dir_path,curr_time,current_metric_type['graph_title'].replace(" ", "").replace("'","")), bbox_inches='tight')
+                plt.savefig("{0}/{1}/procentiles_plot{2}.png".format(results_dir_path,timestamp,current_metric_type['graph_title'].replace(" ", "").replace("'","")), bbox_inches='tight')
                 plt.clf()
