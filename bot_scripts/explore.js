@@ -1,32 +1,23 @@
 const mineflayer = require('mineflayer')
-const { pathfinder, Movements, goals: { GoalNear } } = require('mineflayer-pathfinder')
 const bot_count = parseInt(process.argv[4])
 const Entity = require("prismarine-entity")('1.8.9')
+const directions = ["forward","back","left", "right"]
+
 
 class Bot {
     constructor(botName) {
         this.username = botName + process.argv[3]
         this.host = process.argv[2]
+        this.direction = directions[(Math.random() * directions.length) | 0]
         this.joinServer()
     }
 
     async startBotActions() {
-        this.bot.once("spawn", async () => {
-            this.bot.loadPlugin(pathfinder)
-            const botMovements = new Movements(this.bot, this.bot.mcData) 
-            this.bot.pathfinder.setMovements(botMovements)
-            
+        this.bot.once("spawn", async () => {            
             var goal_location = this.bot.entity.position.clone() 
-            goal_location.x += (Math.random() - 0.5) * 10000
-            goal_location.z += (Math.random() - 0.5) * 10000
-            const goal = new GoalNear(goal_location.x, goal_location.y, goal_location.z, 100)
-            
-            try {
-                await this.bot.pathfinder.goto(goal)
-                console.log(`${this.bot.username} has reached the goal.`)
-            } catch (err) {
-                console.error(`${this.bot.username} failed to reach the goal:`, err)
-            }
+            goal_location.y = 100
+            await this.bot.creative.flyTo(goal_location)
+            this.bot.setControlState(this.direction,true)
         })
     }
 
@@ -36,8 +27,6 @@ class Bot {
             "host": this.host
         });
         this.bot.once('login', () => {
-            const mcData = require('minecraft-data')(this.bot.version)
-            this.bot.mcData = mcData
             this.startBotActions()
         })
     }
