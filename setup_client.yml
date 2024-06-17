@@ -1,6 +1,8 @@
 ---
 - name: Install Mineflayer
   shell: npm install mineflayer
+- name: Install mineflayer-pathfinder
+  shell: npm install mineflayer-pathfinder
 - name: Set behavior script
   set_fact:
     bot_behavior_script: explore.js

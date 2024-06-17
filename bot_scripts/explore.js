@@ -1,19 +1,26 @@
 const mineflayer = require('mineflayer')
-const directions = ["forward","back","left", "right"]
+const { pathfinder, Movements, goals:{ GoalNear} } = require('mineflayer-pathfinder')
 const bot_count = process.argv[4]
+const Entity = require("prismarine-entity")('1.8.9')
+
 
 
 class bot{
     constructor(botName){
         this.username = botName + process.argv[3]
         this.host = process.argv[2]
-        this.direction = directions[(Math.random() * directions.length) | 0]
         this.joinServer()
     }
-    startBotActions(){
-        this.bot.once("login",() =>{
-            this.bot.setControlState(this.direction,true)
-            this.bot.creative.startFlying()
+    async startBotActions(){
+        this.bot.once("spawn", async() =>{
+            this.loadPlugin(pathfinder)
+            const botMovements = new Movements(bot)
+            this.bot.pathfinder.setMovements(botMovements)
+            var goal_location = this.bot.entity.position
+            goal_location.x += (Math.random() - 0.5)*10000
+            goal_location.z += (Math.random() - 0.5)*10000
+            const goal = new GoalNear(goal_location.x,goal_location.y,goal_location.z,100)
+            await this.bot.pathfinder.goto(goal)
         })
     }
     joinServer(){
