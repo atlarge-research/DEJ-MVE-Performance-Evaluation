@@ -32,7 +32,12 @@ class Bot {
     }
 }
 
+const interval = 30000/ bot_count
+
 const bots = []
 for (let i = 1; i <= bot_count; i++) {
-    bots.push(new Bot("Bot" + i))
+    setTimeout(() => {
+        bots.push(new Bot("Bot" + i))
+    }, interval)
+    
 }

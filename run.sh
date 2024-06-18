@@ -68,5 +68,5 @@ echo $iterations
 set -x
 
 for num  in $(seq 1 $iterations); do
-    ansible-playbook  -e @experiment_configuration.yml -i 'localhost' run_all.yml --extra-vars "timestamp=$(date +'%H:%M')"
+    ansible-playbook  -e @experiment_configuration.yml -i 'localhost' run_all.yml --extra-vars "timestamp=$(date +'%d_%H_%M')"
 done

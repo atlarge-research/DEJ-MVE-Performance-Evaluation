@@ -21,7 +21,12 @@ class bot{
         this.startBotActions()
     }
 }
+const interval = 30000/ bot_count
+
 const bots = []
-for(let i = 1; i <= bot_count; i++){
-    bots.push(new bot("Bot" + i))
+for (let i = 1; i <= bot_count; i++) {
+    setTimeout(() => {
+        bots.push(new Bot("Bot" + i))
+    }, interval)
+    
 }
