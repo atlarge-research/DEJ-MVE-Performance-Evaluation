@@ -21,7 +21,7 @@ class Bot{
         this.startBotActions()
     }
 }
-const interval = 30000/ bot_count
+const interval = 60000/ bot_count
 
 const bots = []
 for (let i = 1; i <= bot_count; i++) {

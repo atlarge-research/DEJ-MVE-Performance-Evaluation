@@ -22,7 +22,7 @@
     {
         "metric_name": "rate(jvm_gc_collection_seconds_sum[10s])/rate(jvm_gc_collection_seconds_count[10s])",
         "graph_title": "Average GC Time per Collection (10s)",
-        "y_label": "Time[s]"
+        "y_label": "Time[s]/Collection"
     },
     {
         "metric_name": "rate(jvm_gc_collection_seconds_sum[10s])",
