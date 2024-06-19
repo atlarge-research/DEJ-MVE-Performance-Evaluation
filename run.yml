@@ -4,7 +4,7 @@
   gather_facts: false
   tasks:
     - name: Run MVE server and JMX exporter agent
-      shell: cd "{{minecraft_tmp_dir.path}}" && taskset 0xFF {{JVM_config_parameters}}
+      shell: cd "{{minecraft_tmp_dir.path}}" && {{JVM_config_parameters}}
       async: "{{server_runtime_s}}"
       register: java_debug
       poll: 0
