@@ -25,18 +25,18 @@ with open(metric_names_path) as metric_names_file:
             current_metric_type = metric_types[i]
             metric_data = data[i]
             metric_data = json.loads(metric_data)
-            all_values = []
+            fig, ax = plt.subplots(figsize=(10, 6))
             for metric in metric_data['data']['result']:
                 metric_values = metric['values']
                 metric_values = [float(x[1]) for x in metric_values]
-                time_points = [x * statistics_interval for x in range(0,len(metric_values))]
-                all_values.append(metric_values)
-                plt.plot(time_points,metric_values)    
+                ax.plot(metric_values)      
 
-            plt.xlabel("Time in Seconds")
-            plt.ylabel("{0}".format(current_metric_type['y_label']))
-            plt.title("{0}".format(current_metric_type['graph_title']))
-            plt.autoscale()
-            plt.grid(True, linestyle='--', alpha=0.5)
+            ax.xaxis.set_major_locator(ticker.MultipleLocator(base=60))
+            ax.xaxis.set_minor_locator(ticker.MultipleLocator(base=30))
+            ax.set_xlabel("Time[s]")
+            ax.set_ylabel("{0}".format(current_metric_type['y_label']))
+            plt.tight_layout()
+            plt.margins(0)
+            ax.grid(True,which="both",linestyle='--', alpha=0.5)
             plt.savefig("{0}/{1}/plot{2}.png".format(results_dir_path,timestamp,current_metric_type['graph_title'].replace(" ", "")), bbox_inches='tight')
             plt.clf()

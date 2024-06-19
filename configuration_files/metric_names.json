@@ -2,17 +2,17 @@
     {
         "metric_name": "net_minecraft_server_Server_averageTickTime",
         "graph_title": "Average Tick Time",
-        "y_label": "MS"
+        "y_label": "Tick Duration[ms]"
     },
     {
         "metric_name": "jvm_memory_bytes_used",
         "graph_title": "Total memory usage JVM",
-        "y_label":"Bytes"
+        "y_label":"Memory[B]"
     },
     {
         "metric_name": "java_lang_Memory_HeapMemoryUsage_used",
         "graph_title": "Heap Memory Usage",
-        "y_label": "Bytes"
+        "y_label": "Memory[B]"
     },
     {
         "metric_name": "jvm_threads_current",
@@ -27,7 +27,7 @@
     {
         "metric_name": "rate(jvm_gc_collection_seconds_sum[10s])/rate(jvm_gc_collection_seconds_count[10s])",
         "graph_title": "Average GC Time per Collection (10s)",
-        "y_label": "Seconds"
+        "y_label": "Time[s]"
     },
     {
         "metric_name": "rate(jvm_gc_collection_seconds_sum[10s])",
