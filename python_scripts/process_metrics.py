@@ -38,5 +38,5 @@ with open(metric_names_path) as metric_names_file:
             plt.tight_layout()
             plt.margins(0)
             ax.grid(True,which="both",linestyle='--', alpha=0.5)
-            plt.savefig("{0}/{1}/plot{2}.png".format(results_dir_path,timestamp,current_metric_type['graph_title'].replace(" ", "")), bbox_inches='tight')
+            plt.savefig("{0}/{1}/plot{2}.pdf".format(results_dir_path,timestamp,current_metric_type['graph_title'].replace(" ", "")), bbox_inches='tight')
             plt.clf()
