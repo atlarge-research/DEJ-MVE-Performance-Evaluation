@@ -25,4 +25,4 @@
     - name: Cancel reservation
       shell: |
         module load prun
-        preserve -c {{ reservation_number}}
+        preserve -c {{ reservation_number}}w

@@ -5,6 +5,11 @@
         "y_label": "MS"
     },
     {
+        "metric_name": "jvm_memory_bytes_used",
+        "graph_title": "Total memory usage JVM",
+        "y_label":"Bytes"
+    },
+    {
         "metric_name": "java_lang_Memory_HeapMemoryUsage_used",
         "graph_title": "Heap Memory Usage",
         "y_label": "Bytes"
