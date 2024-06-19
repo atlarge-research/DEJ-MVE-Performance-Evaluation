@@ -1,23 +1,26 @@
-experiment_duration_s: 60
-server_runtime_s: 300 #Calculate in the server start up (60s) plus possible delays.
+experiment_duration_s: 300
+server_runtime_s: 500 #Calculate in the server start up (60s) plus possible delays.
 iterations: 1
 node_count: 3 #Minimum 2: 1 Server node, 1(or more) Bot simulation node(s)
-players_per_node: 10 #Each bot simulation node get this amount of players. Total players = (node_count - 1) * players_per_node
-bot_behavior_script: explore.js #explore.js, jump.js <- Case sensitive. GC world only makes sense with jump. with explore players will walk away from the workload, which then not be simulated.
-world_name: "gc_workload_world" #  standard_world, hillside_manor, imperial_city, gc_workload_world. <- Case sensitive. In order of increasing complexity (excluding gc_workload_world)
+players_per_node: 20 #Each bot simulation node get this amount of players. Total players = (node_count - 1) * players_per_node
+bot_behavior_script: jump.js #explore.js, jump.js <- Case sensitive. GC world only makes sense with jump. with explore players will walk away from the workload, which then not be simulated.
+world_name: "hillside_manor" #  hillside_manor, imperial_city, gc_workload_world. <- Case sensitive. In order of increasing complexity (excluding gc_workload_world)
 JVM_config_parameters: "java -Dcom.sun.management.jmxremote.port=9999
         -javaagent:./jmx_prometheus_javaagent-0.20.0.jar=12345:jmxexp_config.yml
         -Dcom.sun.management.jmxremote.authenticate=false
         -Dcom.sun.management.jmxremote.ssl=false 
         -Xms2048M 
-        -Xmx2048M
+        -Xmx4096M
         -jar server.jar nogui"
 
 
-
-
-
-#Light = Stardard minecraft world generated with standard settings. Can be found in this github repo
 #Medium = https://www.planetminecraft.com/project/hillside-manor/
 #Heavy = https://www.planetminecraft.com/project/monumental-imperial-city/
 #GC = Custom made world including a heavy environmental workload meant to target the GC and Heap: fireworks and creatures spawning and dying. Can be found in this repo.
+
+
+
+
+#validate whats happening
+#use atleast 2 jvms. change path to point to the right one.
+#logic behind which jdk version to pick.S

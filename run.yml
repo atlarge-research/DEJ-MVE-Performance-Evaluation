@@ -4,13 +4,19 @@
   gather_facts: false
   tasks:
     - name: Run MVE server and JMX exporter agent
-      shell: module load java/jdk-19 && cd "{{minecraft_tmp_dir.path}}" && {{JVM_config_parameters}}
+      shell: cd "{{minecraft_tmp_dir.path}}" && {{JVM_config_parameters}}
       async: "{{server_runtime_s}}"
       register: java_debug
       poll: 0
     - name: Java_debug print
       debug:
         var: java_debug
+    - name: Java print version
+      shell: java -version
+      register: java_version
+    - name: Print java_version
+      debug:
+        var: java_version
     - name: Start Node exporter
       shell: "cd {{playbook_dir}} && cd node_exporter_dir && ./node_exporter"
       async: "{{server_runtime_s}}"
