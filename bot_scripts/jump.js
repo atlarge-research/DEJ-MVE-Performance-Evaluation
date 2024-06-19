@@ -2,7 +2,7 @@ const mineflayer = require('mineflayer')
 const bot_count = process.argv[4]
 
 
-class bot{
+class Bot{
     constructor(botName){
         this.username = botName + process.argv[3]
         this.host = process.argv[2]
