@@ -11,7 +11,7 @@ JVM_config_parameters: "taskset -c 0-7:1 java -Dcom.sun.management.jmxremote.por
         -Dcom.sun.management.jmxremote.ssl=false 
         -Xms2048M 
         -Xmx4096M
-        -jar server.jar nogui & echo $!"
+        -jar server.jar nogui"
 
 
 #Medium = https://www.planetminecraft.com/project/hillside-manor/
