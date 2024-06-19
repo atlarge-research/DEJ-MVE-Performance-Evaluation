@@ -15,11 +15,6 @@
         "y_label": "Memory[B]"
     },
     {
-        "metric_name": "jvm_threads_current",
-        "graph_title": "Current Threads",
-        "y_label": "Count"
-    },
-    {
         "metric_name": "rate(jvm_gc_collection_seconds_count[10s])",
         "graph_title": "GC Collection Rate (10s)",
         "y_label": "Collections/Second"
@@ -68,5 +63,29 @@
         "metric_name": "avg(rate(node_cpu_seconds_total{mode='idle', cpu=~'[0-7]'}[10s]))",
         "graph_title": "Average amount of CPU idle time per second in last 10 seconds",
         "y_label": "Fraction of time(Seconds/Seconds)"
+    },
+    {
+        "metric_name":"java_lang_OperatingSystem_ProcessCpuLoad",
+        "graph_title": "Java process CPU load",
+        "y_label": "Fraction of time(Seconds/Seconds"
+
+    },
+    {
+        "metric_name":"java_lang_OperatingSystem_CpuLoad",
+        "graph_title": "Total CPU load",
+        "y_label": "Fraction of time(Seconds/Seconds"
+
+    },
+    {
+        "metric_name":"java_lang_OperatingSystem_SystemCpuLoad",
+        "graph_title": "Total system CPU load",
+        "y_label": "Fraction of time(Seconds/Seconds"
+
+    },
+    {
+        "metric_name":"java_lang_OperatingSystem_SystemLoadAverage",
+        "graph_title": "System load average",
+        "y_label": "Load Average (Number of Processes)"
+
     }
 ]
