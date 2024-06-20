@@ -1,8 +1,8 @@
 experiment_duration_s: 300
 server_runtime_s: 500 #Calculate in the server start up (60s) plus possible delays.
-iterations: 5
+iterations: 1
 node_count: 2 #Minimum 2: 1 Server node, 1(or more) Bot simulation node(s)
-players_per_node: 13 #Each bot simulation node get this amount of players. Total players = (node_count - 1) * players_per_node
+players_per_node: 12 #Each bot simulation node get this amount of players. Total players = (node_count - 1) * players_per_node
 bot_behavior_script: jump.js #explore.js, jump.js <- Case sensitive. GC world only makes sense with jump. with explore players will walk away from the workload, which then not be simulated.
 world_name: "hillside_manor" #  hillside_manor, imperial_city, gc_workload_world. <- Case sensitive. In order of increasing complexity (excluding gc_workload_world)
 JVM_config_parameters: "taskset -c 0-7:1 java -Dcom.sun.management.jmxremote.port=9999
