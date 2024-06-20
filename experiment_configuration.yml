@@ -1,6 +1,6 @@
 experiment_duration_s: 300
 server_runtime_s: 500 #Calculate in the server start up (60s) plus possible delays.
-iterations: 1
+iterations: 3
 node_count: 2 #Minimum 2: 1 Server node, 1(or more) Bot simulation node(s)
 players_per_node: 12 #Each bot simulation node get this amount of players. Total players = (node_count - 1) * players_per_node
 bot_behavior_script: jump.js #explore.js, jump.js <- Case sensitive. GC world only makes sense with jump. with explore players will walk away from the workload, which then not be simulated.
@@ -15,10 +15,3 @@ JVM_config_parameters: "taskset -c 0-7:1 java -Dcom.sun.management.jmxremote.por
 #Medium = https://www.planetminecraft.com/project/hillside-manor/
 #Heavy = https://www.planetminecraft.com/project/monumental-imperial-city/
 #GC = Custom made world including a heavy environmental workload meant to target the GC and Heap: fireworks and creatures spawning and dying. Can be found in this repo.
-
-
-
-
-#validate whats happening
-#use atleast 2 jvms. change path to point to the right one.
-#logic behind which jdk version to pick.S
