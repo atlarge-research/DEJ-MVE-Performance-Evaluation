@@ -39,6 +39,16 @@
       pause:
         seconds: 60
 
+- name: Run Jolokia python script on directing node
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Start tick time python script
+      shell: python "{{playbook_dir}}/python_scripts/jolokia_get_minecraft_tick.py"
+      async: "{{server_runtime_s}}"
+      poll: 0
+
+
 - name: Run client play
   hosts: clients
   gather_facts: false

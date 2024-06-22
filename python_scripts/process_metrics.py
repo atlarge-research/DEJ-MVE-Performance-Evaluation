@@ -1,9 +1,7 @@
 import sys
 import json
-import math
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
-import datetime
 import numpy as np
 
 statistics_interval = 1
@@ -12,9 +10,6 @@ metric_names_path = sys.argv[2]
 results_dir_path = sys.argv[3]
 timestamp = sys.argv[4]
 
-
-def calculate_percentiles(data, percentiles):
-    return np.percentile(data, percentiles, axis=0)
 
 with open(metric_names_path) as metric_names_file:
     metric_types = json.load(metric_names_file)
