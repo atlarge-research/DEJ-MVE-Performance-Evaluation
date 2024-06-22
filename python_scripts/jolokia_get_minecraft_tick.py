@@ -49,11 +49,11 @@ def get_tick_durations(old, new):
 
 
 if __name__ == "__main__":
-    print("measurement,tick_duration_ms,tick_number,loop_iteration,timestamp_ms,computed_timestamp_ms")
+    print("measurement - tick_duration_ms - tick_number - loop_iteration - timestamp_ms - computed_timestamp_ms")
 
     data_dict = {"type": "read", "mbean": "net.minecraft.server:type=Server", "attribute": "tickTimes", "path": ""}
     data_enc = json.dumps(data_dict).encode('utf-8')
-    r = request.Request("http://localhost:8778/jolokia/", data=data_enc)
+    r = request.Request("http://localhost:7777/jolokia/", data=data_enc)
 
     prev = None
 
@@ -81,7 +81,7 @@ if __name__ == "__main__":
                     computed_timestamp = now
                 else:
                     computed_timestamp += max(50, prev_tick_duration)
-                print(f"minecraft_tick_duration,{tick_duration/1000000},{tick_number},{loop_iteration},{now*1000},{computed_timestamp}")
+                print(f"minecraft_tick_duration,{tick_duration/1000000} - {tick_number} - {loop_iteration} - {now*1000} - {computed_timestamp}")
                 tick_number += 1
                 prev_tick_duration = tick_duration
         loop_iteration += 1

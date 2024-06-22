@@ -16,7 +16,7 @@
     dest: "{{playbook_dir}}/results/{{timestamp}}/metrics.json"
   register: metrics_final_path
 - name: save info about node
-  shell: "lscpu > {{playbook_dir}}/results/{{timestamp}}/nodeinfo.log && free -g >> {{playbook_dir}}/results/{{timestamp}}/nodeinfo.log && java -version >>{{playbook_dir}}/results/{{timestamp}}/nodeinfo.log"
+  shell: "lscpu > {{playbook_dir}}/results/{{timestamp}}/nodeinfo.log && free -g >> {{playbook_dir}}/results/{{timestamp}}/nodeinfo.log && java -version >> {{playbook_dir}}/results/{{timestamp}}/nodeinfo.log 2>&1"
 - name: Remove fetch folder
   file: 
     path: "{{playbook_dir}}/metrics.json/"
