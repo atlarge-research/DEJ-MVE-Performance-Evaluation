@@ -18,9 +18,9 @@
 - name: save info about node
   shell: |
     {
-      lscpu;
-      free -g;
       java -version;
+      free -g;
+      lscpu;
     } > {{ playbook_dir }}/results/{{ timestamp }}/nodeinfo.log 2>&1
 - name: Remove fetch folder
   file: 
