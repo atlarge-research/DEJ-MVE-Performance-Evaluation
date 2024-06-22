@@ -68,7 +68,7 @@ if __name__ == "__main__":
     ticks = []
 
 
-    with open("tick_times.json","w+") as file:
+    with open("tick_times/tick_times.json","w+") as file:
         try:
             while True:
                 t += PERIOD_S

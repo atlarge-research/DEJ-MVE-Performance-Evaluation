@@ -15,7 +15,6 @@
     src: "{{metrics_json_path.dest}}"
     dest: "{{playbook_dir}}/results/{{timestamp}}/metrics.json"
   register: metrics_final_path
-
 - name: Remove fetch folder
   file: 
     path: "{{playbook_dir}}/metrics.json/"
@@ -29,8 +28,8 @@
     } > {{ playbook_dir }}/results/{{ timestamp }}/nodeinfo.log 2>&1
 - name: Fetch extract tick times
   fetch:
-    src: "{{minecraft_tmp_dir.path}}/tick_times.json"
-    dest: "{{playbook_dir}}/tick_times.json"
+    src: "{{minecraft_tmp_dir.path}}/tick_times"
+    dest: "{{playbook_dir}}/tick_times"
     register: tick_times_path
 - name: Move tick_times
   copy:
