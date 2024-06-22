@@ -26,7 +26,7 @@
         dest: "{{playbook_dir}}/results/{{timestamp}}/tick_times.json"
     - name: Remove tick files from python scripts folder
       file:
-        src: "{{playbook_dir}}/python_scripts/tick_times.json"
+        path: "{{playbook_dir}}/python_scripts/tick_times.json"
         state: absent
     - name: Process Jolokia ticktime
       shell: "cd python_scripts && python plot_tick_times.py {{playbook_dir}}/results {{timestamp}}"
