@@ -62,7 +62,7 @@
   gather_facts: false
   tasks:
     - name: Start tick time python script
-      shell: "cd {{minecraft_tmp_dir.path}} && python jolokia_get_minecraft_tick.py"
+      shell: "cd {{minecraft_tmp_dir.path}} && python jolokia_get_minecraft_tick.py {{playbook_dir}}/results/{{timestamp}}/tick_times.json > {{playbook_dir}}/jolokia.log 2>&1"
       async: "{{server_runtime_s}}"
       poll: 0
       register: jolokia_response

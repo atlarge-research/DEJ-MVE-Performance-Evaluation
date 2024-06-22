@@ -71,10 +71,6 @@
     src: "{{playbook_dir}}/node_exporter_dir"
     dest: "{{minecraft_tmp_dir.path}}/node_exporter_dir"
     remote_src: true
-- name: Make dir for tick times
-  file:
-  path: "{{minecraft_tmp_dir.path}}/tick_times"
-  state: directory
 - name: Install python libraries
   shell: pip install requests --ignore-installed --quiet
 - name: Place chosen workload world

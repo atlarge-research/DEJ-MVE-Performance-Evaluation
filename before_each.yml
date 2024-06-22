@@ -1,6 +1,10 @@
 - hosts: localhost
   tasks:
     - import_tasks: setup_nodes.yml
+    - name: create dir for current run
+      file:
+         path: "{{playbook_dir}}/results/{{timestamp}}"
+         state: "directory"
 
 - hosts: clients
   gather_facts: false

@@ -4,8 +4,12 @@ from urllib import request
 from urllib import error
 import json
 import time
+import sys
 
 PERIOD_S = 2.5
+output_path = sys.argv[1]
+
+
 
 def get_tick_durations(old, new):
     assert old is None or len(old) == 100
@@ -68,7 +72,7 @@ if __name__ == "__main__":
     ticks = []
 
 
-    with open("tick_times/tick_times.json","w+") as file:
+    with open(output_path,"w+") as file:
         try:
             while True:
                 t += PERIOD_S
@@ -93,11 +97,9 @@ if __name__ == "__main__":
 
                         tick_info = f"minecraft_tick_duration,{tick_duration/1000000} - {tick_number} - {loop_iteration} - {now*1000} - {computed_timestamp}"
                         ticks.append(tick_duration/1000000)
-                        print(tick_info)
                         tick_number += 1
                         prev_tick_duration = tick_duration
                 loop_iteration += 1
         except Exception as e:
             json.dump(ticks,file)
-            json.dump("EOF")
             print("Connection closed, ticks have been written to file")

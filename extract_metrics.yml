@@ -6,10 +6,6 @@
     src: "{{minecraft_tmp_dir.path}}/metrics.json"
     dest: "{{playbook_dir}}/metrics.json"
   register: metrics_json_path
-- name: create dir for current run
-  file:
-    path: "{{playbook_dir}}/results/{{timestamp}}"
-    state: "directory"
 - name: "Move metrics"
   copy:
     src: "{{metrics_json_path.dest}}"
@@ -26,15 +22,6 @@
       free -g;
       lscpu;
     } > {{ playbook_dir }}/results/{{ timestamp }}/nodeinfo.log 2>&1
-- name: Fetch extract tick times
-  fetch:
-    src: "{{minecraft_tmp_dir.path}}/tick_times/tick_times.json"
-    dest: "{{playbook_dir}}/tick_times"
-    register: tick_times_path
-- name: Move tick_times
-  copy:
-    src: "{{tick_times_path.dest}}"
-    dest: "{{playbook_dir}}/results/{{timestamp}}/"
 - name: Remove fetch folder
   file:
     path: "{{playbook_dir}}/metrics.json/"
