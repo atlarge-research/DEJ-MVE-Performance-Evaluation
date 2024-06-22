@@ -99,4 +99,5 @@ if __name__ == "__main__":
                 loop_iteration += 1
         except error.URLError:
             json.dump(ticks,file)
+            json.dump("EOF")
             print("Connection closed, ticks have been written to file")
