@@ -39,16 +39,6 @@
       pause:
         seconds: 60
 
-- name: Run Jolokia python script on directing node
-  hosts: localhost
-  gather_facts: false
-  tasks:
-    - name: Start tick time python script
-      shell: python "{{playbook_dir}}/python_scripts/jolokia_get_minecraft_tick.py"
-      async: "{{server_runtime_s}}"
-      poll: 0
-
-
 - name: Run client play
   hosts: clients
   gather_facts: false
@@ -66,6 +56,15 @@
     - name: Print server IP
       debug:
         var: server_ib_ip 
+
+- name: Run Jolokia python script on server node
+  hosts: server
+  gather_facts: false
+  tasks:
+    - name: Start tick time python script
+      shell: python "{{playbook_dir}}/python_scripts/jolokia_get_minecraft_tick.py"
+      async: "{{server_runtime_s}}"
+      poll: 0
     - name: Sleep during experiment
       pause:
         seconds: "{{experiment_duration_s}}"
