@@ -46,6 +46,11 @@
     src: "{{playbook_dir}}/jmx_prometheus_javaagent-0.20.0.jar"
     dest: "{{minecraft_tmp_dir.path}}/jmx_prometheus_javaagent-0.20.0.jar"
     remote_src: true
+- name: Copy Jolokia agent jar to minecraft temp dir
+  copy:
+    src: "{{playbook_dir}}/jolokia-agent.jar"
+    dest: "{{minecraft_tmp_dir.path}}/jolokia-agent.jar"
+    remote_src: true
 - name: Copy metrics exporting python script to minecraft temp dir
   copy:
     src: "{{playbook_dir}}/python_scripts/extract_metrics.py"

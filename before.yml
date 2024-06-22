@@ -47,7 +47,7 @@
     - name: "Download Jolokia"
       get_url:
         url: https://search.maven.org/remotecontent?filepath=org/jolokia/jolokia-agent-jvm/2.0.3/jolokia-agent-jvm-2.0.3-javaagent.jar
-        dest: "{{playbook_dir}}/jolokia-agent"
+        dest: "{{playbook_dir}}/jolokia-agent.jar"
     - name: Install python libraries
       shell: pip install matplotlib numpy --ignore-installed --quiet
     - name: Set result folder timestamp
