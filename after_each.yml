@@ -29,7 +29,7 @@
         path: "{{playbook_dir}}/python_scripts/tick_times.json"
         state: absent
     - name: Process Jolokia ticktime
-      shell: "cd python_scripts && python plot_tick_times.py {{playbook_dir}}/results {{timestamp}}"
+      shell: "cd python_scripts && python plot_tick_times.py {{playbook_dir}}/results {{timestamp}} {{playbook}}/results/{{timestamp}}/tick_times.json"
     - name: Process metrics
       shell: "cd python_scripts && python process_metrics.py {{playbook_dir}}/results/{{timestamp}}/metrics.json {{playbook_dir}}/configuration_files/metric_names.json {{playbook_dir}}/results {{timestamp}}"
     - name: Cancel reservation

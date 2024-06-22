@@ -97,7 +97,7 @@ if __name__ == "__main__":
                         tick_number += 1
                         prev_tick_duration = tick_duration
                 loop_iteration += 1
-        except error.URLError:
+        except Exception as e:
             json.dump(ticks,file)
             json.dump("EOF")
             print("Connection closed, ticks have been written to file")

@@ -5,9 +5,9 @@ import numpy as np
 
 results_dir_path = sys.argv[1]
 timestamp = sys.argv[2]
+ticktime_path = sys.argv[3]
 
 
-ticktime_path = "tick_times.json"
 
 with open(ticktime_path) as file:
     data = json.load(file)    

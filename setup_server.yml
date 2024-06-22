@@ -55,7 +55,12 @@
   copy:
     src: "{{playbook_dir}}/python_scripts/extract_metrics.py"
     dest: "{{minecraft_tmp_dir.path}}/extract_metrics.py"
-    remote_src: true  
+    remote_src: true
+- name: Copy tick exporting python script to minecraft temp dir
+  copy:
+    src: "{{playbook_dir}}/python_scripts/jolokia_get_minecraft_tick.py"
+    dest: "{{minecraft_tmp_dir.path}}/jolokia_get_minecraft_tick.py"
+    remote_src: true    
 - name: Copy metric_names json file to minecraft temp dir
   copy:
     src: "{{playbook_dir}}/configuration_files/metric_names.json"
