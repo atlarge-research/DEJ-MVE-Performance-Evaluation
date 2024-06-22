@@ -28,7 +28,7 @@
     } > {{ playbook_dir }}/results/{{ timestamp }}/nodeinfo.log 2>&1
 - name: Fetch extract tick times
   fetch:
-    src: "{{minecraft_tmp_dir.path}}/tick_times"
+    src: "{{minecraft_tmp_dir.path}}/tick_times/tick_times.json"
     dest: "{{playbook_dir}}/tick_times"
     register: tick_times_path
 - name: Move tick_times
