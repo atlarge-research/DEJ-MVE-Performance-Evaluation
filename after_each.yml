@@ -41,6 +41,9 @@
   hosts: localhost
   gather_facts: false
   tasks:
+    - name: Debug print localhost side
+      debug:
+        var: hostvars[inventory_hostname]
     - name: Process Jolokia ticktime
       shell: "cd python_scripts && python plot_tick_times.py {{playbook_dir}}/results {{timestamp}} {{playbook_dir}}/results/{{timestamp}}/tick_times.json {{mono_time_start}} {{mono_time_end}} >> {{playbook_dir}}/jolokia.log 2>&1"
     - name: Process metrics

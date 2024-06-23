@@ -8,12 +8,12 @@ results_dir_path = sys.argv[1]
 timestamp = sys.argv[2]
 ticktime_path = sys.argv[3]
 
-start_time = sys.argv[4]
-end_time = sys.argv[5]
+start_time = float(sys.argv[4])
+end_time = float(sys.argv[5])
 
 
-print("start: ",start_time,"\n end: ",end_time)
-print("start: ",type(start_time),"\n end: ",type(end_time))
+print("start_time: ",start_time,"\n end_time: ",end_time)
+print("start_time: ",type(start_time),"\n end_time: ",type(end_time))
 
 
 with open(ticktime_path) as file:
@@ -25,19 +25,19 @@ with open(ticktime_path) as file:
     start = time_stamps[0]
     start_index = 0
 
-    print("start: ",start)
-    print("start: ",type(start))
+    print("start extracted from time_stamps: ",start)
+    print("start extracted from time stamps: ",type(start))
     
 
     end_index = len(time_stamps) -1
     
     for i in range(len(time_stamps)):
-        if time_stamps[i] >= start_time:
+        if float(time_stamps[i]) >= start_time:
             start_index = i
             start = time_stamps[i]
             break
     for i in range((len(time_stamp) -1),0,-1):
-        if time_stamps[i] <= end_time:
+        if float(time_stamps[i]) <= end_time:
             end_index = i
             break
 
