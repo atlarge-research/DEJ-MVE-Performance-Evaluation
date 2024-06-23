@@ -110,6 +110,7 @@ if __name__ == "__main__":
     except Exception as e:
         output.append(ticks)
         output.append(time_stamps)
+        print(e)
         with open(output_path,"w+") as file:
             json.dump(output,file)
             print("Connection closed, ticks have been written to file")
