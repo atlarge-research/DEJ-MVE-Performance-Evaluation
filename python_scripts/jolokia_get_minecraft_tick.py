@@ -96,7 +96,7 @@ if __name__ == "__main__":
 
                     tick_info = f"minecraft_tick_duration,{tick_duration/1000000} - {tick_number} - {loop_iteration} - {now*1000} - {computed_timestamp}"
                     tick_number += 1
-                    tempticks.append(tick_duration/1000000)
+                    temp_ticks.append(tick_duration/1000000)
                     prev_tick_duration = tick_duration
             
             average_tick_time = 0
