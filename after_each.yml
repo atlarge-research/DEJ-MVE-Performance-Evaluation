@@ -18,7 +18,7 @@
     shell: python -u -c 'import time; print(time.monotonic())'
     register: time_mono
   - set_fact:
-      mono__time_start: "{{time_mono.stdout}}"
+      mono__time_end: "{{time_mono.stdout}}"
   - name: 5s grace period
     pause:
       seconds: 5
