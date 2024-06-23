@@ -12,7 +12,8 @@ start_time = sys.argv[4]
 end_time = sys.argv[5]
 
 
-print(start_time,end_time)
+print("start: ",start_time,"\n end: ",end_time)
+print("start: ",type(start_time),"\n end: ",type(end_time))
 
 
 with open(ticktime_path) as file:
@@ -24,7 +25,8 @@ with open(ticktime_path) as file:
     start = time_stamps[0]
     start_index = 0
 
-    print(start)
+    print("start: ",start)
+    print("start: ",type(start))
     
 
     end_index = len(time_stamps) -1
