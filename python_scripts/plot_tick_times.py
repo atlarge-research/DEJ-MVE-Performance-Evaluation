@@ -11,9 +11,19 @@ ticktime_path = sys.argv[3]
 
 
 with open(ticktime_path) as file:
-    data = json.load(file)      
+    data = json.load(file)  
+
+    tick_times = data[0]
+    time_stamps = data[1]
+
+    start = time_stamps[0]
+
+    time_points = [t - start for t in time_stamps]
+
+
     fig, ax = plt.subplots(figsize=(10, 6))
-    ax.plot(data)      
+
+    ax.plot(tick_times,time_points)      
     ax.xaxis.set_major_locator(ticker.MultipleLocator(base=60))
     ax.xaxis.set_minor_locator(ticker.MultipleLocator(base=30))
     ax.set_xlabel("Time[s]")

@@ -6,7 +6,7 @@ import json
 import time
 import sys
 
-PERIOD_S = 1
+PERIOD_S = 2.5
 output_path = sys.argv[1]
 
 
@@ -68,7 +68,8 @@ if __name__ == "__main__":
     prev_tick_duration = None
 
     ticks = []
-
+    time_stamps = []
+    output = []
 
     with open(output_path,"w+") as file:
         try:
@@ -95,9 +96,12 @@ if __name__ == "__main__":
 
                         tick_info = f"minecraft_tick_duration,{tick_duration/1000000} - {tick_number} - {loop_iteration} - {now*1000} - {computed_timestamp}"
                         ticks.append(tick_duration/1000000)
+                        time_stamps.append(computed_timestamp)
                         tick_number += 1
                         prev_tick_duration = tick_duration
                 loop_iteration += 1
         except Exception as e:
-            json.dump(ticks,file)
+            output.append(ticks)
+            output.append(time_stamps)
+            json.dump(output,file)
             print("Connection closed, ticks have been written to file")
