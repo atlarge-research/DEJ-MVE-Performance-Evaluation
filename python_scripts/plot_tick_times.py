@@ -46,7 +46,14 @@ with open(ticktime_path) as file:
     time_stamps = time_stamps[start_index:end_index + 1]
 
     with open("plot.log","w+") as log:
-        str = "Time begin: " + time_stamps[0] + "\n Time end: " + time_stamps[-1]+ "\n Time diff: " + (time_stamps[-1] - time_stamps[0]) + "\n type of time: "+type(time_stamps[0]) + "facts: " + start_time + " - " + end_time + " \n d: " + (end_time - start_time)
+        str = (
+        f"Time begin: {time_stamps[0]}\n"
+        f"Time end: {time_stamps[-1]}\n"
+        f"Time diff: {time_stamps[-1] - time_stamps[0]}\n"
+        f"Type of time: {type(time_stamps[0])}\n"
+        f"Facts: {start_time} - {end_time}\n"
+        f"Time diff between start and end: {end_time - start_time}"
+        )
         log.write(str)
 
     time_points = [(t - start)/1000000000 for t in time_stamps]
