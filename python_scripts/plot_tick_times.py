@@ -19,13 +19,13 @@ with open(ticktime_path) as file:
 
     start = time_stamps[0]
     start_index = 0
-    allowance = 5000
+    allowance = 5
     end_index = len(time_stamps) -1
     
     # print(start_time,end_time)
     # print(start_time-end_time)
 
-
+    # print("+++++++")
     for i in range(len(time_stamps)):
         # print(time_stamps[i],start_time)
         # print(time_stamps[i] - start_time)
@@ -33,6 +33,7 @@ with open(ticktime_path) as file:
             start_index = i
             start = time_stamps[i]
             break
+    # print("______________")
     for i in range((len(time_stamps) -1),0,-1):
         # print(time_stamps[i],end_time)
         # print(time_stamps[i] - end_time)
@@ -43,18 +44,18 @@ with open(ticktime_path) as file:
 
     time_stamps = time_stamps[start_index:end_index + 1]
 
-    time_points = [(t - start)/1000000000 for t in time_stamps]
+    time_points = [(t - start) for t in time_stamps]
     fig, ax = plt.subplots(figsize=(10, 6))
 
     with open("plot.log","w+") as log:
         str = (
-        f"Time begin: {time_stamps[0]/1000000000}\n"
-        f"Time end: {time_stamps[-1]/1000000000}\n"
-        f"Time diff: {time_stamps[-1]/1000000000 - time_stamps[0]/1000000000}\n"
+        f"Time begin: {time_stamps[0]}\n"
+        f"Time end: {time_stamps[-1]}\n"
+        f"Time diff: {time_stamps[-1] - time_stamps[0]}\n"
         f"Type of time: {type(time_stamps[0])}\n"
         f"Facts: {start_time} - {end_time}\n"
-        f"Time diff between start and end: {end_time - start_time}"
-        f"First time_point: {time_points[0]} last: {time_points[-1]} diff: {time_points[0]-time_points[-1]}"
+        f"Time diff between start and end: {end_time - start_time} \n"
+        f"First time_point: {time_points[0]} last: {time_points[-1]} diff: {time_points[0]-time_points[-1]} \n"
         )
         log.write(str)
 

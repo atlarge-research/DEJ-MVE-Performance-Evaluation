@@ -94,9 +94,9 @@ if __name__ == "__main__":
                         computed_timestamp += max(50, prev_tick_duration)
 
 
-                    tick_info = f"minecraft_tick_duration,{tick_duration/1000000} - {tick_number} - {loop_iteration} - {now*1000} - {computed_timestamp}"
+                    # tick_info = f"minecraft_tick_duration,{tick_duration/1000000} - {tick_number} - {loop_iteration} - {now*1000} - {computed_timestamp}"
                     ticks.append(tick_duration/1000000)
-                    time_stamps.append(now*1000)
+                    time_stamps.append(now)
                     tick_number += 1
                     prev_tick_duration = tick_duration
             loop_iteration += 1
