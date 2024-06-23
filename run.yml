@@ -17,21 +17,10 @@
         ./prometheus --config.file=prometheus_config.yml
       async: "{{server_runtime_s}}"
       poll: 0
-    - name: Register start time
-      shell: date -u +%Y-%m-%dT%H:%M:%S
-      register: date
-    - set_fact:
-        start_time: "{{date.stdout}}"
     - name: Server start up
       pause:
-        seconds: 50
-    - name: Start tick time python script
-      shell: "cd {{minecraft_tmp_dir.path}} && python jolokia_get_minecraft_tick.py {{playbook_dir}}/results/{{timestamp}}/tick_times.json"
-      async: "{{server_runtime_s}}"
-      poll: 0
-    - name: Jolokia start_up
-      pause:
-        seconds: 10
+        seconds: 60
+
 
 - name: Run client play
   hosts: clients
@@ -44,7 +33,32 @@
       async: "{{experiment_duration_s}}"
       register: player_sim_result
       poll: 0
-    - name: Sleep during experiment
-      pause:
-        seconds: "{{experiment_duration_s}}"
 
+- name: Start tick time monitoring
+  hosts: server
+  gather_facts: false
+  tasks: 
+    - name: Start tick time python script
+      shell: "cd {{minecraft_tmp_dir.path}} && python jolokia_get_minecraft_tick.py {{playbook_dir}}/results/{{timestamp}}/tick_times.json"
+      async: "{{server_runtime_s}}"
+      poll: 0
+    - name: tick time gathering startup and player connecting
+      pause:
+        seconds: 60
+    - name: Register start time
+      shell: date -u +%Y-%m-%dT%H:%M:%S
+      register: date
+    - set_fact:
+        start_time: "{{date.stdout}}"
+
+- name: Set start time for jolokia on localhost
+  hosts: localhost
+  gather_facts: false
+  tasks:
+  - name: Register monotime starttime
+    shell: python -u -c 'import time
+      print(time.monotonic())'
+    register: mono_time_start
+  - name: Sleep during experiment
+    pause:
+      seconds: "{{experiment_duration_s}}"

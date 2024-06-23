@@ -8,6 +8,8 @@ results_dir_path = sys.argv[1]
 timestamp = sys.argv[2]
 ticktime_path = sys.argv[3]
 
+start_time = sys.argv[4]
+
 
 
 with open(ticktime_path) as file:
@@ -15,14 +17,20 @@ with open(ticktime_path) as file:
 
     tick_times = data[0]
     time_stamps = data[1]
-    print(len(tick_times))
-    print(len(time_stamps))
 
     start = time_stamps[0]
+    start_index = 0
+    for i in range(time_stamps):
+        if time_stamps[i] >= start_time:
+            start_index = i
+            start = time_stamps[i]
+            break
+
+    time_stamps = time_stamps[start_index:]
+
+
 
     time_points = [(t - start)/1000000000 for t in time_stamps]
-    print(time_points[0])
-    print(time_points[-1])
     fig, ax = plt.subplots(figsize=(10, 6))
 
     ax.plot(time_points,tick_times)      
