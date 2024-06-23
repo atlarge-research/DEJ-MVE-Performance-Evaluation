@@ -40,7 +40,7 @@
   gather_facts: false
   tasks:
     - name: Process Jolokia ticktime
-      shell: "cd python_scripts && python plot_tick_times.py {{playbook_dir}}/results {{timestamp}} {{playbook_dir}}/results/{{timestamp}}/tick_times.json mono_time_start mono_time_end"
+      shell: "cd python_scripts && python plot_tick_times.py {{playbook_dir}}/results {{timestamp}} {{playbook_dir}}/results/{{timestamp}}/tick_times.json mono_time_start mono_time_end >> {{playbook_dir}}/jolokia.log 2>&1"
     - name: Process metrics
       shell: "cd python_scripts && python process_metrics.py {{playbook_dir}}/results/{{timestamp}}/metrics.json {{playbook_dir}}/configuration_files/metric_names.json {{playbook_dir}}/results {{timestamp}}"
     - name: Cancel reservation

@@ -12,6 +12,8 @@ start_time = sys.argv[4]
 end_time = sys.argv[5]
 
 
+print(start_time,end_time)
+
 
 with open(ticktime_path) as file:
     data = json.load(file)  
@@ -21,6 +23,9 @@ with open(ticktime_path) as file:
 
     start = time_stamps[0]
     start_index = 0
+
+    print(start)
+    
 
     end_index = len(time_stamps) -1
     
