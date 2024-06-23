@@ -17,9 +17,9 @@
   - name: Register monotime end_time
     shell: python -u -c 'import time; print(time.monotonic())'
     register: mono_time_end
-  - name: 10s grace period
+  - name: 5s grace period
     pause:
-      seconds: 10
+      seconds: 5
 
 - name: kill java and prometheus
   hosts: server
@@ -31,6 +31,9 @@
     - name: Kill prometheus
       command: "killall prometheus"   
       ignore_errors: true
+    - name: 5s grace period
+      pause:
+        seconds: 5
 
 - name: Clean up from experiment
   hosts: localhost
