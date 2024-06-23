@@ -1,14 +1,13 @@
 const mineflayer = require('mineflayer')
 const bot_count = parseInt(process.argv[4])
-const Entity = require("prismarine-entity")('1.8.9')
 const directions = ["forward","back","left", "right"]
 
 
 class Bot {
-    constructor(botName) {
+    constructor(botName, direction) {
         this.username = botName + process.argv[3]
         this.host = process.argv[2]
-        this.direction = directions[(Math.random() * directions.length) | 0]
+        this.direction = directions[direction]
         this.joinServer()
     }
 
@@ -37,7 +36,7 @@ const interval = 60000/ bot_count
 const bots = []
 for (let i = 1; i <= bot_count; i++) {
     setTimeout(() => {
-        bots.push(new Bot("Bot" + i))
+        bots.push(new Bot("Bot" + i,i%4))
     }, interval * i)
     
 }

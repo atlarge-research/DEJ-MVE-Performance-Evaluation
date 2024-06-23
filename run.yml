@@ -6,17 +6,7 @@
     - name: Run MVE server and JMX exporter agent
       shell: cd "{{minecraft_tmp_dir.path}}" && {{JVM_config_parameters}}
       async: "{{server_runtime_s}}"
-      register: java_debug
       poll: 0
-    - name: Java_debug print
-      debug:
-        var: java_debug
-    - name: Java print version
-      shell: java -version
-      register: java_version
-    - name: Print java_version
-      debug:
-        var: java_version
     - name: Start Node exporter
       shell: "cd {{playbook_dir}} && cd node_exporter_dir && ./node_exporter"
       async: "{{server_runtime_s}}"
@@ -32,9 +22,6 @@
       register: date
     - set_fact:
         start_time: "{{date.stdout}}"
-    - name: Server hostvars debug
-      debug:
-        var: hostvars[inventory_hostname]
     - name: Server start up
       pause:
         seconds: 60
@@ -50,25 +37,15 @@
       async: "{{experiment_duration_s}}"
       register: player_sim_result
       poll: 0
-    - name: print result
-      debug:
-        var: player_sim_result
-    - name: Print server IP
-      debug:
-        var: server_ib_ip 
 
 - name: Run Jolokia python script on server node
   hosts: server
   gather_facts: false
   tasks:
     - name: Start tick time python script
-      shell: "cd {{minecraft_tmp_dir.path}} && python jolokia_get_minecraft_tick.py {{playbook_dir}}/results/{{timestamp}}/tick_times.json > {{playbook_dir}}/jolokia.log 2>&1"
+      shell: "cd {{minecraft_tmp_dir.path}} && python jolokia_get_minecraft_tick.py {{playbook_dir}}/results/{{timestamp}}/tick_times.json"
       async: "{{server_runtime_s}}"
       poll: 0
-      register: jolokia_response
-    - name: output jolokia response
-      debug:
-        var: jolokia_response
     - name: Sleep during experiment
       pause:
         seconds: "{{experiment_duration_s}}"

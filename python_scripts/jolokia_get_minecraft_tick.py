@@ -6,7 +6,7 @@ import json
 import time
 import sys
 
-PERIOD_S = 2.5
+PERIOD_S = 1
 output_path = sys.argv[1]
 
 
@@ -54,8 +54,6 @@ def get_tick_durations(old, new):
 
 
 if __name__ == "__main__":
-    print("measurement - tick_duration_ms - tick_number - loop_iteration - timestamp_ms - computed_timestamp_ms")
-
     data_dict = {"type": "read", "mbean": "net.minecraft.server:type=Server", "attribute": "tickTimes", "path": ""}
     data_enc = json.dumps(data_dict).encode('utf-8')
     r = request.Request("http://localhost:7777/jolokia/", data=data_enc)
