@@ -77,7 +77,7 @@ if __name__ == "__main__":
             t += PERIOD_S
             now = time.monotonic()
             time.sleep(t - now)
-            temp_ticks = []
+
 
             with request.urlopen(r) as resp:
                 resp_enc = resp.read()
@@ -95,16 +95,10 @@ if __name__ == "__main__":
 
 
                     tick_info = f"minecraft_tick_duration,{tick_duration/1000000} - {tick_number} - {loop_iteration} - {now*1000} - {computed_timestamp}"
+                    ticks.append(tick_duration/1000000)
+                    time_stamps.append(now)
                     tick_number += 1
-                    temp_ticks.append(tick_duration/1000000)
                     prev_tick_duration = tick_duration
-            
-            average_tick_time = 0
-            for tick in temp_ticks:
-                average_tick_time += tick
-            average_tick_time /= len(temp_ticks)
-            ticks.append(average_tick_time)
-            time_stamps.append(now)
             loop_iteration += 1
     except Exception as e:
         output.append(ticks)
