@@ -34,7 +34,7 @@ with open(ticktime_path) as file:
 
     time_stamps = time_stamps[start_index:end_index + 1]
     tick_times = tick_times[start_index:end_index+1]
-    time_points = [(t - start) for t in time_stamps]
+    time_points = [int(t - start) for t in time_stamps]
     print(time_points)
     fig, ax = plt.subplots(figsize=(10, 6))
 
