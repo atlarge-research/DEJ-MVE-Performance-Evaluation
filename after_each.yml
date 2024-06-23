@@ -1,3 +1,13 @@
+- name: Set end time on localhost
+  hosts: localhost
+  gather_facts: false
+  tasks:
+  - name: Register monotime end_time
+    shell: python -u -c 'import time; print(time.monotonic())'
+    register: time_mono
+  - set_fact:
+      mono_time_end: "{{time_mono.stdout}}"
+
 - name: Clean up server side
   hosts: server
   gather_facts: false
@@ -9,24 +19,6 @@
         end_time: "{{ date.stdout }}"
     - name: Extract and save metrics from prometheus
       import_tasks: extract_metrics.yml
-
-- name: Set end time on localhost
-  hosts: localhost
-  gather_facts: false
-  tasks:
-  - name: Register monotime end_time
-    shell: python -u -c 'import time; print(time.monotonic())'
-    register: time_mono
-  - set_fact:
-      mono_time_end: "{{time_mono.stdout}}"
-  - name: 5s grace period
-    pause:
-      seconds: 5
-
-- name: kill java and prometheus
-  hosts: server
-  gather_facts: false
-  tasks:
     - name: Kill java
       command: "killall java"
       ignore_errors: true

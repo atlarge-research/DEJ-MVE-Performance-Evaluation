@@ -11,11 +11,6 @@ ticktime_path = sys.argv[3]
 start_time = float(sys.argv[4])
 end_time = float(sys.argv[5])
 
-
-print("start_time: ",start_time,"\n end_time: ",end_time)
-print("start_time: ",type(start_time),"\n end_time: ",type(end_time))
-
-
 with open(ticktime_path) as file:
     data = json.load(file)  
 
@@ -24,10 +19,6 @@ with open(ticktime_path) as file:
 
     start = time_stamps[0]
     start_index = 0
-
-    print("start extracted from time_stamps: ",start)
-    print("start extracted from time stamps: ",type(start))
-    
 
     end_index = len(time_stamps) -1
     
@@ -45,19 +36,24 @@ with open(ticktime_path) as file:
 
     time_stamps = time_stamps[start_index:end_index + 1]
 
+    time_points = [(t - start)/1000000000 for t in time_stamps]
+    fig, ax = plt.subplots(figsize=(10, 6))
+
     with open("plot.log","w+") as log:
         str = (
-        f"Time begin: {time_stamps[0]}\n"
-        f"Time end: {time_stamps[-1]}\n"
-        f"Time diff: {time_stamps[-1] - time_stamps[0]}\n"
+        f"Time begin: {time_stamps[0]/1000000000}\n"
+        f"Time end: {time_stamps[-1]/1000000000}\n"
+        f"Time diff: {time_stamps[-1]/1000000000 - time_stamps[0]/1000000000}\n"
         f"Type of time: {type(time_stamps[0])}\n"
         f"Facts: {start_time} - {end_time}\n"
         f"Time diff between start and end: {end_time - start_time}"
+        f"First time_point: {time_points[0]} last: {time_points[-1]} diff: {time_points[0]-time_points[-1]}"
         )
         log.write(str)
 
-    time_points = [(t - start)/1000000000 for t in time_stamps]
-    fig, ax = plt.subplots(figsize=(10, 6))
+
+
+
 
     ax.plot(time_points,tick_times)      
     ax.xaxis.set_major_locator(ticker.MultipleLocator(base=60))
