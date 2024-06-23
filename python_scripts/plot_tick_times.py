@@ -19,19 +19,26 @@ with open(ticktime_path) as file:
 
     start = time_stamps[0]
     start_index = 0
-
+    allowance = 5000
     end_index = len(time_stamps) -1
     
+    # print(start_time,end_time)
+    # print(start_time-end_time)
+
+
     for i in range(len(time_stamps)):
-        if float(time_stamps[i]) >= start_time:
+        # print(time_stamps[i],start_time)
+        # print(time_stamps[i] - start_time)
+        if abs(float(time_stamps[i])- start_time) <= allowance :
             start_index = i
             start = time_stamps[i]
             break
     for i in range((len(time_stamps) -1),0,-1):
-        if float(time_stamps[i]) <= end_time:
+        # print(time_stamps[i],end_time)
+        # print(time_stamps[i] - end_time)
+        if abs(float(time_stamps[i]) - end_time) <= allowance:
             end_index = i
             break
-
 
 
     time_stamps = time_stamps[start_index:end_index + 1]
