@@ -36,7 +36,7 @@ with open(ticktime_path) as file:
             start_index = i
             start = time_stamps[i]
             break
-    for i in range((len(time_stamp) -1),0,-1):
+    for i in range((len(time_stamps) -1),0,-1):
         if float(time_stamps[i]) <= end_time:
             end_index = i
             break
