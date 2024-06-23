@@ -44,11 +44,7 @@
       async: "{{experiment_duration_s}}"
       register: player_sim_result
       poll: 0
-
-    - name: Start tick time python script
-      shell: "cd {{minecraft_tmp_dir.path}} && python jolokia_get_minecraft_tick.py {{playbook_dir}}/results/{{timestamp}}/tick_times.json"
-      async: "{{server_runtime_s}}"
-      poll: 0
     - name: Sleep during experiment
       pause:
         seconds: "{{experiment_duration_s}}"
+
