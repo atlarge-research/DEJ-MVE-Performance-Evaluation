@@ -25,7 +25,7 @@ with open(ticktime_path) as file:
     print(time_points[-1])
     fig, ax = plt.subplots(figsize=(10, 6))
 
-    ax.plot(tick_times,time_points)      
+    ax.plot(time_points,tick_times)      
     ax.xaxis.set_major_locator(ticker.MultipleLocator(base=60))
     ax.xaxis.set_minor_locator(ticker.MultipleLocator(base=30))
     ax.set_xlabel("Time[s]")
