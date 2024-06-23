@@ -24,7 +24,14 @@
         start_time: "{{date.stdout}}"
     - name: Server start up
       pause:
-        seconds: 60
+        seconds: 50
+    - name: Start tick time python script
+      shell: "cd {{minecraft_tmp_dir.path}} && python jolokia_get_minecraft_tick.py {{playbook_dir}}/results/{{timestamp}}/tick_times.json"
+      async: "{{server_runtime_s}}"
+      poll: 0
+    - name: Jolokia start_up
+      pause:
+        seconds: 10
 
 - name: Run client play
   hosts: clients
@@ -38,10 +45,6 @@
       register: player_sim_result
       poll: 0
 
-- name: Run Jolokia python script on server node
-  hosts: server
-  gather_facts: false
-  tasks:
     - name: Start tick time python script
       shell: "cd {{minecraft_tmp_dir.path}} && python jolokia_get_minecraft_tick.py {{playbook_dir}}/results/{{timestamp}}/tick_times.json"
       async: "{{server_runtime_s}}"
