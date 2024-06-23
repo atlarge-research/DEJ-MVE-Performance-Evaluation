@@ -8,8 +8,8 @@ results_dir_path = sys.argv[1]
 timestamp = sys.argv[2]
 ticktime_path = sys.argv[3]
 
-start_time = float(sys.argv[4])
-end_time = float(sys.argv[5])
+start_time = sys.argv[4]
+end_time = sys.argv[5]
 
 
 print(start_time,end_time)

@@ -57,7 +57,9 @@
   tasks:
   - name: Register monotime starttime
     shell: python -u -c 'import time; print(time.monotonic())'
-    register: mono_time_start
+    register: mono_time
+  - set_fact:
+      mono_time_start: "{{mono_time.stdout}}"
   - name: Sleep during experiment
     pause:
       seconds: "{{experiment_duration_s}}"
