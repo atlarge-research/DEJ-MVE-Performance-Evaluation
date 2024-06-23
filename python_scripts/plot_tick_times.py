@@ -9,6 +9,7 @@ timestamp = sys.argv[2]
 ticktime_path = sys.argv[3]
 
 start_time = sys.argv[4]
+end_time = sys.argv[5]
 
 
 
@@ -20,13 +21,22 @@ with open(ticktime_path) as file:
 
     start = time_stamps[0]
     start_index = 0
-    for i in range(time_stamps):
+
+    end_index = len(time_stamps) -1
+    
+    for i in range(len(time_stamps)):
         if time_stamps[i] >= start_time:
             start_index = i
             start = time_stamps[i]
             break
+    for i in range((len(time_stamp) -1),0,-1):
+        if time_stamps[i] <= end_time:
+            end_index = i
+            break
 
-    time_stamps = time_stamps[start_index:]
+
+
+    time_stamps = time_stamps[start_index:end_index + 1]
 
 
 

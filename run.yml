@@ -56,8 +56,7 @@
   gather_facts: false
   tasks:
   - name: Register monotime starttime
-    shell: python -u -c 'import time
-      print(time.monotonic())'
+    shell: python -u -c 'import time; print(time.monotonic())'
     register: mono_time_start
   - name: Sleep during experiment
     pause:

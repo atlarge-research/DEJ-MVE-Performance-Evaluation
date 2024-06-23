@@ -9,6 +9,22 @@
         end_time: "{{ date.stdout }}"
     - name: Extract and save metrics from prometheus
       import_tasks: extract_metrics.yml
+
+- name: Set end time on localhost
+  hosts: localhost
+  gather_facts: false
+  tasks:
+  - name: Register monotime end_time
+    shell: python -u -c 'import time; print(time.monotonic())'
+    register: mono_time_end
+  - name: 10s grace period
+    pause:
+      seconds: 10
+
+- name: kill java and prometheus
+  hosts: server
+  gather_facts: false
+  tasks:
     - name: Kill java
       command: "killall java"
       ignore_errors: true
@@ -21,7 +37,7 @@
   gather_facts: false
   tasks:
     - name: Process Jolokia ticktime
-      shell: "cd python_scripts && python plot_tick_times.py {{playbook_dir}}/results {{timestamp}} {{playbook_dir}}/results/{{timestamp}}/tick_times.json mono_time_start"
+      shell: "cd python_scripts && python plot_tick_times.py {{playbook_dir}}/results {{timestamp}} {{playbook_dir}}/results/{{timestamp}}/tick_times.json mono_time_start mono_time_end"
     - name: Process metrics
       shell: "cd python_scripts && python process_metrics.py {{playbook_dir}}/results/{{timestamp}}/metrics.json {{playbook_dir}}/configuration_files/metric_names.json {{playbook_dir}}/results {{timestamp}}"
     - name: Cancel reservation
