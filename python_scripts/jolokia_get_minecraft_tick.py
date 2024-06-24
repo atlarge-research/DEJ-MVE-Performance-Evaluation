@@ -7,8 +7,10 @@ import time
 import sys
 
 PERIOD_S = 2.5
+allowance = 5
 output_path = sys.argv[1]
-
+start_time = sys.argv[2]
+end_time = sys.argv[3]
 
 
 def get_tick_durations(old, new):
@@ -108,7 +110,37 @@ if __name__ == "__main__":
                 ticks.append(tick_time)
                 time_stamps.append(now)
     except Exception as e:
+        if len(ticks) > 0:
+            start_index = 0
+            end_index = len(time_stamps) - 1
+            for i in range(len(time_stamps)):
+                print("Time_stamp: ",time_stamps[i], "start_time: ", start_time)
+                print("Diff: ",time_stamps[i]-start_time)
+                print("__________________________________")
+                if abs(float(time_stamps[i])- start_time) <= allowance:
+                    start_index = i
+                    start = time_stamps[i]
+                    break
+
+            print("+++++++++++++++++++++++++++++++++++++++")
+
+            for i in range((len(time_stamps) -1),0,-1):
+                print("Time_stamp: ",time_stamps[i], "end_time: ", end_time)
+                print("Diff: ",time_stamps[i]-end_time)
+                print("__________________________________")
+                if abs(float(time_stamps[i]) - end_time) <= allowance:
+                    end_index = i
+                    break
+        
+            time_stamps = time_stamps[start_index:end_index + 1]
+            ticks = tick_times[start_index:end_index+1]
+        
+        
+        
         output = [ticks,time_stamps]
+
+
+
         print(e)
         with open(output_path,"w+") as file:
             json.dump(output,file)
