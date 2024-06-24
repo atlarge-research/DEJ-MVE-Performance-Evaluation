@@ -23,11 +23,17 @@ with open(ticktime_path) as file:
     end_index = len(time_stamps) -1
     
     for i in range(len(time_stamps)):
-        if abs(float(time_stamps[i])- start_time) <= allowance :
+        print("Time_stamp: ",time_stamps[i], "start_time: ", start_time)
+        print("Diff: ",time_stamps[i]-start_time)
+        print("__________________________________")
+        if abs(float(time_stamps[i])- start_time) <= allowance:
             start_index = i
             start = time_stamps[i]
             break
     for i in range((len(time_stamps) -1),0,-1):
+        print("Time_stamp: ",time_stamps[i], "end_time: ", end_time)
+        print("Diff: ",time_stamps[i]-end_time)
+        print("__________________________________")
         if abs(float(time_stamps[i]) - end_time) <= allowance:
             end_index = i
             break

@@ -100,16 +100,15 @@ if __name__ == "__main__":
                     tick_number += 1
                     prev_tick_duration = tick_duration
             loop_iteration += 1
-            if(len(ticks)>0):
+            if(len(temp_ticks)>0):
                 accumalative_tick_time = 0
                 for tick in temp_ticks:
                     accumalative_tick_time += tick
-                tick_time = accumalative_tick_time / len(ticks) 
+                tick_time = accumalative_tick_time / len(temp_ticks) 
                 ticks.append(tick_time)
-                time_stamps.append(now)
+                time_stamps.append(time.monotonic())
     except Exception as e:
-        output.append(ticks)
-        output.append(time_stamps)
+        output = [ticks,time_stamps]
         print(e)
         with open(output_path,"w+") as file:
             json.dump(output,file)
