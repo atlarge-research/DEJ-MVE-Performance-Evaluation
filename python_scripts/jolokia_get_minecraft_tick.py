@@ -74,13 +74,12 @@ if __name__ == "__main__":
     output = []
 
     
-    try:
-        while True:
-            t += PERIOD_S
-            now = time.monotonic()
-            time.sleep(t - now)
-            temp_ticks = []
-
+    while True:
+        t += PERIOD_S
+        now = time.monotonic()
+        time.sleep(t - now)
+        temp_ticks = []
+        try:
             with request.urlopen(r) as resp:
                 resp_enc = resp.read()
                 # 'b{"request":{"mbean":"net.minecraft.server:type=Server","attribute":"tickTimes","type":"read"},"value":[289409,204240,209490,200170,214170,213459,200270,214330,433520,637339,630230,384160,446700,228030,557510,257059,618959,956190,603250,208380,242239,561869,319440,262310,220520,241469,499589,377190,361880,276440,215829,205450,214360,197440,585350,308020,302799,393030,256400,253980,257850,240670,398650,222530,365240,218000,207360,293930,596580,452230,621069,395489,218000,216990,218930,620510,419869,205880,218020,662480,683600,598459,262660,202140,282060,222220,204070,200060,230420,249950,227590,237730,232170,527770,642410,671939,550010,210690,217470,203400,233720,238790,213600,204250,283690,255309,225790,517470,437730,320380,340419,220750,207610,214930,598840,310579,228690,257850,205210,217100],"status":200,"timestamp":1717945225}'
@@ -109,26 +108,28 @@ if __name__ == "__main__":
                 tick_time = accumalative_tick_time / len(temp_ticks) 
                 ticks.append(tick_time)
                 time_stamps.append(now)
-    except Exception as e:
-        if len(ticks) > 0:
-            start_index = 0
-            end_index = len(time_stamps) - 1
-            for i in range(len(time_stamps)):
-                if time_stamps[i] >= start_time - allowance:
-                    start_index = i
-                    start = time_stamps[i]
-                    break
+        except Exception as e:
+            if len(ticks) > 0:
+                start_index = 0
+                end_index = len(time_stamps) - 1
+                for i in range(len(time_stamps)):
+                    if time_stamps[i] >= start_time - allowance:
+                        start_index = i
+                        start = time_stamps[i]
+                        break
 
-            for i in range((len(time_stamps) -1),0,-1):
-                if time_stamps[i] <= end_time - allowance:
-                    end_index = i
-                    break
-        
-            time_stamps = time_stamps[start_index:end_index + 1]
-            ticks = ticks[start_index:end_index+1]
-        
-        output = [ticks,time_stamps]
-        print(e)
-        with open(output_path,"w+") as file:
-            json.dump(output,file)
-            print("Connection closed, ticks have been written to file")
+                for i in range((len(time_stamps) -1),0,-1):
+                    if time_stamps[i] <= end_time - allowance:
+                        end_index = i
+                        break
+            
+                time_stamps = time_stamps[start_index:end_index + 1]
+                ticks = ticks[start_index:end_index+1]
+            
+                output = [ticks,time_stamps]
+                print(e)
+                with open(output_path,"w+") as file:
+                    json.dump(output,file)
+                    print("Connection closed, ticks have been written to file")
+            else:
+                continue
