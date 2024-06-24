@@ -97,7 +97,7 @@ if __name__ == "__main__":
 
 
                     tick_info = f"minecraft_tick_duration,{tick_duration/1000000} - {tick_number} - {loop_iteration} - {now*1000} - {computed_timestamp}"
-                    temp_ticks.append(tick_duration/1000000)
+                    temp_ticks.append((tick_duration/1000000))
                     
                     tick_number += 1
                     prev_tick_duration = tick_duration
@@ -105,6 +105,7 @@ if __name__ == "__main__":
             if(len(temp_ticks)>0):
                 accumalative_tick_time = 0
                 for tick in temp_ticks:
+                    print(tick)
                     accumalative_tick_time += tick
                 tick_time = accumalative_tick_time / len(temp_ticks) 
                 ticks.append(tick_time)
@@ -114,27 +115,13 @@ if __name__ == "__main__":
             start_index = 0
             end_index = len(time_stamps) - 1
             for i in range(len(time_stamps)):
-                print(i,"/",len(time_stamps)," Time_stamp: ",time_stamps[i], "start_time: ", start_time)
-                print("Diff: ",time_stamps[i]-start_time)
-                print("__________________________________")
                 if time_stamps[i] >= start_time - allowance:
                     start_index = i
-                    print("\n \n Chose: ", i)
-                    print("Time_stamp: ",time_stamps[i], "start_time: ", start_time)
-                    print("Diff: ",time_stamps[i]-start_time, "\n \n")
                     start = time_stamps[i]
                     break
 
-            print("+++++++++++++++++++++++++++++++++++++++")
-
             for i in range((len(time_stamps) -1),0,-1):
-                print(i,"/",len(time_stamps)," Time_stamp: ",time_stamps[i], "end_time: ", end_time)
-                print("Diff: ",time_stamps[i]-end_time)
-                print("__________________________________")
                 if time_stamps[i] <= end_time - allowance:
-                    print("\n \n Chose: ",i)
-                    print("Time_stamp: ",time_stamps[i], "end_time: ", end_time)
-                    print("Diff: ",time_stamps[i]-end_time, "\n \n")
                     end_index = i
                     break
         
