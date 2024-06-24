@@ -114,7 +114,7 @@ if __name__ == "__main__":
             start_index = 0
             end_index = len(time_stamps) - 1
             for i in range(len(time_stamps)):
-                print(len(time_stamps),"/",i," Time_stamp: ",time_stamps[i], "start_time: ", start_time)
+                print(i,"/",len(time_stamps)," Time_stamp: ",time_stamps[i], "start_time: ", start_time)
                 print("Diff: ",time_stamps[i]-start_time)
                 print("__________________________________")
                 if time_stamps[i] >= start_time - allowance:
@@ -128,10 +128,10 @@ if __name__ == "__main__":
             print("+++++++++++++++++++++++++++++++++++++++")
 
             for i in range((len(time_stamps) -1),0,-1):
-                print(len(time_stamps),"/",i," Time_stamp: ",time_stamps[i], "end_time: ", end_time)
+                print(i,"/",len(time_stamps)," Time_stamp: ",time_stamps[i], "end_time: ", end_time)
                 print("Diff: ",time_stamps[i]-end_time)
                 print("__________________________________")
-                if time_stamps[i] >= end_time - allowance:
+                if time_stamps[i] <= end_time - allowance:
                     print("\n \n Chose: ",i)
                     print("Time_stamp: ",time_stamps[i], "end_time: ", end_time)
                     print("Diff: ",time_stamps[i]-end_time, "\n \n")
