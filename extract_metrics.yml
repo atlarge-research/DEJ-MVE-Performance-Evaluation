@@ -21,6 +21,7 @@
       java -version;
       free -g;
       lscpu;
+      echo "{{JVM_config_parameters}}";
     } > {{ playbook_dir }}/results/{{ timestamp }}/nodeinfo.log 2>&1
 - name: Remove fetch folder
   file:
