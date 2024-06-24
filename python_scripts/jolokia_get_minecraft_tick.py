@@ -103,8 +103,7 @@ if __name__ == "__main__":
             accumalative_tick_time = 0
             for tick in temp_ticks:
                 accumalative_tick_time += tick
-            tick_time = accumalative_tick_time / len(tick) 
-            print(tick_time)
+            tick_time = accumalative_tick_time / len(ticks) 
             ticks.append(tick_time)
             time_stamps.append(now)
     except Exception as e:
