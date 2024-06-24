@@ -9,8 +9,8 @@ import sys
 PERIOD_S = 2.5
 allowance = 5
 output_path = sys.argv[1]
-start_time = sys.argv[2]
-end_time = sys.argv[3]
+start_time = float(sys.argv[2])
+end_time = float(sys.argv[3])
 
 
 def get_tick_durations(old, new):
