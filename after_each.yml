@@ -15,9 +15,6 @@
     - name: Kill prometheus
       command: "killall prometheus"   
       ignore_errors: true
-    - name: debug jolokia
-      debug:
-        var: jolokia_result
     - name: 5s grace period
       pause:
         seconds: 5
