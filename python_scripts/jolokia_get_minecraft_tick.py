@@ -106,7 +106,7 @@ if __name__ == "__main__":
                     accumalative_tick_time += tick
                 tick_time = accumalative_tick_time / len(temp_ticks) 
                 ticks.append(tick_time)
-                time_stamps.append(time.monotonic())
+                time_stamps.append(now)
     except Exception as e:
         output = [ticks,time_stamps]
         print(e)

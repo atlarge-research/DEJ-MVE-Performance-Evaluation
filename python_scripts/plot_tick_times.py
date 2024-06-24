@@ -11,6 +11,7 @@ ticktime_path = sys.argv[3]
 start_time = float(sys.argv[4])
 end_time = float(sys.argv[5])
 
+
 with open(ticktime_path) as file:
     data = json.load(file)  
 
@@ -30,6 +31,9 @@ with open(ticktime_path) as file:
             start_index = i
             start = time_stamps[i]
             break
+
+    print("+++++++++++++++++++++++++++++++++++++++")
+
     for i in range((len(time_stamps) -1),0,-1):
         print("Time_stamp: ",time_stamps[i], "end_time: ", end_time)
         print("Diff: ",time_stamps[i]-end_time)
@@ -54,6 +58,7 @@ with open(ticktime_path) as file:
         f"Time diff between start and end: {end_time - start_time} \n"
         f"First time_point: {time_points[0]} last: {time_points[-1]} diff: {time_points[0]-time_points[-1]} \n"
         )
+        print(str)
         log.write(str)
 
 
