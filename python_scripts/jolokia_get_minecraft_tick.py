@@ -105,7 +105,6 @@ if __name__ == "__main__":
             if(len(temp_ticks)>0):
                 accumalative_tick_time = 0
                 for tick in temp_ticks:
-                    print(tick)
                     accumalative_tick_time += tick
                 tick_time = accumalative_tick_time / len(temp_ticks) 
                 ticks.append(tick_time)
@@ -126,7 +125,7 @@ if __name__ == "__main__":
                     break
         
             time_stamps = time_stamps[start_index:end_index + 1]
-            ticks = tick_times[start_index:end_index+1]
+            ticks = ticks[start_index:end_index+1]
         
         
         

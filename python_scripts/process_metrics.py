@@ -26,8 +26,8 @@ with open(metric_names_path) as metric_names_file:
                 metric_values = [float(x[1]) for x in metric_values]
                 ax.plot(metric_values)      
 
-            ax.xaxis.set_major_locator(ticker.MultipleLocator(base=60))
-            ax.xaxis.set_minor_locator(ticker.MultipleLocator(base=30))
+            ax.xaxis.set_major_locator(ticker.MultipleLocator(base=10))
+            ax.xaxis.set_minor_locator(ticker.MultipleLocator(base=5))
             ax.set_xlabel("Time[s]")
             ax.set_ylabel("{0}".format(current_metric_type['y_label']))
             plt.tight_layout()
