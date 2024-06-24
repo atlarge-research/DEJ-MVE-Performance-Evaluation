@@ -127,12 +127,7 @@ if __name__ == "__main__":
             time_stamps = time_stamps[start_index:end_index + 1]
             ticks = ticks[start_index:end_index+1]
         
-        
-        
         output = [ticks,time_stamps]
-
-
-
         print(e)
         with open(output_path,"w+") as file:
             json.dump(output,file)

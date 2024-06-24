@@ -19,24 +19,11 @@ with open(ticktime_path) as file:
     time_points = [int(t - start) for t in time_stamps]
     fig, ax = plt.subplots(figsize=(10, 6))
 
-    with open("plot.log","w+") as log:
-        str = (
-        f"Time begin: {time_stamps[0]}\n"
-        f"Time end: {time_stamps[-1]}\n"
-        f"Time diff: {time_stamps[-1] - time_stamps[0]}\n"
-        f"Type of time: {type(time_stamps[0])}\n"
-        f"First time_point: {time_points[0]} last: {time_points[-1]} diff: {time_points[0]-time_points[-1]} \n"
-        )
-        print(str)
-        log.write(str)
-
-
-
-
-
     ax.plot(time_points,tick_times)      
     ax.xaxis.set_major_locator(ticker.MultipleLocator(base=10))
     ax.xaxis.set_minor_locator(ticker.MultipleLocator(base=5))
+    ax.set_ylim(ymin=0)
+
     ax.set_xlabel("Time[s]")
     ax.set_ylabel("Average Tick Time[MS]")
     plt.tight_layout()

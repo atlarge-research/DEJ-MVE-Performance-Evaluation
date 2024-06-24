@@ -28,6 +28,7 @@ with open(metric_names_path) as metric_names_file:
 
             ax.xaxis.set_major_locator(ticker.MultipleLocator(base=10))
             ax.xaxis.set_minor_locator(ticker.MultipleLocator(base=5))
+            ax.set_ylim(ymin=0)
             ax.set_xlabel("Time[s]")
             ax.set_ylabel("{0}".format(current_metric_type['y_label']))
             plt.tight_layout()
