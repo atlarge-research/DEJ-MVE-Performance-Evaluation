@@ -15,7 +15,7 @@ with open(ticktime_path) as file:
 
     tick_times = data[0]
     time_stamps = data[1]
-    start = time_points[0]
+    start = time_stamps[0]
     time_points = [int(t - start) for t in time_stamps]
     fig, ax = plt.subplots(figsize=(10, 6))
 
