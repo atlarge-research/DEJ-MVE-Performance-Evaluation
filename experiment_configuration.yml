@@ -1,11 +1,11 @@
 experiment_duration_s: 120
 server_runtime_s: 500 #Calculate in the server start up (60s) plus possible delays.
 iterations: 1
-node_count: 8 #Minimum 2: 1 Server node, 1(or more) Bot simulation node(s)
+node_count: 10 #Minimum 2: 1 Server node, 1(or more) Bot simulation node(s)
 players_per_node: 20 #Each bot simulation node get this amount of players. Total players = (node_count - 1) * players_per_node
-bot_behavior_script: jump.js #explore.js, jump.js <- Case sensitive. GC world only makes sense with jump. with explore players will walk away from the workload, which then not be simulated.
-world_name: "hillside_manor" #  hillside_manor, imperial_city, gc_workload_world. <- Case sensitive. In order of increasing complexity (excluding gc_workload_world)
-JVM_config_parameters: "taskset -c 0-7:1 java -Dcom.sun.management.jmxremote.port=9999
+bot_behavior_script: explore.js #explore.js, jump.js <- Case sensitive. GC world only makes sense with jump. with explore players will walk away from the workload, which then not be simulated.
+world_name: "imperial_city" #  hillside_manor, imperial_city, gc_workload_world. <- Case sensitive. In order of increasing complexity (excluding gc_workload_world)
+JVM_config_parameters: "taskset -c 0-3:1 java -Dcom.sun.management.jmxremote.port=9999
         -javaagent:./jmx_prometheus_javaagent-0.20.0.jar=12345:jmxexp_config.yml
         -javaagent:./jolokia-agent.jar=port=7777,host=localhost
         -Dcom.sun.management.jmxremote.authenticate=false
