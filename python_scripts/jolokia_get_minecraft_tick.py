@@ -114,21 +114,27 @@ if __name__ == "__main__":
             start_index = 0
             end_index = len(time_stamps) - 1
             for i in range(len(time_stamps)):
-                print("Time_stamp: ",time_stamps[i], "start_time: ", start_time)
+                print(len(time_stamps),"/",i," Time_stamp: ",time_stamps[i], "start_time: ", start_time)
                 print("Diff: ",time_stamps[i]-start_time)
                 print("__________________________________")
-                if abs(float(time_stamps[i])- start_time) <= allowance:
+                if time_stamps[i] >= start_time - allowance:
                     start_index = i
+                    print("\n \n Chose: ", i)
+                    print("Time_stamp: ",time_stamps[i], "start_time: ", start_time)
+                    print("Diff: ",time_stamps[i]-start_time, "\n \n")
                     start = time_stamps[i]
                     break
 
             print("+++++++++++++++++++++++++++++++++++++++")
 
             for i in range((len(time_stamps) -1),0,-1):
-                print("Time_stamp: ",time_stamps[i], "end_time: ", end_time)
+                print(len(time_stamps),"/",i," Time_stamp: ",time_stamps[i], "end_time: ", end_time)
                 print("Diff: ",time_stamps[i]-end_time)
                 print("__________________________________")
-                if abs(float(time_stamps[i]) - end_time) <= allowance:
+                if time_stamps[i] >= end_time - allowance:
+                    print("\n \n Chose: ",i)
+                    print("Time_stamp: ",time_stamps[i], "end_time: ", end_time)
+                    print("Diff: ",time_stamps[i]-end_time, "\n \n")
                     end_index = i
                     break
         
