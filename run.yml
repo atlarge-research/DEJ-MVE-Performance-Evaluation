@@ -19,7 +19,7 @@
       poll: 0
     - name: Server start up
       pause:
-        seconds: 60
+        seconds: 120
 
 
 - name: Run client play
@@ -39,12 +39,12 @@
   gather_facts: false
   tasks: 
     - name: Register monotime starttime
-      shell: python -u -c 'import time; print(time.monotonic() + 75)'
+      shell: python -u -c 'import time; print(time.monotonic() + 90)'
       register: mono_time
     - set_fact:
         mono_time_start: "{{mono_time.stdout}}"
     - name: Register monotime end_time
-      shell: python -u -c 'import time; print(time.monotonic() + 75 + {{experiment_duration_s}})'
+      shell: python -u -c 'import time; print(time.monotonic() + 90 + {{experiment_duration_s}})'
       register: time_mono
     - set_fact:
         mono_time_end: "{{time_mono.stdout}}"
@@ -54,7 +54,7 @@
       poll: 0
     - name: tick time gathering startup and player connecting
       pause:
-        seconds: 75
+        seconds: 90
     - name: Register start time
       shell: date -u +%Y-%m-%dT%H:%M:%S
       register: date
