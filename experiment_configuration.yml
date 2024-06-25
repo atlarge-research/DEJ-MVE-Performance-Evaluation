@@ -1,6 +1,6 @@
 experiment_duration_s: 120
 server_runtime_s: 500 #Calculate in the server start up (60s) plus possible delays.
-iterations: 3
+iterations: 1
 node_count: 3 #Minimum 2: 1 Server node, 1(or more) Bot simulation node(s)
 players_per_node: 12 #Each bot simulation node get this amount of players. Total players = (node_count - 1) * players_per_node
 bot_behavior_script: explore.js #explore.js, jump.js <- Case sensitive. GC world only makes sense with jump. with explore players will walk away from the workload, which then not be simulated.

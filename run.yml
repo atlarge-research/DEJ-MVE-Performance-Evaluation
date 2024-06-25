@@ -4,7 +4,7 @@
   gather_facts: false
   tasks:
     - name: Run MVE server and JMX exporter agent
-      shell: cd "{{minecraft_tmp_dir.path}}" && {{JVM_config_parameters}}
+      shell: cd "{{minecraft_tmp_dir.path}}" && {{JVM_config_parameters}} > {{playbook_dir}}/java.log 2>&1
       async: "{{server_runtime_s}}"
       poll: 0
     - name: Start Node exporter
@@ -29,7 +29,7 @@
     - set_fact:
          server_ib_ip: "{{ '10.149.0.' ~ (groups['server'][0][-2:] | int) }}"      
     - name: Run player simulation
-      shell: eval "$(conda shell.bash hook)" && conda activate scratch && cd "{{playbook_dir}}/bot_scripts" && node {{bot_behavior_script}} {{server_ib_ip}} {{ansible_host}} {{players_per_node}}
+      shell: eval "$(conda shell.bash hook)" && conda activate scratch && cd "{{playbook_dir}}/bot_scripts" && node {{bot_behavior_script}} {{server_ib_ip}} {{ansible_host}} {{players_per_node}} > {{playbook_dir}}/players.log 2>&1
       async: "{{server_runtime_s}}"
       register: player_sim_result
       poll: 0
@@ -49,7 +49,7 @@
     - set_fact:
         mono_time_end: "{{time_mono.stdout}}"
     - name: Start tick time python script
-      shell: "cd {{minecraft_tmp_dir.path}} && python jolokia_get_minecraft_tick.py {{playbook_dir}}/results/{{timestamp}}/tick_times.json {{mono_time_start}} {{mono_time_end}}" 
+      shell: "cd {{minecraft_tmp_dir.path}} && python jolokia_get_minecraft_tick.py {{playbook_dir}}/results/{{timestamp}}/tick_times.json {{mono_time_start}} {{mono_time_end}} > {{playbook_dir}}/java.log 2>&1" 
       async: "{{server_runtime_s}}"
       poll: 0
     - name: tick time gathering startup and player connecting

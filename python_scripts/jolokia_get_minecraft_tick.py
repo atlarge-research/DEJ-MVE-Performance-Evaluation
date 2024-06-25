@@ -76,8 +76,11 @@ if __name__ == "__main__":
     
     while True:
         t += PERIOD_S
+        print("Loop iteration")
         now = time.monotonic()
-        time.sleep(t - now)
+        if t > now:
+            time.sleep(t - now)
+        
         temp_ticks = []
         try:
             with request.urlopen(r) as resp:
@@ -101,6 +104,7 @@ if __name__ == "__main__":
                     tick_number += 1
                     prev_tick_duration = tick_duration
             loop_iteration += 1
+            print(loop_iteration,"\n \n",temp_ticks)
             if(len(temp_ticks)>0):
                 accumalative_tick_time = 0
                 for tick in temp_ticks:
