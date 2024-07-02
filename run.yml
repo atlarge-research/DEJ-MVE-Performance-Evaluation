@@ -49,7 +49,7 @@
     - set_fact:
         mono_time_end: "{{time_mono.stdout}}"
     - name: Start tick time python script
-      shell: "cd {{minecraft_tmp_dir.path}} && python jolokia_get_minecraft_tick.py {{playbook_dir}}/results/{{timestamp}}/tick_times.json {{mono_time_start}} {{mono_time_end}} > {{playbook_dir}}/java.log 2>&1" 
+      shell: "cd {{minecraft_tmp_dir.path}} && python jolokia_get_minecraft_tick.py {{playbook_dir}}/results/{{timestamp}}/tick_times.json {{mono_time_start}} {{mono_time_end}} > {{playbook_dir}}/python.log 2>&1" 
       async: "{{server_runtime_s}}"
       poll: 0
     - name: tick time gathering startup and player connecting
