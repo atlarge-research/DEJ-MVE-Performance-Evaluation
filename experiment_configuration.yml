@@ -4,17 +4,17 @@ iterations: 3
 node_count: 3 #Minimum 2: 1 Server node, 1(or more) Bot simulation node(s)
 players_per_node: 12 #Each bot simulation node get this amount of players. Total players = (node_count - 1) * players_per_node
 bot_behavior_script: explore.js #explore.js, jump.js <- Case sensitive. GC world only makes sense with jump. with explore players will walk away from the workload, which then not be simulated.
-world_name: "imperial_city" #  hillside_manor, imperial_city, gc_workload_world. <- Case sensitive. In order of increasing complexity (excluding gc_workload_world)
+world_name: "hillside_manor" #  hillside_manor, imperial_city, gc_workload_world. <- Case sensitive. In order of increasing complexity (excluding gc_workload_world)
 JVM_config_parameters: "taskset -c 0-3:1 java -Dcom.sun.management.jmxremote.port=9999
         -javaagent:./jmx_prometheus_javaagent-0.20.0.jar=12345:jmxexp_config.yml
         -javaagent:./jolokia-agent.jar=port=7777,host=localhost
         -Dcom.sun.management.jmxremote.authenticate=false
         -Dcom.sun.management.jmxremote.ssl=false 
-        -XX:+UseZGC
+        -XX:+UseG1GC
         -Xms2G
         -Xmx4G
         -jar server.jar nogui"
 
-#Medium = https://www.planetminecraft.com/project/hillside-manor/
-#Heavy = https://www.planetminecraft.com/project/monumental-imperial-city/
-#GC = Custom made world including a heavy environmental workload meant to target the GC and Heap: fireworks and creatures spawning and dying. Can be found in this repo.
+#hillside_manor = https://www.planetminecraft.com/project/hillside-manor/
+#imperial_city = https://www.planetminecraft.com/project/monumental-imperial-city/
+#gc_workload_world = Custom made world including a heavy environmental workload meant to target the GC and Heap: fireworks and creatures spawning and dying. Can be found in this repo.
