@@ -3,7 +3,7 @@
   pre_tasks:
     - name: Download minecraft
       get_url:
-        url: https://piston-data.mojang.com/v1/objects/15c777e2cfe0556eef19aab534b186c0c6f277e1/server.jar
+        url: "{{MVE_download_link}}"
         dest: "{{playbook_dir}}/server.jar"
     - name: Download JMX exporter
       get_url:
