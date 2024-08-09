@@ -113,7 +113,7 @@ if __name__ == "__main__":
                 ticks.append(tick_time)
                 time_stamps.append(now)
         except Exception as e:
-            if len(ticks) > 0:
+            if time.monotonic() > end_time:
                 start_index = 0
                 end_index = len(time_stamps) - 1
                 for i in range(len(time_stamps)):
